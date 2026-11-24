@@ -644,8 +644,10 @@
     var b = ev.target.closest(".day.has");
     if (!b) return;
     var ds = b.getAttribute("data-date");
-    state.date = (state.date === ds) ? null : ds;
-    renderCals(); renderTodo(); render();
+    var same = state.date === ds;
+    state.date = same ? null : ds;
+    state.cat = "all";
+    syncTabs(); renderCals(); renderTodo(); render();
     if (state.date) {
       var el = document.querySelector('.item[data-date="' + state.date + '"]');
       if (el) window.scrollTo({ top: window.pageYOffset + el.getBoundingClientRect().top - 18, behavior:"smooth" });
