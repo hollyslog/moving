@@ -268,11 +268,16 @@
   .card h3{
     margin:9px 0 0;font-size:16.5px;font-weight:750;letter-spacing:-0.025em;line-height:1.42;
   }
-  .memo{
-    margin:7px 0 0;font-size:13.5px;line-height:1.62;color:var(--ink-soft);
-    letter-spacing:-0.005em;
+  /* 공통 항목: 업체·경로 / 메모 */
+  .kv{display:flex;gap:10px;margin-top:9px;align-items:flex-start}
+  .kv .k{
+    flex:none;width:56px;padding-top:3px;
+    font-size:10px;font-weight:750;letter-spacing:.04em;color:var(--muted);
   }
-  .card-foot{display:flex;align-items:center;gap:7px;margin-top:13px;flex-wrap:wrap}
+  .kv .v{font-size:13.2px;line-height:1.55;font-weight:650;color:var(--ink)}
+  .kv .v .none{font-weight:500;color:var(--muted)}
+  .kv.note .v{font-weight:450;color:var(--ink-soft);letter-spacing:-0.005em}
+  .card-foot{display:flex;align-items:center;gap:7px;margin-top:14px;flex-wrap:wrap}
 
   .badge{
     display:inline-flex;align-items:center;gap:5px;
@@ -281,6 +286,7 @@
   }
   .badge.status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
   .st-confirm{background:var(--sage-soft);color:var(--sage-ink)}
+  .st-paid{background:#E1EDE3;color:#2E5236;box-shadow:inset 0 0 0 1px rgba(46,82,54,.13)}
   .st-urgent{background:var(--terra-soft);color:var(--terra-ink)}
   .st-coord{background:var(--amber-soft);color:var(--amber)}
   .st-wait{background:var(--gray-soft);color:#77726A}
@@ -323,7 +329,8 @@
     .item::before{left:-20px;top:24px}
     .card{padding:15px 15px 14px;border-radius:16px}
     .card h3{font-size:15.5px}
-    .memo{font-size:13px}
+    .kv .k{width:50px}
+    .kv .v{font-size:12.8px}
   }
   @media (max-width:360px){
     .cal-grid{grid-template-columns:1fr}
@@ -353,7 +360,7 @@
 
   <section class="stats" aria-label="일정 요약">
     <div class="stat c1"><span class="n" id="statAll">0</span><span class="k">전체 일정</span></div>
-    <div class="stat c2"><span class="n" id="statDone">0</span><span class="k">확정</span></div>
+    <div class="stat c2"><span class="n" id="statDone">0</span><span class="k">확정 · 예약완료</span></div>
     <div class="stat c3"><span class="n" id="statPend">0</span><span class="k">조율 · 대기</span></div>
   </section>
 
@@ -399,35 +406,59 @@
   CATS.forEach(function(c){ CAT_MAP[c.id] = c; });
 
   var STATUS = {
-    "확정":     {cls:"st-confirm", order:0},
-    "마감임박": {cls:"st-urgent",  order:1},
-    "조율중":   {cls:"st-coord",   order:2},
-    "대기":     {cls:"st-wait",    order:3}
+    "확정":          {cls:"st-confirm", order:0},
+    "예약금 납부완료": {cls:"st-paid",    order:1},
+    "마감임박":      {cls:"st-urgent",  order:2},
+    "조율중":        {cls:"st-coord",   order:3},
+    "대기":          {cls:"st-wait",    order:4}
   };
+  var SETTLED = ["확정", "예약금 납부완료"];
 
+  /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 메모 */
   var EVENTS = [
     {id:1, date:"2026-11-30", cat:"furniture", status:"마감임박",
      title:"나산가구 블프 세일 마감",
+     vendor:"나산가구",
      memo:"전 품목 할인 종료 — 12월 이사일 배송 지정이 가능한지 확인이 필요해요."},
 
     {id:2, date:"2026-11-30", cat:"furniture", status:"조율중",
      title:"에싸 브루클린 컴팩트 4인 혜택 마감",
+     vendor:"에싸",
      memo:"크라비츠 크림화이트 / 제작 5~6주 소요 — 12/17 배송 가능 여부와 주소 확인 필요."},
+
+    {id:7, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
+     title:"탄성 시공",
+     vendor:"숨고",
+     memo:"예약금 납부 완료 (금액 추후 보완)."},
+
+    {id:8, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
+     title:"줄눈 시공",
+     vendor:"스마트줄눈 (입주박람회)",
+     memo:"예약금 납부 완료 (금액 추후 보완)."},
+
+    {id:9, date:"2026-12-15", cat:"loan", status:"확정",
+     title:"대출 실행 및 아파트 잔금 납부",
+     vendor:"대출/잔금",
+     memo:"이사 전 잔금 처리 (금액 등 민감정보 비공개)."},
 
     {id:3, date:"2026-12-17", cat:"check", status:"확정", hero:true,
      title:"이사 당일 🎉",
+     vendor:"힐스테이트 메디알레 59C 입주",
      memo:"은평구 힐스테이트 메디알레 59C 입주."},
 
     {id:4, date:null, cat:"build", status:"대기",
      title:"거실 아기 매트 시공",
+     vendor:null,
      memo:"소파·가구 배치 전후로 일정 조율이 필요해요."},
 
     {id:5, date:null, cat:"furniture", status:"대기",
      title:"솔이방 옷장·서랍장",
+     vendor:"이케아 / 나산가구",
      memo:"이케아 PAX(150cm 여닫이) vs 나산가구 주니어옷장·5단 서랍장 — 결정 후 배송 예약."},
 
     {id:6, date:null, cat:"loan", status:"대기",
      title:"대출 실행일 / 입주 청소 / 가전·인터넷",
+     vendor:null,
      memo:"확정되는 대로 이 타임라인에 추가될 예정이에요."}
   ];
 
@@ -491,7 +522,7 @@
 
   /* ---------------- 요약 스탯 ---------------- */
   (function(){
-    var done = EVENTS.filter(function(e){ return e.status === "확정"; }).length;
+    var done = EVENTS.filter(function(e){ return SETTLED.indexOf(e.status) > -1; }).length;
     document.getElementById("statAll").textContent = EVENTS.length;
     document.getElementById("statDone").textContent = done;
     document.getElementById("statPend").textContent = EVENTS.length - done;
@@ -599,10 +630,13 @@
     var cat = CAT_MAP[e.cat] || {label:"기타"};
     var st = STATUS[e.status] || STATUS["대기"];
     var undated = !e.date;
-    var past = e.date && daysBetween(parse(e.date), TODAY) > 0 && e.status !== "확정";
+    var past = e.date && daysBetween(parse(e.date), TODAY) > 0 && SETTLED.indexOf(e.status) === -1;
     var when = undated
       ? '<span class="when undated">일정 미정</span>'
       : '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + '</span>';
+    var vendor = e.vendor
+      ? '<div class="kv"><span class="k">업체·경로</span><span class="v">' + e.vendor + '</span></div>'
+      : '<div class="kv"><span class="k">업체·경로</span><span class="v"><span class="none">미정</span></span></div>';
     return '<article class="item' + (undated ? " undated" : "") + (e.hero ? " hero-item" : "") + (past ? " past" : "") +
       '" data-cat="' + e.cat + '"' + (e.date ? ' data-date="' + e.date + '"' : "") +
       ' style="animation-delay:' + Math.min(idx * 45, 320) + 'ms">' +
@@ -611,7 +645,8 @@
           '<span class="badge status ' + st.cls + '">' + e.status + '</span>' +
         '</div>' +
         '<h3>' + e.title + '</h3>' +
-        '<p class="memo">' + e.memo + '</p>' +
+        vendor +
+        '<div class="kv note"><span class="k">메모</span><span class="v">' + e.memo + '</span></div>' +
         '<div class="card-foot"><span class="badge cat">' + cat.label + '</span></div>' +
       '</div></article>';
   }
