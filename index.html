@@ -104,11 +104,13 @@
   .sub .dotsep{color:var(--line-strong);margin:0 6px}
   .dday{
     flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
     min-width:82px;padding:11px 12px;border-radius:16px;
     background:var(--sage);color:#fff;
     font-weight:800;font-size:18px;letter-spacing:-0.02em;line-height:1.1;
     box-shadow:0 8px 20px -12px rgba(61,88,67,.9);
   }
+  .dday .dd{display:block;white-space:nowrap}
   .dday small{display:block;margin-top:5px;font-size:9.5px;font-weight:600;letter-spacing:.12em;opacity:.82}
   .dday.soon{background:var(--terra);box-shadow:0 8px 20px -12px rgba(140,71,38,.9)}
   .dday.today{background:var(--navy);box-shadow:0 8px 20px -12px rgba(46,62,92,.9)}
@@ -172,8 +174,8 @@
   .cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .cal{padding:2px}
   .cal-head{
-    display:flex;align-items:baseline;justify-content:space-between;
-    margin-bottom:10px;padding:0 2px;
+    display:flex;align-items:baseline;justify-content:flex-start;gap:7px;
+    margin-bottom:10px;padding:0 3px;
   }
   .cal-head .m{font-size:14px;font-weight:750;letter-spacing:-0.02em}
   .cal-head .y{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em}
@@ -191,7 +193,7 @@
     font-size:12px;font-weight:550;color:var(--ink-soft);
     border-radius:10px;cursor:default;
   }
-  .day.pad{visibility:hidden}
+  .day.pad{visibility:hidden;aspect-ratio:1/1}
   .day.has{cursor:pointer;font-weight:700;color:var(--ink);background:var(--gray-soft)}
   .day.has:hover{background:#E9E4DB}
   .day.today{box-shadow:inset 0 0 0 1.5px var(--sage);color:var(--sage-ink);font-weight:800}
@@ -287,6 +289,8 @@
   .badge.status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
   .st-confirm{background:var(--sage-soft);color:var(--sage-ink)}
   .st-paid{background:#E1EDE3;color:#2E5236;box-shadow:inset 0 0 0 1px rgba(46,82,54,.13)}
+  .st-done{background:#3D5843;color:#fff}
+  .st-done::before{background:#C9DCCB!important}
   .st-urgent{background:var(--terra-soft);color:var(--terra-ink)}
   .st-coord{background:var(--amber-soft);color:var(--amber)}
   .st-wait{background:var(--gray-soft);color:#77726A}
@@ -353,7 +357,7 @@
         <h1>우리 집 이사 타임라인</h1>
         <p class="sub">힐스테이트 메디알레 59C<span class="dotsep">·</span>2026.12.17(목)</p>
       </div>
-      <div class="dday" id="dday" aria-live="polite">D-<span id="ddayNum">22</span></div>
+      <div class="dday" id="dday" aria-live="polite"><span class="dd">D-<span id="ddayNum">22</span></span></div>
     </div>
     <div class="nextup" id="nextup"></div>
   </header>
@@ -407,12 +411,14 @@
 
   var STATUS = {
     "확정":          {cls:"st-confirm", order:0},
-    "예약금 납부완료": {cls:"st-paid",    order:1},
-    "마감임박":      {cls:"st-urgent",  order:2},
-    "조율중":        {cls:"st-coord",   order:3},
-    "대기":          {cls:"st-wait",    order:4}
+    "완납 완료":      {cls:"st-done",    order:1},
+    "예약금 납부완료": {cls:"st-paid",    order:2},
+    "마감임박":      {cls:"st-urgent",  order:3},
+    "조율중":        {cls:"st-coord",   order:4},
+    "대기":          {cls:"st-wait",    order:5}
   };
-  var SETTLED = ["확정", "예약금 납부완료"];
+  var SETTLED = ["확정", "완납 완료", "예약금 납부완료"];
+  function timeOrder(e){ return e.time === "오전" ? 0 : e.time === "오후" ? 1 : 2; }
 
   /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 메모 */
   var EVENTS = [
@@ -434,6 +440,16 @@
     {id:8, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
      title:"줄눈 시공",
      vendor:"스마트줄눈 (입주박람회)",
+     memo:"예약금 납부 완료 (금액 추후 보완)."},
+
+    {id:10, date:"2026-12-16", time:"오전", cat:"build", status:"완납 완료",
+     title:"입주청소",
+     vendor:"한스클린 (이지웰)",
+     memo:"금액 전체 완납."},
+
+    {id:11, date:"2026-12-16", time:"오후", cat:"build", status:"예약금 납부완료",
+     title:"새집증후군 시공",
+     vendor:"공기수비대 (입주박람회)",
      memo:"예약금 납부 완료 (금액 추후 보완)."},
 
     {id:9, date:"2026-12-15", cat:"loan", status:"확정",
@@ -496,11 +512,11 @@
     ddayEl.setAttribute("aria-label", "이사까지 " + diff + "일 남았습니다");
     if (diff <= 7) ddayEl.classList.add("soon");
   } else if (diff === 0) {
-    ddayEl.innerHTML = "D-DAY<small>오늘 이사</small>";
+    ddayEl.innerHTML = '<span class="dd">D-DAY</span><small>오늘 이사</small>';
     ddayEl.classList.add("today");
     ddayEl.setAttribute("aria-label", "오늘 이사입니다");
   } else {
-    ddayEl.innerHTML = "D+" + (-diff) + "<small>이사 완료</small>";
+    ddayEl.innerHTML = '<span class="dd">D+' + (-diff) + '</span><small>이사 완료</small>';
     ddayEl.classList.add("today");
   }
 
@@ -571,7 +587,7 @@
                '<span class="y">' + y + '</span></div><div class="dow">' +
                DOW.map(function(d){ return '<span>' + d + '</span>'; }).join("") +
                '</div><div class="days">';
-    for (var i = 0; i < start; i++) html += '<div class="pad"></div>';
+    for (var i = 0; i < start; i++) html += '<div class="day pad" aria-hidden="true"></div>';
     for (var day = 1; day <= lastDate; day++) {
       var ds = y + "-" + pad(m+1) + "-" + pad(day);
       var dots = map[ds];
@@ -633,7 +649,7 @@
     var past = e.date && daysBetween(parse(e.date), TODAY) > 0 && SETTLED.indexOf(e.status) === -1;
     var when = undated
       ? '<span class="when undated">일정 미정</span>'
-      : '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + '</span>';
+      : '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + (e.time ? ' · ' + e.time : '') + '</span>';
     var vendor = e.vendor
       ? '<div class="kv"><span class="k">업체·경로</span><span class="v">' + e.vendor + '</span></div>'
       : '<div class="kv"><span class="k">업체·경로</span><span class="v"><span class="none">미정</span></span></div>';
@@ -656,7 +672,8 @@
       // 날짜 있는 일정 먼저, 날짜 오름차순 / 미정은 상태 순
       if (a.date && b.date) {
         if (a.date !== b.date) return a.date < b.date ? -1 : 1;
-        return (STATUS[a.status] || {}).order - (STATUS[b.status] || {}).order;
+        return (timeOrder(a) - timeOrder(b)) ||
+               ((STATUS[a.status] || {}).order - (STATUS[b.status] || {}).order);
       }
       if (a.date) return -1;
       if (b.date) return 1;
