@@ -282,6 +282,7 @@
   .st-done::before{background:#C9DCCB!important}
   .st-paid{background:#E1EDE3;color:#2E5236;box-shadow:inset 0 0 0 1px rgba(46,82,54,.13)}
   .st-bought{background:var(--navy-soft);color:var(--navy)}
+  .st-bought-pend{background:var(--amber-soft);color:var(--navy);box-shadow:inset 0 0 0 1px rgba(46,62,92,.20)}
   .st-done-coord{background:#F5EBD6;color:#8A641F;box-shadow:inset 0 0 0 1px rgba(138,100,31,.12)}
   .st-check{background:var(--amber-soft);color:var(--amber)}
   .st-urgent{background:var(--terra-soft);color:var(--terra-ink)}
@@ -454,6 +455,7 @@
     "예약금 납부완료":       {cls:"st-paid",    order:2, settled:true},
     "구매완료":             {cls:"st-bought",  order:3, settled:true},
     "구매완료 · 배송대기":    {cls:"st-bought",  order:3.5, settled:true},
+    "구매완료 · 일정 미확정": {cls:"st-bought-pend", order:3.7, settled:false},
     "구매완료 / 일정확인":   {cls:"st-check",   order:4, settled:false},
     "완납 · 일정 조율중":     {cls:"st-done-coord", order:5, settled:false},
     "마감임박":             {cls:"st-urgent",  order:6, settled:false},
@@ -463,10 +465,10 @@
 
   /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 메모 */
   var EVENTS = [
-    {id:1, date:null, datelabel:"일정 조율중", cat:"furniture", status:"구매완료 · 배송대기",
-     title:"나산가구 솔이방·거실 가구 배송",
+    {id:1, date:"2026-12-17", dateHint:"희망", cat:"furniture", status:"구매완료 · 일정 미확정",
+     title:"나산가구 솔이방·거실 가구 배송 (희망)",
      vendor:"나산가구 (유교전)",
-     memo:"주니어옷장(샌드베이지·봉추가) / 5단서랍장(샌드베이지) / 북앤드책장(화이트) / 전면책장 1000(화이트) / 교구장서랍함 3개(레몬크림) · 제품 1,266,400원 + 배송비 120,000원 (주말 제외 약 10일 소요 · 12/17 이사일 배송 조율 필요)"},
+     memo:"12/17 이사일 배송 요청 완료 (확정은 아님) · 주니어옷장(샌드베이지·봉추가) / 5단서랍장(샌드베이지) / 북앤드책장(화이트) / 전면책장 1000(화이트) / 교구장서랍함 3개(레몬크림) · 제품 1,266,400원 + 배송비 120,000원"},
 
     {id:2, date:"2026-11-30", cat:"furniture", status:"조율중",
      title:"에싸 브루클린 컴팩트 4인 혜택 마감",
@@ -683,7 +685,7 @@
     var st = STATUS[e.status] || STATUS["대기"];
     var past = e.date && daysBetween(parse(e.date), TODAY) > 0 && !st.settled;
     var when = e.date
-      ? '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + (e.time ? ' · ' + e.time : '') + '</span>'
+      ? '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + (e.dateHint ? ' · ' + e.dateHint : '') + (e.time ? ' · ' + e.time : '') + '</span>'
       : '<span class="when">' + (e.datelabel || '일정 미정') + '</span>';
     var vendor = e.vendor
       ? '<div class="kv"><span class="k">업체·경로</span><span class="v">' + e.vendor + '</span></div>'
