@@ -322,11 +322,15 @@
     letter-spacing:-0.01em;
   }
   .todo-st{
-    display:inline-block;margin:6px 0 0;padding:2px 7px;border-radius:999px;
+    display:inline-block;flex:none;padding:2px 7px;border-radius:999px;
     background:var(--amber-soft);color:var(--amber);
-    font-size:10px;font-weight:750;letter-spacing:0;vertical-align:1px;
+    font-size:10px;font-weight:750;letter-spacing:0;line-height:1.6;
   }
-  .todo-row .nt{display:block;margin-top:3px;font-size:12px;color:var(--muted);font-weight:450}
+  .todo-row .nt{
+    display:flex;align-items:flex-start;gap:7px;flex-wrap:wrap;
+    margin-top:4px;font-size:12px;color:var(--muted);font-weight:450;
+  }
+  .todo-row .nt .nm{flex:1;min-width:0;padding-top:2px}
 
   .empty{
     margin-top:16px;padding:34px 20px;text-align:center;
@@ -733,10 +737,14 @@
     var body = rooms.map(function(r){
       return '<div class="todo-group"><span class="room">' + r + '</span>' +
         groups[r].map(function(c){
+          var meta = (c.status || c.memo)
+            ? '<span class="nt">' +
+                (c.status ? '<span class="todo-st">' + c.status + '</span>' : '') +
+                (c.memo ? '<span class="nm">' + c.memo + '</span>' : '') +
+              '</span>'
+            : '';
           return '<div class="todo-row"><span class="box" aria-hidden="true"></span>' +
-            '<span class="tx">' + c.text +
-            (c.status ? '<span class="todo-st">' + c.status + '</span>' : '') +
-            (c.memo ? '<span class="nt">' + c.memo + '</span>' : '') + '</span></div>';
+            '<span class="tx">' + c.text + meta + '</span></div>';
         }).join("") + '</div>';
     }).join("");
     todoHost.innerHTML =
