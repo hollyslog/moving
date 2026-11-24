@@ -249,6 +249,7 @@
     background:linear-gradient(180deg,#FBFDFA 0%,#FFFFFF 70%);
     box-shadow:var(--shadow);
   }
+  .item.undated .card{border-style:dashed;background:rgba(255,255,255,.66)}
   .item.hero-item .card h3{font-size:18px}
 
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;row-gap:7px}
@@ -281,6 +282,7 @@
   .st-done::before{background:#C9DCCB!important}
   .st-paid{background:#E1EDE3;color:#2E5236;box-shadow:inset 0 0 0 1px rgba(46,82,54,.13)}
   .st-bought{background:var(--navy-soft);color:var(--navy)}
+  .st-done-coord{background:#F5EBD6;color:#8A641F;box-shadow:inset 0 0 0 1px rgba(138,100,31,.12)}
   .st-check{background:var(--amber-soft);color:var(--amber)}
   .st-urgent{background:var(--terra-soft);color:var(--terra-ink)}
   .st-coord{background:var(--amber-soft);color:var(--amber)}
@@ -446,9 +448,10 @@
     "예약금 납부완료":       {cls:"st-paid",    order:2, settled:true},
     "구매완료":             {cls:"st-bought",  order:3, settled:true},
     "구매완료 / 일정확인":   {cls:"st-check",   order:4, settled:false},
-    "마감임박":             {cls:"st-urgent",  order:5, settled:false},
-    "조율중":               {cls:"st-coord",   order:6, settled:false},
-    "대기":                 {cls:"st-wait",    order:7, settled:false}
+    "완납 · 일정 조율중":     {cls:"st-done-coord", order:5, settled:false},
+    "마감임박":             {cls:"st-urgent",  order:6, settled:false},
+    "조율중":               {cls:"st-coord",   order:7, settled:false},
+    "대기":                 {cls:"st-wait",    order:8, settled:false}
   };
 
   /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 메모 */
@@ -502,7 +505,12 @@
     {id:13, date:"2026-12-17", cat:"furniture", status:"구매완료",
      title:"거실 신규 냉장고장 배송",
      vendor:null,
-     memo:"12/17 배송 요청."}
+     memo:"12/17 배송 요청."},
+
+    {id:14, date:null, datelabel:"일정 조율중", cat:"build", status:"완납 · 일정 조율중",
+     title:"솔이 바닥매트 (거실·주방 매트)",
+     vendor:"파크론",
+     memo:"240만원 납부 완료 (5만원 할인 및 실제 시공 후 차액 환불 예정) · 담당 팀장님 연락 오면 시공일정 확정 필요."}
   ];
 
   /* 할 일 / 체크리스트 (방별) */
@@ -511,7 +519,6 @@
                           memo:"11/18부터 접수 가능 → 현재 접수 가능 · 이전설치 비용 56,100원"},
     {room:"공통",         text:"정수기 이전설치 신청", status:"신청 필요",
                           memo:"이사 전 일정 맞춰 이전설치 접수 필요"},
-    {room:"공통",         text:"솔이 거실 바닥매트 시공 조율"},
     {room:"안방",         text:"기존 붙박이장(보루네오) 유상승계 문의 또는 철거 결정",
                           memo:"철거 시 폐기물 신고 별도"},
     {room:"거실",         text:"기존 냉장고장 처분"},
@@ -668,11 +675,11 @@
     var past = e.date && daysBetween(parse(e.date), TODAY) > 0 && !st.settled;
     var when = e.date
       ? '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + (e.time ? ' · ' + e.time : '') + '</span>'
-      : '<span class="when">일정 미정</span>';
+      : '<span class="when">' + (e.datelabel || '일정 미정') + '</span>';
     var vendor = e.vendor
       ? '<div class="kv"><span class="k">업체·경로</span><span class="v">' + e.vendor + '</span></div>'
       : '<div class="kv"><span class="k">업체·경로</span><span class="v"><span class="none">미정</span></span></div>';
-    return '<article class="item' + (e.hero ? " hero-item" : "") + (past ? " past" : "") +
+    return '<article class="item' + (e.hero ? " hero-item" : "") + (e.date ? "" : " undated") + (past ? " past" : "") +
       '" data-cat="' + e.cat + '"' + (e.date ? ' data-date="' + e.date + '"' : "") +
       ' style="animation-delay:' + Math.min(idx * 45, 320) + 'ms">' +
       '<div class="card">' +
