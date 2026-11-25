@@ -1739,7 +1739,7 @@
      ]}
   ];
   var AFTER = [
-    {ico:"\uD83C\uDFE0", group:"새 집 입주 후 할 일",
+    {ico:"\uD83C\uDFE0", group:"새 집 입주 후 할 일", plain:true,
      sub:"입주 후 며칠 안에 끝내면 되는 것들",
      items:[
        {id:"after-gas",     text:"새 집 도시가스 연결 예약 · 안전점검", memo:"가스레인지·보일러 첫 사용 전에"},
@@ -1763,10 +1763,11 @@
     var st0 = read();
     host.innerHTML = '<div class="pk-sum">' + sumLabel + '<b class="pk-total">' + total(st0) + '/' + all.length + '</b></div>' +
       groups.map(function(g, gi){
-        return '<div class="pk-group">' +
+        var head = g.plain ? "" :
           '<div class="pk-gh"><span aria-hidden="true">' + g.ico + '</span><h4>' + g.group + '</h4>' +
             '<span class="pk-cnt" data-cnt="' + gi + '">' + cnt(g, st0) + '/' + g.items.length + '</span></div>' +
-          '<p class="pk-sub">' + g.sub + '</p>' +
+          '<p class="pk-sub">' + g.sub + '</p>';
+        return '<div class="pk-group">' + head +
           g.items.map(function(it){
             var on = !!st0[it.id];
             return '<button type="button" class="pk-row' + (on ? ' done' : '') + '" data-pack="' + it.id + '" role="checkbox" aria-checked="' + (on ? 'true' : 'false') + '">' +
