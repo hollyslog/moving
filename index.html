@@ -629,15 +629,14 @@
      pay:"제품가 결제",
      checks:["12/17 배송 시간 확정 여부 확인"]},
 
-    {id:16, date:"2026-12-17", time:"오후", cat:"build", status:"접수 완료 · 시간 조율",
+    {id:16, date:"2026-12-17", time:"17:00", cat:"build", status:"확정",
      title:"LG유플러스 TV 이전설치",
      vendor:"LG유플러스",
-     visit:{state:"시간 미확정", text:"12/17(목) 오후 방문으로 시간 조율 · 담당 매니저 전화 오면 확정"},
+     visit:{state:"확정", text:"12/17(목) 17:00 방문 확정"},
      cost:[{k:"이전설치", v:"56,100원", total:true}],
      pay:"금액 안내 완료",
-     checks:["12/17(목) 이사 당일 오후 방문으로 시간 잡기 (매니저 전화 시 조율)",
-             "모든 방에서 랜선을 쓸 수 있게 단자함·포트 개방 요청"],
-     memo:"기존 TV·인터넷 이전설치 12/17(목) 접수 완료."},
+     checks:["현장 요청: 모든 방에서 랜선을 쓸 수 있게 단자함·포트 개방 요청하기"],
+     memo:"기존 TV·인터넷 이전설치 · 접수 및 방문 시간 확정 완료."},
 
     {id:15, date:"2026-12-18", cat:"build", status:"예약 완료",
      title:"SK매직 정수기 재설치",
@@ -660,8 +659,10 @@
 
   /* 할 일 / 체크리스트 (방별) */
   var CHECKS = [
-    {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 접수 (매니저 전화 후 시간 확정)", status:"접수 · 시간 확정 대기",
-                          memo:"12/17(목) 이사 당일 오후 방문으로 시간 조율 · 모든 방에서 랜선 사용 가능하게 단자함·포트 개방 요청 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
+    {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 17:00 방문 확정", status:"일정 확정", done:true,
+                          memo:"접수 완료 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
+    {room:"공통",         text:"현장 요청: 모든 방에서 랜선 사용할 수 있게 단자함·포트 개방 요청", status:"당일 현장 체크",
+                          memo:"12/17(목) 17:00 TV 설치 기사 방문 때 직접 요청"},
     {room:"공통",         text:"SK매직 정수기 재설치 예약 완료 (12/18 금)", status:"예약 완료", done:true,
                           memo:"재설치 38,000원 / 해체 28,000원 별도 · 고객센터 1600-1661 (평일 09~18시 · 토 09~13시)"},
     {room:"공통",         text:"이사업체(yes2424)에 정수기 해체 가능 여부 확인", status:"확인 필요",
@@ -810,7 +811,14 @@
     var d = parse(s);
     return (d.getMonth()+1) + "월 " + d.getDate() + "일 (" + DOW[d.getDay()] + ")";
   }
-  function timeOrder(e){ return e.time === "오전" ? 1 : e.time === "오후" ? 2 : 0; }
+  function timeOrder(e){
+    if (!e.time) return 0;
+    if (e.time === "오전") return 1;
+    if (e.time === "오후") return 2;
+    var m = /^(\d{1,2}):(\d{2})$/.exec(e.time);
+    if (m) return 10 + (+m[1]) + (+m[2]) / 60;
+    return 3;
+  }
 
   function matches(e){
     if (state.date && e.date !== state.date) return false;
