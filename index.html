@@ -527,6 +527,8 @@
     .cal-grid{gap:6px}
     .cal-head .y{font-size:9.5px;letter-spacing:.02em}
     .day{font-size:11.5px;border-radius:9px}
+    .day .dots{gap:1.5px;bottom:4px}
+    .day .dots i{width:3px;height:3px}
     .timeline{padding-left:20px}
     .item::before{left:-20px;top:24px}
     .card{padding:15px 15px 14px;border-radius:16px}
@@ -829,10 +831,10 @@
 
   /* ---------------- 비용 요약 데이터 ---------------- */
   var MONEY = [
-    {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2 · 180만/190만 확인 중", amt:1900000, paidAmt:0,
+    {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2 · 금액 확인 중", amt:1900000, paidAmt:0,
      total:"1,900,000원", paid:"0원", left:"1,900,000원 · 잔금", st:["예약 완료","st-confirm"]},
     {name:"탄성코트 (규조토 C패키지)", sub:"숨고 · 12/14 시공 · 화이트 진주", amt:400000, paidAmt:50000,
-     total:"400,000원", paid:"50,000원", left:"350,000원 · 시공 후", st:["예약금 납부","st-paid"]},
+     total:"400,000원", paid:"50,000원", left:"350,000원 · 잔금", st:["예약금 납부","st-paid"]},
     {name:"줄눈 시공", sub:"스마트홈케어 · 12/14 시공 · 탄성코트와 같은 날", amt:410000, paidAmt:70000,
      total:"410,000원", paid:"70,000원", left:"340,000원 · 잔금", st:["예약금 납부","st-paid"]},
     {name:"입주청소 (한스클린)", sub:"이지웰 복지몰 · 12/16 오전", amt:271200, paidAmt:271200,
