@@ -419,6 +419,16 @@
   .mstate .badge{font-size:10px;padding:3px 8px}
 
   .mfoot{padding:4px 18px 16px;border-top:1px dashed var(--line);background:#FEFDFB}
+  .mtotals{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:12px 0 4px;
+    border:1px solid var(--line);border-radius:13px;background:#FCFAF6;overflow:hidden;
+  }
+  .mt{padding:10px 12px;position:relative;min-width:0}
+  .mt + .mt::before{content:"";position:absolute;left:0;top:20%;height:60%;width:1px;background:var(--line)}
+  .mt-t{display:block;font-size:9.5px;font-weight:800;letter-spacing:.03em;color:var(--muted)}
+  .mt-n{display:block;margin-top:3px;font-size:15px;font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1.25}
+  .mt.paid .mt-n{color:var(--sage-ink)}
+  .mt.rest .mt-n{color:var(--terra-ink)}
   .mf-row{
     display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
     padding:8px 0;font-size:12.4px;line-height:1.5;
@@ -539,6 +549,9 @@
     .mcell .mlbl{display:block}
     .mval{font-size:12px}
     .mfoot{padding:2px 15px 14px}
+    .mt{padding:9px 8px}
+    .mt-t{font-size:8.5px;letter-spacing:0}
+    .mt-n{font-size:13px;letter-spacing:-0.04em}
     .mf-k{width:64px;font-size:10px}
     .mf-v{font-size:12px}
     .todo-head{padding:15px 15px 12px}
@@ -610,15 +623,15 @@
     <div class="money-head">
       <div class="mh-txt">
         <h3>비용 요약</h3>
-        <p class="money-sub">금액이 확인된 항목만 합계에 넣었어요 · 대출·잔금 관련 금액은 넣지 않음</p>
+        <p class="money-sub">11개 항목 모두 금액 확인 완료 · 대출·잔금 관련 금액은 넣지 않음</p>
       </div>
       <div class="money-total">
-        <span class="mt-k">확인된 확정 비용</span>
+        <span class="mt-k">총금액 합계</span>
         <span class="mt-v" id="moneySum">0<small>원</small></span>
       </div>
     </div>
     <div class="mhead" aria-hidden="true">
-      <span>항목</span><span>총액</span><span>기납부</span><span>남은 잔금 · 별도</span><span>결제 상태</span>
+      <span>항목 · 업체</span><span>총금액</span><span>계약금(기납부)</span><span>잔액</span><span>결제 상태</span>
     </div>
     <div class="mtable" id="moneyRows"></div>
     <div class="mfoot" id="moneyFoot"></div>
@@ -669,10 +682,11 @@
      title:"yes2424 포장이사 예약 완료",
      vendor:"yes2424",
      visit:{state:"예약 완료", text:"12/17(목) 이사 진행 · 남2 · 여2"},
-     cost:[{k:"총액", v:"1,800,000원", total:true},
-           {k:"결제", v:"결제 시점·방법 확인 필요"}],
+     cost:[{k:"총액", v:"1,900,000원", total:true},
+           {k:"결제", v:"계약금 0원 · 잔금 1,900,000원"}],
      pay:"예약 완료",
-     checks:["계약서·견적서에 세탁기 선반 이전설치 포함 여부 확인",
+     checks:["최종 금액 확인 — 180만원(11/12 메모) vs 190만원(견적서) 중 어느 쪽인지 견적서·계약서로 확인",
+             "계약서·견적서에 세탁기 선반 이전설치 포함 여부 확인",
              "정수기 해체 가능 여부는 '이사 전 확인' 체크리스트에서 함께 확인"],
      memo:"12/17(목) 이사 당일 카드와 같은 예약 건 · 일반 커튼 이전설치 포함."},
 
@@ -696,11 +710,12 @@
 
     {id:8, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
      title:"줄눈 시공",
-     vendor:"스마트줄눈 (입주박람회)",
+     vendor:"스마트홈케어 (입주박람회)",
      visit:{state:"예약 완료", text:"12/14(월) 시공 · 탄성코트와 같은 날"},
-     cost:[{k:"예약금", v:"납부 완료 (금액 추후 보완)"},
-           {k:"잔금", v:"금액·결제 시점 추후 보완"}],
-     pay:"예약금 납부"},
+     cost:[{k:"총액", v:"410,000원", total:true},
+           {k:"계약금", v:"70,000원 · 납부완료"},
+           {k:"잔금", v:"340,000원 · 시공 후"}],
+     pay:"계약금 납부"},
 
     {id:9, date:"2026-12-15", cat:"loan", status:"확정",
      title:"대출 실행 및 아파트 잔금 납부",
@@ -712,31 +727,34 @@
      title:"안방 신규 슬라이딩장 설치",
      vendor:"보루네오",
      visit:{state:"확인 필요", text:"12/15(화) 오후 설치 가능 여부 확인"},
-     cost:[{k:"제품가", v:"결제 완료"},
+     cost:[{k:"제품가", v:"816,000원 · 결제 완료"},
            {k:"배송비", v:"100,000원 별도"}],
      pay:"제품가 결제",
      checks:["12/15 오후 설치 가능 여부 업체 확인"]},
 
     {id:10, date:"2026-12-16", time:"오전", cat:"build", status:"완납 완료",
      title:"입주청소",
-     vendor:"한스클린 (이지웰)",
+     vendor:"한스클린 (이지웰 복지몰)",
      visit:{state:"확정", text:"12/16(수) 오전 방문 청소"},
-     cost:[{k:"금액", v:"전체 금액 완납", total:true}],
+     cost:[{k:"총액", v:"271,200원", total:true},
+           {k:"결제", v:"전액 완납"}],
      pay:"완납"},
 
     {id:11, date:"2026-12-16", time:"오후", cat:"build", status:"예약금 납부완료",
      title:"새집증후군 시공",
      vendor:"공기수비대 (입주박람회)",
      visit:{state:"예약 완료", text:"12/16(수) 오후 시공"},
-     cost:[{k:"예약금", v:"납부 완료 (금액 추후 보완)"},
-           {k:"잔금", v:"금액·결제 시점 추후 보완"}],
-     pay:"예약금 납부"},
+     cost:[{k:"총액", v:"370,000원", total:true},
+           {k:"계약금", v:"10,000원 · 납부완료"},
+           {k:"잔금", v:"360,000원 · 시공 후"}],
+     pay:"계약금 납부"},
 
     {id:3, date:"2026-12-17", cat:"move", status:"확정", hero:true,
      title:"이사 당일 🎉",
      vendor:"yes2424 (남2 · 여2)",
      visit:{state:"확정", text:"12/17(목) 이사팀 방문"},
-     cost:[{k:"총액", v:"1,800,000원 · 11/25 예약 카드와 같은 건", total:true}],
+     cost:[{k:"총액", v:"1,900,000원 · 11/25 예약 카드와 같은 건", total:true},
+           {k:"잔금", v:"1,900,000원 · 180만/190만 확인 중"}],
      pay:"예약 완료",
      checks:["암막커튼 이전 여부 결정 (현재는 남겨 두는 방향)"],
      memo:"세탁기선반 이전설치 포함 · 일반 커튼 이전설치"},
@@ -756,7 +774,8 @@
      title:"거실 신규 냉장고장 배송",
      vendor:"트리니홈 (네이버 스마트스토어)",
      visit:{state:"일정 확인", text:"12/17(목) 배송 요청 · 배송 시간 추후 안내"},
-     cost:[{k:"제품가", v:"결제 완료"}],
+     cost:[{k:"총액", v:"379,000원", total:true},
+           {k:"결제", v:"전액 완납"}],
      pay:"제품가 결제",
      checks:["12/17 배송 시간 확정 여부 확인"]},
 
@@ -791,7 +810,7 @@
   /* 할 일 / 체크리스트 (방별) */
   var CHECKS = [
     {room:"공통",         text:"이사업체(yes2424) 예약 완료 — 12/17(목) · 남2·여2", status:"예약 완료", done:true,
-                          memo:"총 180만원 · 세탁기 선반 이전설치 포함 · 견적서·계약 내용 보관"},
+                          memo:"총 190만원(180만원과 확인 중) · 세탁기 선반 이전설치 포함 · 견적서·계약 내용 보관"},
     {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 17:00 방문 확정", status:"일정 확정", done:true,
                           memo:"접수 완료 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
     {room:"공통",         text:"현장 요청: 모든 방에서 랜선 사용할 수 있게 단자함·포트 개방 요청", status:"당일 현장 체크",
@@ -810,28 +829,28 @@
 
   /* ---------------- 비용 요약 데이터 ---------------- */
   var MONEY = [
-    {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2", amt:1800000, paidAmt:0,
-     total:"1,800,000원", paid:"미확인", left:"결제 시점 확인 필요", st:["예약 완료","st-confirm"]},
+    {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2 · 180만/190만 확인 중", amt:1900000, paidAmt:0,
+     total:"1,900,000원", paid:"0원", left:"1,900,000원 · 잔금", st:["예약 완료","st-confirm"]},
     {name:"탄성코트 (규조토 C패키지)", sub:"숨고 · 12/14 시공 · 화이트 진주", amt:400000, paidAmt:50000,
      total:"400,000원", paid:"50,000원", left:"350,000원 · 시공 후", st:["예약금 납부","st-paid"]},
-    {name:"스마트줄눈 시공", sub:"입주박람회 · 12/14 시공 · 탄성코트와 같은 날", na:true,
-     total:"미기재", paid:"금액 미상", left:"금액·시점 추후 보완", st:["예약금 납부","st-paid"]},
-    {name:"입주청소 (한스클린)", sub:"이지웰 · 12/16 오전", na:true,
-     total:"미기재", paid:"금액 미상", left:"—", st:["완납","st-done"]},
-    {name:"새집증후군 시공 (공기수비대)", sub:"입주박람회 · 12/16 오후", na:true,
-     total:"미기재", paid:"금액 미상", left:"잔금 추후 보완", st:["예약금 납부","st-paid"]},
-    {name:"나산가구 (솔이방·거실)", sub:"제품 1,266,400원 + 배송비 120,000원", amt:1386400, paidAmt:1266400,
+    {name:"줄눈 시공", sub:"스마트홈케어 · 12/14 시공 · 탄성코트와 같은 날", amt:410000, paidAmt:70000,
+     total:"410,000원", paid:"70,000원", left:"340,000원 · 잔금", st:["예약금 납부","st-paid"]},
+    {name:"입주청소 (한스클린)", sub:"이지웰 복지몰 · 12/16 오전", amt:271200, paidAmt:271200,
+     total:"271,200원", paid:"271,200원", left:"0원", st:["완납","st-done"]},
+    {name:"새집증후군 시공 (공기수비대)", sub:"입주박람회 · 12/16 오후", amt:370000, paidAmt:10000,
+     total:"370,000원", paid:"10,000원", left:"360,000원 · 잔금", st:["예약금 납부","st-paid"]},
+    {name:"나산가구 (솔이방·거실)", sub:"유교전 · 제품 1,266,400원 + 배송비 120,000원", amt:1386400, paidAmt:1266400,
      total:"1,386,400원", paid:"1,266,400원", left:"120,000원 · 배송비", st:["제품가 결제","st-bought"]},
-    {name:"보루네오 안방 슬라이딩장", sub:"12/15 오후 설치 확인", na:true,
-     total:"제품가 미기재", paid:"금액 미상", left:"배송비 100,000원", st:["제품가 결제","st-bought"]},
-    {name:"트리니홈 냉장고장", sub:"12/17(목) 배송 요청", na:true,
-     total:"미기재", paid:"금액 미상", left:"—", st:["제품가 결제","st-bought"]},
+    {name:"보루네오 안방 슬라이딩장", sub:"제품 816,000원 + 배송비 100,000원 · 12/15 설치 확인", amt:916000, paidAmt:816000,
+     total:"916,000원", paid:"816,000원", left:"100,000원 · 배송비", st:["제품가 결제","st-bought"]},
+    {name:"트리니홈 냉장고장", sub:"네이버 스마트스토어 · 12/17(목) 배송 요청", amt:379000, paidAmt:379000,
+     total:"379,000원", paid:"379,000원", left:"0원", st:["결제 완료","st-done"]},
     {name:"파크론 거실·주방 매트", sub:"5만원 할인 반영 · 시공일 조율중", amt:2400000, paidAmt:2400000,
      total:"2,400,000원", paid:"2,400,000원", left:"0원 · 시공 후 차액 환불", st:["완납","st-done"]},
     {name:"LG유플러스 TV 이전설치", sub:"12/17(목) 17:00 방문", amt:56100, paidAmt:0,
-     total:"56,100원", paid:"—", left:"56,100원", st:["방문 확정","st-confirm"]},
+     total:"56,100원", paid:"0원", left:"56,100원", st:["방문 확정","st-confirm"]},
     {name:"SK매직 정수기 재설치", sub:"12/18(금) 방문 · 해체 시 28,000원 별도", amt:38000, paidAmt:0,
-     total:"38,000원", paid:"—", left:"38,000원", st:["예약 완료","st-confirm"]}
+     total:"38,000원", paid:"0원", left:"38,000원", st:["예약 완료","st-confirm"]}
   ];
 
   var PLANS = [
@@ -848,32 +867,37 @@
     function comma(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
     document.getElementById("moneyRows").innerHTML = MONEY.map(function(m){
+      var paidNa = (m.paid === "0원" || m.paid === "—" || m.paid === "미확인");
+      var leftNa = (m.left === "0원" || m.left === "—");
       return '<div class="mrow">' +
         '<div class="mname">' + m.name + '<span class="msub">' + m.sub + '</span></div>' +
-        '<div class="mcell"><span class="mlbl">총액</span><span class="mval ' + (m.na ? "na" : "big") + '">' + m.total + '</span></div>' +
-        '<div class="mcell"><span class="mlbl">기납부</span><span class="mval ' + (m.paid === "—" || m.paid === "미확인" ? "na" : "") + '">' + m.paid + '</span></div>' +
-        '<div class="mcell"><span class="mlbl">남은·별도</span><span class="mval ' + (m.left === "—" ? "na" : "") + '">' + m.left + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">총금액</span><span class="mval big">' + m.total + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">계약금</span><span class="mval' + (paidNa ? " na" : "") + '">' + m.paid + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">잔액</span><span class="mval' + (leftNa ? " na" : "") + '">' + m.left + '</span></div>' +
         '<div class="mstate"><span class="badge status ' + m.st[1] + '">' + m.st[0] + '</span></div>' +
       '</div>';
     }).join("");
 
-    var sum = 0, paid = 0, cnt = 0, missing = 0;
+    var sum = 0, paid = 0, cnt = 0;
     MONEY.forEach(function(m){
       if (typeof m.amt === "number") { sum += m.amt; paid += (m.paidAmt || 0); cnt++; }
-      else missing++;
     });
+    var rest = sum - paid;
     document.getElementById("moneySum").innerHTML = comma(sum) + '<small>원</small>';
     document.getElementById("peekSum").textContent = "확인된 합계 " + comma(sum) + "원";
 
     document.getElementById("moneyFoot").innerHTML =
-      '<div class="mf-row"><span class="mf-k">확정 합계</span><span class="mf-v">' + comma(sum) + '원' +
-        '<small>금액이 확인된 ' + cnt + '건 기준 · 대출·잔금 금액은 제외</small></span></div>' +
-      '<div class="mf-row"><span class="mf-k">이미 납부</span><span class="mf-v">' + comma(paid) + '원' +
-        '<small>파크론 2,400,000 + 나산 제품가 1,266,400 + 탄성코트 예약금 50,000</small></span></div>' +
-      '<div class="mf-row"><span class="mf-k">금액 미기재</span><span class="mf-v">' + missing + '건' +
-        '<small>스마트줄눈 · 한스클린 · 공기수비대 · 보루네오 · 트리니홈 — 결제는 됐지만 금액 확인 필요</small></span></div>' +
-      '<div class="mf-row"><span class="mf-k">별도 비용</span><span class="mf-v">128,000원' +
-        '<small>보루네오 배송비 100,000 + SK매직 해체 28,000(이사업체가 해체하면 절약) · 파크론은 시공 후 차액 환불</small></span></div>' +
+      '<div class="mtotals">' +
+        '<div class="mt"><span class="mt-t">총금액 합계</span><span class="mt-n">' + comma(sum) + '원</span></div>' +
+        '<div class="mt paid"><span class="mt-t">기납부 합계</span><span class="mt-n">' + comma(paid) + '원</span></div>' +
+        '<div class="mt rest"><span class="mt-t">남은 잔액 합계</span><span class="mt-n">' + comma(rest) + '원</span></div>' +
+      '</div>' +
+      '<div class="mf-row"><span class="mf-k">기납부</span><span class="mf-v">파크론 2,400,000 · 나산 제품가 1,266,400 · 보루네오 816,000 · 트리니홈 379,000 · 한스클린 271,200 · 계약금 130,000' +
+        '<small>탄성코트 50,000 + 줄눈 70,000 + 새집증후군 10,000</small></span></div>' +
+      '<div class="mf-row"><span class="mf-k">남은 잔액</span><span class="mf-v">yes2424 1,900,000(확인 중) · 탄성코트 350,000 · 줄눈 340,000 · 새집증후군 360,000 · 배송비 220,000 · LG 56,100 · SK 38,000' +
+        '<small>배송비 220,000 = 나산 120,000 + 보루네오 100,000</small></span></div>' +
+      '<div class="mf-row"><span class="mf-k">별도 · 변동</span><span class="mf-v">SK매직 해체 28,000원' +
+        '<small>이사업체가 해체하면 절약 · 파크론은 시공 후 차액 환불 · yes2424는 180만/190만 확인 중</small></span></div>' +
       '<div class="plans"><div class="pl-h">예정 · 검토 중<span class="pl-n">' + PLANS.length + '</span></div><ul>' +
         PLANS.map(function(p){
           return '<li><span class="pl-nm">' + p.name + '</span><span class="pl-amt">' + p.amt + '</span>' +
