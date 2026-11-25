@@ -269,7 +269,74 @@
   .kv .v{font-size:13.2px;line-height:1.55;font-weight:650;color:var(--ink)}
   .kv .v .none{font-weight:500;color:var(--muted)}
   .kv.note .v{font-weight:450;color:var(--ink-soft);letter-spacing:-0.005em}
-  .card-foot{display:flex;align-items:center;gap:7px;margin-top:14px;flex-wrap:wrap}
+  .card-foot{display:flex;align-items:center;gap:7px;margin-top:13px;flex-wrap:wrap}
+
+  /* ---------- 카드 내부 구조 (업체 · 방문/진행 · 비용/결제 · 확인사항) ---------- */
+  .vendor{display:flex;gap:7px;align-items:baseline;margin-top:8px;font-size:12.8px;letter-spacing:-0.005em}
+  .vendor .k{flex:none;width:26px;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted)}
+  .vendor .v{flex:1;min-width:0;font-weight:650;color:var(--ink-soft)}
+  .vendor .v .none{font-weight:500;color:var(--muted)}
+
+  .flow{display:flex;flex-direction:column;gap:8px;margin-top:11px}
+
+  /* 방문·진행 */
+  .visit{
+    display:flex;align-items:center;gap:7px;flex-wrap:wrap;row-gap:4px;
+    padding:8px 11px;border-radius:12px;background:#F6F4EF;
+    box-shadow:inset 0 0 0 1px rgba(219,211,199,.6);
+  }
+  .visit .vi{flex:none;font-size:12px;line-height:1;color:var(--navy);opacity:.7}
+  .visit .vk{flex:none;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted)}
+  .visit .vt{flex:1 1 130px;min-width:0;font-size:12.4px;line-height:1.45;font-weight:600;color:var(--ink-soft)}
+  .visit .vp{
+    flex:none;margin-left:auto;white-space:nowrap;
+    padding:2.5px 8px;border-radius:999px;background:#fff;
+    font-size:10px;font-weight:800;letter-spacing:0;color:var(--ink-soft);
+    box-shadow:inset 0 0 0 1px var(--line-strong);
+  }
+  .visit .vp.ok{background:var(--sage-soft);color:var(--sage-ink);box-shadow:inset 0 0 0 1px #CFE0D2}
+  .visit .vp.pend{background:var(--amber-soft);color:var(--amber);box-shadow:inset 0 0 0 1px #EBD9B8}
+
+  /* 비용·결제 */
+  .cost{border:1px solid var(--line);border-radius:12px;background:#FDFCF9;overflow:hidden}
+  .sect-h{
+    display:flex;align-items:center;gap:6px;
+    padding:7px 11px 6px;background:#F8F5EF;border-bottom:1px solid var(--line);
+    font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--muted);
+  }
+  .sect-h .sh-ico{font-size:10px;opacity:.75}
+  .sect-h .pay{
+    margin-left:auto;padding:2px 7px;border-radius:999px;background:#fff;
+    font-size:10px;font-weight:800;letter-spacing:0;color:var(--sage-ink);
+    box-shadow:inset 0 0 0 1px #CFE0D2;white-space:nowrap;
+  }
+  .crow{display:flex;align-items:baseline;gap:10px;padding:6.5px 11px;font-size:12.4px}
+  .crow + .crow{border-top:1px solid #F3EFE7}
+  .crow .ck{flex:none;width:46px;font-size:10.5px;font-weight:750;letter-spacing:.01em;color:var(--muted)}
+  .crow .cv{flex:1;min-width:0;font-weight:650;letter-spacing:-0.01em;color:var(--ink-soft)}
+  .crow.total .cv{font-weight:800;color:var(--terra-ink)}
+
+  /* 확인·요청 사항 (callout) */
+  .callout{
+    border:1px solid #EBD9B8;border-radius:13px;
+    background:linear-gradient(180deg,#FDF7EA,#FBF2DF);
+    padding:9px 12px 10px;
+  }
+  .co-h{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.06em;color:#8A641F}
+  .co-h .co-ico{
+    flex:none;display:inline-flex;align-items:center;justify-content:center;
+    width:13px;height:13px;border-radius:4px;background:#EBD9B8;color:#6E4E14;
+    font-size:9px;font-weight:900;line-height:1;
+  }
+  .co-h .co-n{margin-left:auto;padding:1px 6px;border-radius:999px;background:rgba(139,100,31,.10);font-size:10px;font-weight:800}
+  .callout ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .callout li{display:flex;gap:7px;align-items:flex-start;font-size:12.4px;line-height:1.5;font-weight:550;color:#6E5220}
+  .callout li .cb{
+    flex:none;width:11px;height:11px;margin-top:3.5px;border-radius:3px;
+    background:#fff;border:1.5px solid #D6BE8C;
+  }
+
+  .memo{margin:9px 0 0;font-size:12.1px;line-height:1.55;font-weight:450;letter-spacing:-0.005em;color:var(--muted)}
 
   .badge{
     display:inline-flex;align-items:center;gap:5px;
@@ -381,6 +448,13 @@
     .kv .v{font-size:12.8px}
     .todo-head{padding:15px 15px 12px}
     .todo-group{padding:2px 15px 11px}
+    .visit{padding:7px 9px}
+    .visit .vt{font-size:12px;flex:1 1 110px}
+    .crow{padding:6px 9px;font-size:12px}
+    .crow .ck{width:42px;font-size:10px}
+    .callout{padding:8px 10px 9px}
+    .callout li{font-size:12px}
+    .memo{font-size:11.8px}
         .todo-group .todo-row .tx{font-size:13px}
   }
   @media (max-width:360px){
@@ -471,81 +545,123 @@
     "대기":                 {cls:"st-wait",    order:8, settled:false}
   };
 
-  /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 메모 */
+  /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 방문/진행 · 비용/결제 · 확인사항 · 메모 */
   var EVENTS = [
-    {id:1, date:"2026-12-17", dateHint:"희망", cat:"furniture", status:"구매완료 · 일정 미확정",
-     title:"나산가구 솔이방·거실 가구 배송 (희망)",
-     vendor:"나산가구 (유교전)",
-     memo:"12/17 이사일 배송 요청 완료 (확정은 아님) · 주니어옷장(샌드베이지·봉추가) / 5단서랍장(샌드베이지) / 북앤드책장(화이트) / 전면책장 1000(화이트) / 교구장서랍함 3개(레몬크림) · 제품 1,266,400원 + 배송비 120,000원"},
-
     {id:2, date:"2026-11-30", cat:"furniture", status:"조율중",
      title:"에싸 브루클린 컴팩트 4인 혜택 마감",
      vendor:"에싸",
-     memo:"크라비츠 크림화이트 / 제작 5~6주 — 12/17 배송 가능 여부 확인 필요."},
+     visit:{state:"결정 필요", text:"11/30 혜택 마감 전 결정 · 12/17 배송 가능 여부 확인"},
+     checks:["12/17 배송 가능 여부 확인 (제작 5~6주)",
+             "11/30 혜택 마감 전 주문 결정"],
+     memo:"크라비츠 크림화이트."},
 
     {id:7, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
      title:"탄성코트 시공 (규조토 C패키지 · 화이트 진주)",
      vendor:"숨고",
-     money:"예약금 5만 · 잔금 35만",
-     memo:"총 40만원 (예약금 5만 납부 / 시공 후 잔금 35만) · 베란다 1, 세탁실 1, 실외기실 · 곰팡이 방지약품 도포 + 친환경 탄성코트 2회 시공 (겨울철 열풍기 작업)."},
+     visit:{state:"예약 완료", text:"12/14(월) 시공 · 기사 방문"},
+     cost:[{k:"총액", v:"40만원", total:true},
+           {k:"예약금", v:"5만원 · 납부완료"},
+           {k:"잔금", v:"35만원 · 시공 후"}],
+     pay:"예약금 납부",
+     memo:"베란다 1 · 세탁실 1 · 실외기실 · 곰팡이 방지약품 도포 + 친환경 탄성코트 2회 시공 (겨울철 열풍기 작업)"},
 
     {id:8, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
      title:"줄눈 시공",
      vendor:"스마트줄눈 (입주박람회)",
-     memo:"예약금 납부 완료 (금액 추후 보완)."},
+     visit:{state:"예약 완료", text:"12/14(월) 시공 · 탄성코트와 같은 날"},
+     cost:[{k:"예약금", v:"납부 완료 (금액 추후 보완)"},
+           {k:"잔금", v:"금액·결제 시점 추후 보완"}],
+     pay:"예약금 납부"},
 
     {id:9, date:"2026-12-15", cat:"loan", status:"확정",
      title:"대출 실행 및 아파트 잔금 납부",
      vendor:"대출 / 잔금",
+     visit:{state:"확정", text:"12/15(화) 잔금 납부일"},
      memo:"중도금 자동상환 처리 예정."},
 
     {id:12, date:"2026-12-15", time:"오후", cat:"furniture", status:"구매완료 / 일정확인",
-     title:"안방 신규 슬라이딩장 설치 확인",
+     title:"안방 신규 슬라이딩장 설치",
      vendor:"보루네오",
-     memo:"제품 가격 결제 완료 (배송비 10만원 별도) · 12/15 오후 설치 가능 여부 확인 필요."},
+     visit:{state:"확인 필요", text:"12/15(화) 오후 설치 가능 여부 확인"},
+     cost:[{k:"제품가", v:"결제 완료"},
+           {k:"배송비", v:"100,000원 별도"}],
+     pay:"제품가 결제",
+     checks:["12/15 오후 설치 가능 여부 업체 확인"]},
 
     {id:10, date:"2026-12-16", time:"오전", cat:"build", status:"완납 완료",
      title:"입주청소",
      vendor:"한스클린 (이지웰)",
-     memo:"금액 전체 완납."},
+     visit:{state:"확정", text:"12/16(수) 오전 방문 청소"},
+     cost:[{k:"금액", v:"전체 금액 완납", total:true}],
+     pay:"완납"},
 
     {id:11, date:"2026-12-16", time:"오후", cat:"build", status:"예약금 납부완료",
      title:"새집증후군 시공",
      vendor:"공기수비대 (입주박람회)",
-     memo:"예약금 납부 완료 (금액 추후 보완)."},
+     visit:{state:"예약 완료", text:"12/16(수) 오후 시공"},
+     cost:[{k:"예약금", v:"납부 완료 (금액 추후 보완)"},
+           {k:"잔금", v:"금액·결제 시점 추후 보완"}],
+     pay:"예약금 납부"},
 
     {id:3, date:"2026-12-17", cat:"move", status:"확정", hero:true,
      title:"이사 당일 🎉",
      vendor:"yes2424 (남2 · 여2)",
-     memo:"세탁기선반 이전설치 포함, 일반 커튼 이전설치 (암막커튼은 추후 결정)."},
+     visit:{state:"확정", text:"12/17(목) 이사팀 방문"},
+     checks:["암막커튼 이전 여부 결정 (현재는 남겨 두는 방향)"],
+     memo:"세탁기선반 이전설치 포함 · 일반 커튼 이전설치"},
+
+    {id:1, date:"2026-12-17", dateHint:"희망", cat:"furniture", status:"구매완료 · 일정 미확정",
+     title:"나산가구 솔이방·거실 가구 배송",
+     vendor:"나산가구 (유교전)",
+     visit:{state:"일정 미확정", text:"12/17 이사일 배송 희망으로 요청 · 업체 확정 회신 대기"},
+     cost:[{k:"제품", v:"1,266,400원"},
+           {k:"배송비", v:"120,000원"},
+           {k:"합계", v:"1,386,400원", total:true}],
+     pay:"제품가 결제",
+     checks:["12/17 배송 확정 여부 업체 회신 확인"],
+     memo:"주니어옷장(샌드베이지·봉 추가) / 5단 서랍장 / 북앤드 책장(화이트) / 전면책장 1000(화이트) / 교구장서랍함 3개(레몬크림)"},
 
     {id:13, date:"2026-12-17", cat:"furniture", status:"구매완료",
      title:"거실 신규 냉장고장 배송",
      vendor:"트리니홈 (네이버 스마트스토어)",
-     memo:"주문 및 제품 가격 결제 완료 · 12/17 배송 요청"},
+     visit:{state:"일정 확인", text:"12/17(목) 배송 요청 · 배송 시간 추후 안내"},
+     cost:[{k:"제품가", v:"결제 완료"}],
+     pay:"제품가 결제",
+     checks:["12/17 배송 시간 확정 여부 확인"]},
 
-    {id:16, date:"2026-12-17", cat:"build", status:"접수 완료 · 시간 조율",
+    {id:16, date:"2026-12-17", time:"오후", cat:"build", status:"접수 완료 · 시간 조율",
      title:"LG유플러스 TV 이전설치",
      vendor:"LG유플러스",
-     money:"이전설치 56,100원",
-     memo:"12/17(목) 접수 완료 · 담당 매니저 전화 후 설치 시간 확정 예정 (기존 TV·인터넷 이전설치 비용 56,100원 안내)"}, 
+     visit:{state:"시간 미확정", text:"12/17(목) 오후 방문으로 시간 조율 · 담당 매니저 전화 오면 확정"},
+     cost:[{k:"이전설치", v:"56,100원", total:true}],
+     pay:"금액 안내 완료",
+     checks:["12/17(목) 이사 당일 오후 방문으로 시간 잡기 (매니저 전화 시 조율)",
+             "모든 방에서 랜선을 쓸 수 있게 단자함·포트 개방 요청"],
+     memo:"기존 TV·인터넷 이전설치 12/17(목) 접수 완료."},
 
     {id:15, date:"2026-12-18", cat:"build", status:"예약 완료",
      title:"SK매직 정수기 재설치",
      vendor:"SK매직",
-     money:"재설치 38,000원 · 해체 28,000원 별도",
-     memo:"재설치만 예약 완료 · 해체는 이사업체(yes2424) 가능 여부 확인 후 결정 (SK매직에 맡기면 28,000원 추가)"},
+     visit:{state:"확정", text:"12/18(금) 기사 방문 재설치"},
+     cost:[{k:"재설치", v:"38,000원", total:true},
+           {k:"해체", v:"28,000원 별도"}],
+     pay:"재설치 예약",
+     checks:["이사업체(yes2424) 정수기 해체 가능 여부 확인 — 가능하면 28,000원 절약"]},
 
     {id:14, date:null, datelabel:"일정 조율중", cat:"build", status:"완납 · 일정 조율중",
      title:"솔이 바닥매트 (거실·주방 매트)",
      vendor:"파크론",
-     memo:"240만원 납부 완료 (5만원 할인 및 실제 시공 후 차액 환불 예정) · 담당 팀장님 연락 오면 시공일정 확정 필요."}
+     visit:{state:"연락 대기", text:"담당 팀장 연락 오면 시공일 확정"},
+     cost:[{k:"총액", v:"240만원 · 완납", total:true},
+           {k:"할인", v:"5만원"},
+           {k:"환불", v:"실제 시공 후 차액 계좌 환불"}],
+     pay:"완납"}
   ];
 
   /* 할 일 / 체크리스트 (방별) */
   var CHECKS = [
     {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 접수 (매니저 전화 후 시간 확정)", status:"접수 · 시간 확정 대기",
-                          memo:"기존 TV·인터넷 이전설치 비용 56,100원 안내 · 담당 매니저 전화 오면 설치 시간 확정 · 고객센터 101(무료) / 1644-7000"},
+                          memo:"12/17(목) 이사 당일 오후 방문으로 시간 조율 · 모든 방에서 랜선 사용 가능하게 단자함·포트 개방 요청 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
     {room:"공통",         text:"SK매직 정수기 재설치 예약 완료 (12/18 금)", status:"예약 완료", done:true,
                           memo:"재설치 38,000원 / 해체 28,000원 별도 · 고객센터 1600-1661 (평일 09~18시 · 토 09~13시)"},
     {room:"공통",         text:"이사업체(yes2424)에 정수기 해체 가능 여부 확인", status:"확인 필요",
@@ -554,8 +670,8 @@
                           memo:"철거 시 폐기물 신고 별도"},
     {room:"거실",         text:"기존 냉장고장 처분"},
     {room:"거실 / 솔이방", text:"소파(에싸 브루클린 컴팩트 4인) 결정 및 배송 예약"},
-    {room:"컴퓨터방",     text:"기존 데스커 책상 사이즈 확인 후 유지",
-                          memo:"새 책상 미구매 · 기존 데스커 사이즈 확인 후 그대로 사용"}
+    {room:"컴퓨터방",     text:"기존 데스크 책상 사이즈 확인 후 유지",
+                          memo:"새 책상 미구매 · 기존 데스크 사이즈 확인 후 그대로 사용"}
   ];
 
   /* ---------------- 날짜 유틸 ---------------- */
@@ -703,6 +819,45 @@
     return e.cat === state.cat;
   }
 
+  function visitHTML(e){
+    if (!e.visit) return "";
+    var ok = (e.visit.state === "확정" || e.visit.state === "예약 완료");
+    return '<div class="visit">' +
+      '<span class="vi" aria-hidden="true">◷</span>' +
+      '<span class="vk">방문·진행</span>' +
+      '<span class="vt">' + e.visit.text + '</span>' +
+      '<span class="vp ' + (ok ? "ok" : "pend") + '">' + e.visit.state + '</span>' +
+    '</div>';
+  }
+
+  function costHTML(e){
+    if (!e.cost || !e.cost.length) return "";
+    var rows = e.cost.map(function(c){
+      return '<div class="crow' + (c.total ? " total" : "") + '">' +
+        '<span class="ck">' + c.k + '</span>' +
+        '<span class="cv">' + c.v + '</span>' +
+      '</div>';
+    }).join("");
+    return '<div class="cost">' +
+      '<div class="sect-h"><span class="sh-ico" aria-hidden="true">₩</span>비용·결제' +
+        (e.pay ? '<span class="pay">' + e.pay + '</span>' : '') +
+      '</div>' +
+      '<div class="crows">' + rows + '</div>' +
+    '</div>';
+  }
+
+  function checksHTML(e){
+    if (!e.checks || !e.checks.length) return "";
+    return '<div class="callout">' +
+      '<div class="co-h"><span class="co-ico" aria-hidden="true">✓</span>확인·요청 사항' +
+        '<span class="co-n">' + e.checks.length + '</span>' +
+      '</div>' +
+      '<ul>' + e.checks.map(function(t){
+        return '<li><span class="cb" aria-hidden="true"></span><span>' + t + '</span></li>';
+      }).join("") + '</ul>' +
+    '</div>';
+  }
+
   function cardHTML(e, idx){
     var cat = CAT_MAP[e.cat] || {label:"기타"};
     var st = STATUS[e.status] || STATUS["대기"];
@@ -710,9 +865,8 @@
     var when = e.date
       ? '<span class="when"><span class="cal-ico">◷</span>' + fmtDate(e.date) + (e.dateHint ? ' · ' + e.dateHint : '') + (e.time ? ' · ' + e.time : '') + '</span>'
       : '<span class="when">' + (e.datelabel || '일정 미정') + '</span>';
-    var vendor = e.vendor
-      ? '<div class="kv"><span class="k">업체·경로</span><span class="v">' + e.vendor + '</span></div>'
-      : '<div class="kv"><span class="k">업체·경로</span><span class="v"><span class="none">미정</span></span></div>';
+    var vendor = '<div class="vendor"><span class="k">업체</span><span class="v">' +
+      (e.vendor || '<span class="none">미정</span>') + '</span></div>';
     return '<article class="item' + (e.hero ? " hero-item" : "") + (e.date ? "" : " undated") + (past ? " past" : "") +
       '" data-cat="' + e.cat + '"' + (e.date ? ' data-date="' + e.date + '"' : "") +
       ' style="animation-delay:' + Math.min(idx * 45, 320) + 'ms">' +
@@ -722,11 +876,9 @@
         '</div>' +
         '<h3>' + e.title + '</h3>' +
         vendor +
-        '<div class="kv note"><span class="k">메모</span><span class="v">' + e.memo + '</span></div>' +
-        '<div class="card-foot">' +
-          (e.money ? '<span class="badge money">' + e.money + '</span>' : '') +
-          '<span class="badge cat">' + cat.label + '</span>' +
-        '</div>' +
+        '<div class="flow">' + visitHTML(e) + costHTML(e) + checksHTML(e) + '</div>' +
+        (e.memo ? '<p class="memo">' + e.memo + '</p>' : '') +
+        '<div class="card-foot"><span class="badge cat">' + cat.label + '</span></div>' +
       '</div></article>';
   }
 
