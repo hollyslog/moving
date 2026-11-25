@@ -124,6 +124,25 @@
     margin-left:auto;flex:none;font-size:11.5px;font-weight:700;color:var(--terra);
     background:var(--terra-soft);padding:3px 9px;border-radius:999px;
   }
+  .peek{
+    display:flex;align-items:center;gap:8px;width:100%;margin-top:13px;
+    padding:10px 13px;border-radius:14px;cursor:pointer;text-align:left;
+    border:1px solid #E7DCC8;background:linear-gradient(180deg,#FDF8EE,#FBF1DE);
+    font-family:inherit;font-size:12.5px;font-weight:600;color:#7A5A22;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .peek:hover{box-shadow:0 8px 18px -14px rgba(122,90,34,.7)}
+  .peek:active{transform:scale(.99)}
+  .peek .pk-ico{
+    flex:none;display:inline-flex;align-items:center;justify-content:center;
+    width:19px;height:19px;border-radius:6px;background:#EBD9B8;color:#6E4E14;
+    font-size:10.5px;font-weight:900;line-height:1;
+  }
+  .peek b{font-weight:800;color:#5E4310}
+  .peek .pk-a{
+    flex:none;margin-left:auto;padding:3px 9px;border-radius:999px;background:#fff;
+    font-size:10.5px;font-weight:800;color:#7A5A22;box-shadow:inset 0 0 0 1px #E7DCC8;
+  }
 
   /* ---------- 요약 스탯 ---------- */
   .stats{
@@ -358,6 +377,65 @@
   .badge.cat{background:#FBF9F5;color:var(--ink-soft);border:1px solid var(--line);font-weight:600}
   .badge.money{background:#FBF6EE;border:1px solid var(--line);color:#7F6136;font-weight:700}
 
+  /* ---------- 비용 요약 ---------- */
+  .money{
+    margin-top:16px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+    animation:rise .5s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .money-head{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+    padding:17px 18px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+  }
+  .money-head h3{margin:0;font-size:14.5px;font-weight:750;letter-spacing:-0.02em}
+  .money-sub{
+    margin:5px 0 0;font-size:11.5px;line-height:1.5;font-weight:500;
+    color:var(--muted);letter-spacing:-0.005em;max-width:44ch;
+  }
+  .money-total{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin-left:auto;text-align:right}
+  .money-total .mt-k{font-size:10px;font-weight:750;letter-spacing:.05em;color:var(--muted)}
+  .money-total .mt-v{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--terra-ink);line-height:1.2}
+  .money-total .mt-v small{font-size:11.5px;font-weight:700;margin-left:1px}
+
+  .mhead{
+    display:grid;grid-template-columns:minmax(0,1.55fr) .78fr .82fr 1.05fr .95fr;gap:10px;
+    padding:8px 18px 7px;background:#FAF7F2;border-bottom:1px solid var(--line);
+    font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--muted);
+  }
+  .mtable{padding:0}
+  .mrow{
+    display:grid;grid-template-columns:minmax(0,1.55fr) .78fr .82fr 1.05fr .95fr;gap:10px;
+    align-items:center;padding:9.5px 18px;font-size:12.6px;
+  }
+  .mrow + .mrow{border-top:1px solid #F5F2EC}
+  .mname{min-width:0;font-weight:700;color:var(--ink);letter-spacing:-0.015em;line-height:1.4}
+  .mname .msub{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:0;line-height:1.4}
+  .mcell{min-width:0;display:flex;flex-direction:column;gap:1px}
+  .mcell .mlbl{display:none;font-size:9.5px;font-weight:800;letter-spacing:.03em;color:var(--muted)}
+  .mval{font-size:12.4px;font-weight:650;color:var(--ink-soft);letter-spacing:-0.01em;line-height:1.45;overflow-wrap:anywhere}
+  .mval.big{font-weight:800;color:var(--ink)}
+  .mval.na{font-weight:500;color:var(--muted)}
+  .mstate{justify-self:start}
+  .mstate .badge{font-size:10px;padding:3px 8px}
+
+  .mfoot{padding:4px 18px 16px;border-top:1px dashed var(--line);background:#FEFDFB}
+  .mf-row{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    padding:8px 0;font-size:12.4px;line-height:1.5;
+  }
+  .mf-row + .mf-row{border-top:1px solid #F5F2EC}
+  .mf-k{flex:none;width:78px;font-size:10.5px;font-weight:800;letter-spacing:.02em;color:var(--muted)}
+  .mf-v{flex:1;min-width:0;font-weight:650;color:var(--ink);letter-spacing:-0.01em}
+  .mf-v small{display:block;margin-top:2px;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .plans{margin:6px 0 0;padding:11px 12px 12px;border-radius:13px;background:#F7F4EE;box-shadow:inset 0 0 0 1px rgba(219,211,199,.7)}
+  .pl-h{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.06em;color:#7B7060}
+  .pl-h .pl-n{margin-left:auto;padding:1px 6px;border-radius:999px;background:rgba(123,112,96,.10);font-size:10px;font-weight:800}
+  .plans ul{list-style:none;margin:7px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .plans li{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;font-size:12.2px;line-height:1.5;color:var(--ink-soft);font-weight:550}
+  .plans li .pl-nm{flex:1 1 150px;min-width:0}
+  .plans li .pl-amt{flex:none;font-weight:800;color:#8C4726;letter-spacing:-0.01em}
+  .plans li .pl-nt{flex:1 0 100%;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+
   /* ---------- 체크리스트 ---------- */
   .todo{
     margin-top:16px;background:var(--card);border:1px solid var(--line);
@@ -446,6 +524,23 @@
     .item.hero-item .card h3{font-size:16.5px}
     .kv .k{width:52px}
     .kv .v{font-size:12.8px}
+    .money-head{padding:15px 15px 12px;gap:8px}
+    .money-total{align-items:flex-start;margin-left:0;width:100%;text-align:left}
+    .money-total .mt-v{font-size:19px}
+    .mhead{display:none}
+    .mrow{
+      grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 8px;
+      padding:11px 15px 12px;font-size:12.2px;
+    }
+    .mrow + .mrow{border-top:1px solid #F0EBE2}
+    .mrow .mname{order:1;grid-column:1/-1}
+    .mrow .mcell{order:2}
+    .mrow .mstate{order:3;grid-column:1/-1;margin-top:1px}
+    .mcell .mlbl{display:block}
+    .mval{font-size:12px}
+    .mfoot{padding:2px 15px 14px}
+    .mf-k{width:64px;font-size:10px}
+    .mf-v{font-size:12px}
     .todo-head{padding:15px 15px 12px}
     .todo-group{padding:2px 15px 11px}
     .visit{padding:7px 9px}
@@ -479,6 +574,11 @@
     </div>
     <p class="sub">힐스테이트 메디알레 59C<span class="dotsep">·</span>2026.12.17(목)</p>
     <div class="nextup" id="nextup"></div>
+    <button class="peek" id="peekMoney" type="button">
+      <span class="pk-ico" aria-hidden="true">₩</span>
+      <span>비용 요약 <b id="peekSum">확인된 합계 6,080,500원</b></span>
+      <span class="pk-a">보기</span>
+    </button>
   </header>
 
   <section class="stats" aria-label="일정 요약">
@@ -505,6 +605,24 @@
   </div>
 
   <div class="timeline" id="timeline"></div>
+
+  <section class="money" id="money" aria-label="비용 요약">
+    <div class="money-head">
+      <div class="mh-txt">
+        <h3>비용 요약</h3>
+        <p class="money-sub">금액이 확인된 항목만 합계에 넣었어요 · 대출·잔금 관련 금액은 넣지 않음</p>
+      </div>
+      <div class="money-total">
+        <span class="mt-k">확인된 확정 비용</span>
+        <span class="mt-v" id="moneySum">0<small>원</small></span>
+      </div>
+    </div>
+    <div class="mhead" aria-hidden="true">
+      <span>항목</span><span>총액</span><span>기납부</span><span>남은 잔금 · 별도</span><span>결제 상태</span>
+    </div>
+    <div class="mtable" id="moneyRows"></div>
+    <div class="mfoot" id="moneyFoot"></div>
+  </section>
   <div class="empty" id="empty" hidden>이 조건에 맞는 일정이 아직 없어요.</div>
 
   <footer>
@@ -547,6 +665,17 @@
 
   /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 방문/진행 · 비용/결제 · 확인사항 · 메모 */
   var EVENTS = [
+    {id:17, date:"2026-11-25", cat:"move", status:"예약 완료",
+     title:"yes2424 포장이사 예약 완료",
+     vendor:"yes2424",
+     visit:{state:"예약 완료", text:"12/17(목) 이사 진행 · 남2 · 여2"},
+     cost:[{k:"총액", v:"1,800,000원", total:true},
+           {k:"결제", v:"결제 시점·방법 확인 필요"}],
+     pay:"예약 완료",
+     checks:["계약서·견적서에 세탁기 선반 이전설치 포함 여부 확인",
+             "정수기 해체 가능 여부는 '이사 전 확인' 체크리스트에서 함께 확인"],
+     memo:"12/17(목) 이사 당일 카드와 같은 예약 건 · 일반 커튼 이전설치 포함."},
+
     {id:2, date:"2026-11-30", cat:"furniture", status:"조율중",
      title:"에싸 브루클린 컴팩트 4인 혜택 마감",
      vendor:"에싸",
@@ -607,6 +736,8 @@
      title:"이사 당일 🎉",
      vendor:"yes2424 (남2 · 여2)",
      visit:{state:"확정", text:"12/17(목) 이사팀 방문"},
+     cost:[{k:"총액", v:"1,800,000원 · 11/25 예약 카드와 같은 건", total:true}],
+     pay:"예약 완료",
      checks:["암막커튼 이전 여부 결정 (현재는 남겨 두는 방향)"],
      memo:"세탁기선반 이전설치 포함 · 일반 커튼 이전설치"},
 
@@ -659,6 +790,8 @@
 
   /* 할 일 / 체크리스트 (방별) */
   var CHECKS = [
+    {room:"공통",         text:"이사업체(yes2424) 예약 완료 — 12/17(목) · 남2·여2", status:"예약 완료", done:true,
+                          memo:"총 180만원 · 세탁기 선반 이전설치 포함 · 견적서·계약 내용 보관"},
     {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 17:00 방문 확정", status:"일정 확정", done:true,
                           memo:"접수 완료 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
     {room:"공통",         text:"현장 요청: 모든 방에서 랜선 사용할 수 있게 단자함·포트 개방 요청", status:"당일 현장 체크",
@@ -674,6 +807,84 @@
     {room:"컴퓨터방",     text:"기존 데스커 책상 사이즈 확인 후 유지",
                           memo:"새 책상 미구매 · 기존 데스커 사이즈 확인 후 그대로 사용"}
   ];
+
+  /* ---------------- 비용 요약 데이터 ---------------- */
+  var MONEY = [
+    {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2", amt:1800000, paidAmt:0,
+     total:"1,800,000원", paid:"미확인", left:"결제 시점 확인 필요", st:["예약 완료","st-confirm"]},
+    {name:"탄성코트 (규조토 C패키지)", sub:"숨고 · 12/14 시공 · 화이트 진주", amt:400000, paidAmt:50000,
+     total:"400,000원", paid:"50,000원", left:"350,000원 · 시공 후", st:["예약금 납부","st-paid"]},
+    {name:"스마트줄눈 시공", sub:"입주박람회 · 12/14 시공 · 탄성코트와 같은 날", na:true,
+     total:"미기재", paid:"예약금 납부", left:"금액·시점 추후 보완", st:["예약금 납부","st-paid"]},
+    {name:"입주청소 (한스클린)", sub:"이지웰 · 12/16 오전", na:true,
+     total:"미기재", paid:"전액 완납", left:"—", st:["완납","st-done"]},
+    {name:"새집증후군 시공 (공기수비대)", sub:"입주박람회 · 12/16 오후", na:true,
+     total:"미기재", paid:"예약금 납부", left:"잔금 추후 보완", st:["예약금 납부","st-paid"]},
+    {name:"나산가구 (솔이방·거실)", sub:"제품 1,266,400원 + 배송비 120,000원", amt:1386400, paidAmt:1266400,
+     total:"1,386,400원", paid:"1,266,400원", left:"120,000원 · 배송비", st:["제품가 결제","st-bought"]},
+    {name:"보루네오 안방 슬라이딩장", sub:"12/15 오후 설치 확인", na:true,
+     total:"제품가 미기재", paid:"제품가 결제", left:"배송비 100,000원", st:["제품가 결제","st-bought"]},
+    {name:"트리니홈 냉장고장", sub:"12/17(목) 배송 요청", na:true,
+     total:"미기재", paid:"제품가 결제", left:"—", st:["제품가 결제","st-bought"]},
+    {name:"파크론 거실·주방 매트", sub:"5만원 할인 반영 · 시공일 조율중", amt:2400000, paidAmt:2400000,
+     total:"2,400,000원", paid:"2,400,000원", left:"0원 · 시공 후 차액 환불", st:["완납","st-done"]},
+    {name:"LG유플러스 TV 이전설치", sub:"12/17(목) 17:00 방문", amt:56100, paidAmt:0,
+     total:"56,100원", paid:"—", left:"56,100원", st:["방문 확정","st-confirm"]},
+    {name:"SK매직 정수기 재설치", sub:"12/18(금) 방문 · 해체 시 28,000원 별도", amt:38000, paidAmt:0,
+     total:"38,000원", paid:"—", left:"38,000원", st:["예약 완료","st-confirm"]}
+  ];
+
+  var PLANS = [
+    {name:"에싸 브루클린 컴팩트 4인", amt:"2,982,000원",
+     note:"11/30 혜택 마감 전 결정 · 12/17 배송 가능 여부 확인"},
+    {name:"안방 기존 붙박이장 철거", amt:"250,000원 + 폐기물 별도",
+     note:"유상승계 문의 중 · 철거 시 폐기물 신고 비용 추가"},
+    {name:"거실 기존 냉장고장 처분", amt:"금액 미정",
+     note:"처리 방향 미정"}
+  ];
+
+  /* ---------------- 비용 요약 렌더 ---------------- */
+  (function(){
+    function comma(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+    document.getElementById("moneyRows").innerHTML = MONEY.map(function(m){
+      return '<div class="mrow">' +
+        '<div class="mname">' + m.name + '<span class="msub">' + m.sub + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">총액</span><span class="mval ' + (m.na ? "na" : "big") + '">' + m.total + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">기납부</span><span class="mval ' + (m.paid === "—" || m.paid === "미확인" ? "na" : "") + '">' + m.paid + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">남은·별도</span><span class="mval ' + (m.left === "—" ? "na" : "") + '">' + m.left + '</span></div>' +
+        '<div class="mstate"><span class="badge status ' + m.st[1] + '">' + m.st[0] + '</span></div>' +
+      '</div>';
+    }).join("");
+
+    var sum = 0, paid = 0, cnt = 0, missing = 0;
+    MONEY.forEach(function(m){
+      if (typeof m.amt === "number") { sum += m.amt; paid += (m.paidAmt || 0); cnt++; }
+      else missing++;
+    });
+    document.getElementById("moneySum").innerHTML = comma(sum) + '<small>원</small>';
+    document.getElementById("peekSum").textContent = "확인된 합계 " + comma(sum) + "원";
+
+    document.getElementById("moneyFoot").innerHTML =
+      '<div class="mf-row"><span class="mf-k">확정 합계</span><span class="mf-v">' + comma(sum) + '원' +
+        '<small>금액이 확인된 ' + cnt + '건 기준 · 대출·잔금 금액은 제외</small></span></div>' +
+      '<div class="mf-row"><span class="mf-k">이미 납부</span><span class="mf-v">' + comma(paid) + '원' +
+        '<small>파크론 2,400,000 + 나산 제품가 1,266,400 + 탄성코트 예약금 50,000</small></span></div>' +
+      '<div class="mf-row"><span class="mf-k">금액 미기재</span><span class="mf-v">' + missing + '건' +
+        '<small>스마트줄눈 · 한스클린 · 공기수비대 · 보루네오 · 트리니홈 — 결제는 됐지만 금액 확인 필요</small></span></div>' +
+      '<div class="mf-row"><span class="mf-k">별도 비용</span><span class="mf-v">128,000원' +
+        '<small>보루네오 배송비 100,000 + SK매직 해체 28,000(이사업체가 해체하면 절약) · 파크론은 시공 후 차액 환불</small></span></div>' +
+      '<div class="plans"><div class="pl-h">예정 · 검토 중<span class="pl-n">' + PLANS.length + '</span></div><ul>' +
+        PLANS.map(function(p){
+          return '<li><span class="pl-nm">' + p.name + '</span><span class="pl-amt">' + p.amt + '</span>' +
+            '<span class="pl-nt">' + p.note + '</span></li>';
+        }).join("") + '</ul></div>';
+  })();
+
+  document.getElementById("peekMoney").addEventListener("click", function(){
+    var el = document.getElementById("money");
+    window.scrollTo({ top: window.pageYOffset + el.getBoundingClientRect().top - 14, behavior:"smooth" });
+  });
 
   /* ---------------- 날짜 유틸 ---------------- */
   var DOW = ["일","월","화","수","목","금","토"];
