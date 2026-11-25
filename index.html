@@ -143,6 +143,12 @@
     flex:none;margin-left:auto;padding:3px 9px;border-radius:999px;background:#fff;
     font-size:10.5px;font-weight:800;color:#7A5A22;box-shadow:inset 0 0 0 1px #E7DCC8;
   }
+  .peek.day{
+    margin-top:8px;border-color:#CFE0D2;background:linear-gradient(180deg,#F3F8F3,#E9F1E9);color:#33493A;
+  }
+  .peek.day .pk-ico{background:#D5E5D7;color:#2E5236;font-size:10px}
+  .peek.day b{color:#2E5236}
+  .peek.day .pk-a{color:#33493A;box-shadow:inset 0 0 0 1px #CFE0D2}
 
   /* ---------- 요약 스탯 ---------- */
   .stats{
@@ -530,6 +536,51 @@
   .prep-row.done .ptx{color:var(--muted);font-weight:500;text-decoration:line-through;text-decoration-color:rgba(122,112,96,.4)}
   .prep-row.done .pnm{text-decoration:none}
 
+  /* ---------- 이사 당일 집중 보드 ---------- */
+  .board{
+    margin:18px 0 8px;border-radius:var(--radius);overflow:hidden;
+    border:1px solid #DED2BC;background:linear-gradient(180deg,#FFFDF8,#FBF5EA);
+    box-shadow:var(--shadow);
+  }
+  .board-head{padding:16px 18px 14px;background:linear-gradient(135deg,#3D5843 0%,#2E3E5C 100%);color:#fff}
+  .bd-tag{
+    display:inline-block;padding:3px 9px;border-radius:999px;
+    background:rgba(255,255,255,.18);color:#fff;
+    font-size:9.5px;font-weight:800;letter-spacing:.08em;
+  }
+  .board-head h3{margin:8px 0 0;font-size:16.5px;font-weight:800;letter-spacing:-.02em;color:#fff}
+  .bd-sub{margin:5px 0 0;font-size:11.5px;line-height:1.5;font-weight:500;color:rgba(255,255,255,.74)}
+  .bd-step{display:flex;gap:11px;padding:14px 18px 15px;border-top:1px solid #F0E8D9}
+  .bd-num{
+    flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--terra-soft);color:var(--terra-ink);font-size:11px;font-weight:800;
+  }
+  .bd-body{flex:1;min-width:0}
+  .bd-body h4{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.01em;color:var(--ink)}
+  .flow{display:flex;flex-direction:column;gap:6px}
+  .fl{display:flex;gap:8px;align-items:baseline;font-size:12.4px;line-height:1.5;color:var(--ink-soft)}
+  .fl-t{flex:none;width:50px;font-size:10.5px;font-weight:800;color:var(--terra-ink);letter-spacing:.01em}
+  .fl-x{flex:1;min-width:0}
+  .fl-tag{
+    display:inline-block;margin-left:5px;padding:1px 6px;border-radius:999px;
+    background:var(--amber-soft);color:var(--amber);font-size:9.5px;font-weight:800;vertical-align:1px;
+  }
+  .bd-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .bd-list li{position:relative;padding-left:10px;font-size:12.4px;line-height:1.55;color:var(--ink-soft)}
+  .bd-list li::before{content:"";position:absolute;left:0;top:8px;width:3px;height:3px;border-radius:50%;background:var(--line-strong)}
+  .bd-list b{font-weight:800;color:var(--ink);margin-right:4px}
+  .pay-list{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .pl-row{display:flex;gap:10px;align-items:baseline;padding:8px 11px;font-size:12.4px}
+  .pl-row + .pl-row{border-top:1px solid #F3EFE7}
+  .pl-k{flex:1;min-width:0;font-weight:650;color:var(--ink-soft);letter-spacing:-.01em}
+  .pl-n{display:block;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .pl-v{flex:none;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .pl-total{display:flex;gap:10px;align-items:baseline;padding:9px 11px;border-top:1px solid var(--line);background:#FBF7EE}
+  .pl-total .pl-tk{flex:1;font-size:10.5px;font-weight:800;letter-spacing:.03em;color:#7A6228}
+  .pl-total .pl-tv{font-size:13px;font-weight:800;color:var(--terra-ink);letter-spacing:-.02em}
+  .pl-next{margin:8px 2px 0;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.5}
+
   .empty{
     margin-top:16px;padding:34px 20px;text-align:center;
     border:1px dashed var(--line-strong);border-radius:var(--radius);
@@ -601,6 +652,13 @@
     .crow .ck{width:42px;font-size:10px}
     .prep{margin:8px 15px 12px;padding:10px 12px 8px}
     .prep-row .ptx{font-size:12.4px}
+    .board{margin:14px 0 6px}
+    .board-head{padding:14px 15px 12px}
+    .board-head h3{font-size:15.5px}
+    .bd-step{padding:12px 15px 13px;gap:9px}
+    .fl{font-size:12.2px}
+    .fl-t{width:46px}
+    .bd-list li{font-size:12.2px}
     .callout{padding:8px 10px 9px}
     .callout li{font-size:12px}
     .memo{font-size:11.8px}
@@ -633,6 +691,11 @@
       <span>비용 요약 · <b id="peekSum">확인된 합계 8,426,700원</b></span>
       <span class="pk-a">보기</span>
     </button>
+    <button class="peek day" id="peekDay" type="button">
+      <span class="pk-ico" aria-hidden="true">🎉</span>
+      <span>이사 당일 가이드 · <b>12/17(목) 순서·요청·정산</b></span>
+      <span class="pk-a">보기</span>
+    </button>
   </header>
 
   <section class="stats" aria-label="일정 요약">
@@ -659,6 +722,52 @@
   </div>
 
   <div class="timeline" id="timeline"></div>
+
+  <section class="board" id="dayBoard" aria-label="12/17 이사 당일 집중 보드">
+    <div class="board-head">
+      <span class="bd-tag">D-DAY · 12/17(목)</span>
+      <h3>이사 당일 집중 보드</h3>
+      <p class="bd-sub">이날은 타임라인과 따로 모아둔 순서·요청·정산만 확인하세요.</p>
+    </div>
+
+    <div class="bd-step">
+      <div class="bd-num">1</div>
+      <div class="bd-body">
+        <h4>당일 진행 순서</h4>
+        <div class="flow">
+          <div class="fl"><span class="fl-t">오전</span><span class="fl-x">기존 집 짐 반출 (yes2424 · 남2·여2) → 새 집 이동</span></div>
+          <div class="fl"><span class="fl-t">낮·오후</span><span class="fl-x">새 집 짐 반입 · 일반 커튼 이전설치 · 나산가구(솔이방·거실) & 트리니홈 냉장고장 배송·배치<span class="fl-tag">확정 대기</span></span></div>
+          <div class="fl"><span class="fl-t">17:00</span><span class="fl-x">LG유플러스 TV 이전설치 기사 방문</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bd-step">
+      <div class="bd-num">2</div>
+      <div class="bd-body">
+        <h4>업체별 현장 요청 · 검토</h4>
+        <ul class="bd-list">
+          <li><b>yes2424</b> 쿠시노 침대 이동 방식(해체 vs 통째), 정수기 해체 가능 여부, 일반 커튼 이전설치 위치</li>
+          <li><b>LG유플러스 17:00</b> 모든 방에서 랜선을 쓸 수 있게 단자함·포트 개방 요청</li>
+          <li><b>나산가구 · 트리니홈</b> 배송 도착 시간·설치 위치 확인하고 받은 뒤 하자 확인</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bd-step">
+      <div class="bd-num">3</div>
+      <div class="bd-body">
+        <h4>당일 정산할 것</h4>
+        <div class="pay-list">
+          <div class="pl-row"><span class="pl-k">yes2424 포장이사 잔금</span><span class="pl-v">1,800,000원</span></div>
+          <div class="pl-row"><span class="pl-k">나산가구 배송비</span><span class="pl-v">120,000원</span></div>
+          <div class="pl-row"><span class="pl-k">LG유플러스 TV 이전설치<span class="pl-n">안내 기준 · 청구·정산 방식 확인</span></span><span class="pl-v">56,100원</span></div>
+          <div class="pl-total"><span class="pl-tk">당일 정산 합계</span><span class="pl-tv">1,976,100원</span></div>
+        </div>
+        <p class="pl-next">다음날 12/18(금) SK매직 정수기 이전설치 38,000원 (해체 별도 28,000원은 이사업체 해체 시 절약)</p>
+      </div>
+    </div>
+  </section>
 
   <section class="money" id="money" aria-label="비용 요약">
     <div class="money-head">
@@ -735,8 +844,7 @@
            {k:"결제", v:"미결제 · 계약금 0원"}],
      pay:"unpaid",
      checks:["쿠시노 침대: 해체 후 이동인지 통째로 이동인지 확인",
-             "정수기 해체 가능 여부는 '이사 전 확인' 체크리스트에서 함께 확인"],
-     memo:"12/17(목) 이사 당일 카드와 같은 예약 건 · 일반 커튼 이전설치 포함."},
+             "정수기 해체 가능 여부는 '이사 전 확인' 체크리스트에서 함께 확인"]},
 
     {id:2, date:"2026-11-30", cat:"furniture", status:"조율중",
      title:"에싸 브루클린 컴팩트 4인 혜택 마감",
@@ -955,6 +1063,11 @@
             '<span class="pl-nt">' + p.note + '</span></li>';
         }).join("") + '</ul></div>';
   })();
+
+  document.getElementById("peekDay").addEventListener("click", function(){
+    var el = document.getElementById("dayBoard");
+    window.scrollTo({ top: window.pageYOffset + el.getBoundingClientRect().top - 14, behavior:"smooth" });
+  });
 
   document.getElementById("peekMoney").addEventListener("click", function(){
     var el = document.getElementById("money");
