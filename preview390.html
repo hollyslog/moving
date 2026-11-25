@@ -14,13 +14,18 @@
 <body>
 <div class="frame"><iframe id="f" src="./index.html?preview=390" title="390px 미리보기"></iframe></div>
 <script>
-  document.getElementById("f").addEventListener("load", function(){
-    try {
-      var w = this.contentWindow, d = this.contentDocument;
-      var el = d.getElementById("packBoard");
-      if (el) w.scrollTo(0, el.getBoundingClientRect().top + w.pageYOffset - 8);
-    } catch(e){}
-  });
+  (function(){
+    var f = document.getElementById("f");
+    function jump(){
+      try {
+        var w = f.contentWindow, d = f.contentDocument;
+        var el = d.getElementById("packBoard");
+        if (el) w.scrollTo(0, el.getBoundingClientRect().top + w.pageYOffset - 8);
+      } catch(e){}
+    }
+    f.addEventListener("load", function(){ jump(); setTimeout(jump, 900); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(jump, 50); });
+  })();
 </script>
 </body>
 </html>
