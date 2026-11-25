@@ -325,9 +325,8 @@
   }
   .sect-h .sh-ico{font-size:10px;opacity:.75}
   .sect-h .pay{
-    margin-left:auto;padding:2px 7px;border-radius:999px;background:#fff;
-    font-size:10px;font-weight:800;letter-spacing:0;color:var(--sage-ink);
-    box-shadow:inset 0 0 0 1px #CFE0D2;white-space:nowrap;
+    margin-left:auto;padding:2.5px 8px;border-radius:999px;
+    font-size:10px;font-weight:800;letter-spacing:0;white-space:nowrap;
   }
   .crow{display:flex;align-items:baseline;gap:10px;padding:6.5px 11px;font-size:12.4px}
   .crow + .crow{border-top:1px solid #F3EFE7}
@@ -376,6 +375,19 @@
   .st-wait{background:var(--gray-soft);color:#77726A}
   .badge.cat{background:#FBF9F5;color:var(--ink-soft);border:1px solid var(--line);font-weight:600}
   .badge.money{background:#FBF6EE;border:1px solid var(--line);color:#7F6136;font-weight:700}
+
+  /* ---------- 결제 상태 4종 (비용 요약 · 타임라인 카드 공통) ---------- */
+  .pay-tag{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:2.5px 8px;border-radius:999px;
+    font-size:10px;font-weight:800;letter-spacing:-0.005em;line-height:1.5;white-space:nowrap;
+  }
+  .pay-tag::before{content:"";flex:none;width:4.5px;height:4.5px;border-radius:50%;background:currentColor;opacity:.75}
+  .pay-tag.pay-full{background:#3D5843;color:#fff}
+  .pay-tag.pay-full::before{background:#D3E4D6;opacity:1}
+  .pay-tag.pay-product{background:#E3EBF5;color:#2A4A75;box-shadow:inset 0 0 0 1px rgba(42,74,117,.14)}
+  .pay-tag.pay-deposit{background:#E7F1E4;color:#35603D;box-shadow:inset 0 0 0 1px rgba(53,96,61,.14)}
+  .pay-tag.pay-unpaid{background:#EFEDE6;color:#6E695F;box-shadow:inset 0 0 0 1px rgba(34,38,31,.09)}
 
   /* ---------- 비용 요약 ---------- */
   .money{
@@ -434,7 +446,7 @@
     padding:8px 0;font-size:12.4px;line-height:1.5;
   }
   .mf-row + .mf-row{border-top:1px solid #F5F2EC}
-  .mf-k{flex:none;width:78px;font-size:10.5px;font-weight:800;letter-spacing:.02em;color:var(--muted)}
+  .mf-k{flex:none;width:82px;font-size:10.5px;font-weight:800;letter-spacing:.02em;color:var(--muted)}
   .mf-v{flex:1;min-width:0;font-weight:650;color:var(--ink);letter-spacing:-0.01em}
   .mf-v small{display:block;margin-top:2px;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
   .plans{margin:6px 0 0;padding:11px 12px 12px;border-radius:13px;background:#F7F4EE;box-shadow:inset 0 0 0 1px rgba(219,211,199,.7)}
@@ -555,7 +567,7 @@
     .mt{padding:9px 8px}
     .mt-t{font-size:8.5px;letter-spacing:0}
     .mt-n{font-size:13px;letter-spacing:-0.04em}
-    .mf-k{width:64px;font-size:10px}
+    .mf-k{width:70px;font-size:10px}
     .mf-v{font-size:12px}
     .todo-head{padding:15px 15px 12px}
     .todo-group{padding:2px 15px 11px}
@@ -634,7 +646,7 @@
       </div>
     </div>
     <div class="mhead" aria-hidden="true">
-      <span>항목 · 업체</span><span>총금액</span><span>계약금(기납부)</span><span>잔액</span><span>결제 상태</span>
+      <span>항목 · 업체</span><span>총금액</span><span>결제한 금액</span><span>남은 금액</span><span>결제 상태</span>
     </div>
     <div class="mtable" id="moneyRows"></div>
     <div class="mfoot" id="moneyFoot"></div>
@@ -666,18 +678,26 @@
   var STATUS = {
     "확정":                {cls:"st-confirm", order:0, settled:true},
     "예약 완료":            {cls:"st-confirm", order:0.2, settled:true},
-    "완납 완료":            {cls:"st-done",    order:1, settled:true},
-    "예약금 납부완료":       {cls:"st-paid",    order:2, settled:true},
     "구매완료":             {cls:"st-bought",  order:3, settled:true},
-    "구매완료 · 배송대기":    {cls:"st-bought",  order:3.5, settled:true},
+    "구매완료 · 일정 확인":   {cls:"st-check",   order:4, settled:false},
     "구매완료 · 일정 미확정": {cls:"st-bought-pend", order:3.7, settled:false},
-    "구매완료 / 일정확인":   {cls:"st-check",   order:4, settled:false},
-    "완납 · 일정 조율중":     {cls:"st-done-coord", order:5, settled:false},
-    "접수 완료 · 시간 조율":   {cls:"st-done-coord", order:5.2, settled:false},
-    "마감임박":             {cls:"st-urgent",  order:6, settled:false},
+    "일정 조율중":           {cls:"st-done-coord", order:5, settled:false},
     "조율중":               {cls:"st-coord",   order:7, settled:false},
     "대기":                 {cls:"st-wait",    order:8, settled:false}
   };
+
+  /* 결제 상태 4종 — 비용 요약과 타임라인 카드가 같은 라벨·색을 쓴다 */
+  var PAY = {
+    full:    {label:"전액 결제완료",  cls:"pay-full"},
+    product: {label:"제품가 결제완료", cls:"pay-product"},
+    deposit: {label:"계약금 결제완료", cls:"pay-deposit"},
+    unpaid:  {label:"미결제",        cls:"pay-unpaid"}
+  };
+  function payTag(key, inCardHeader){
+    var p = PAY[key];
+    if (!p) return "";
+    return '<span class="' + (inCardHeader ? "pay " : "") + 'pay-tag ' + p.cls + '">' + p.label + '</span>';
+  }
 
   /* 공통 항목: 날짜 · 항목 · 업체/경로 · 상태 · 방문/진행 · 비용/결제 · 확인사항 · 메모 */
   var EVENTS = [
@@ -686,8 +706,8 @@
      vendor:"yes2424",
      visit:{state:"예약 완료", text:"12/17(목) 이사 진행 · 남2 · 여2"},
      cost:[{k:"총액", v:"1,800,000원", total:true},
-           {k:"결제", v:"계약금 0원 · 잔금 1,800,000원"}],
-     pay:"예약 완료",
+           {k:"결제", v:"미결제 · 계약금 0원"}],
+     pay:"unpaid",
      checks:["쿠시노 침대: 해체 후 이동인지 통째로 이동인지 확인",
              "정수기 해체 가능 여부는 '이사 전 확인' 체크리스트에서 함께 확인"],
      memo:"12/17(목) 이사 당일 카드와 같은 예약 건 · 일반 커튼 이전설치 포함."},
@@ -700,24 +720,24 @@
              "11/30 혜택 마감 전 주문 결정"],
      memo:"크라비츠 크림화이트."},
 
-    {id:7, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
+    {id:7, date:"2026-12-14", cat:"build", status:"예약 완료",
      title:"탄성코트 시공 (규조토 C패키지 · 화이트 진주)",
      vendor:"숨고",
      visit:{state:"예약 완료", text:"12/14(월) 시공 · 기사 방문"},
-     cost:[{k:"총액", v:"40만원", total:true},
-           {k:"예약금", v:"5만원 · 납부완료"},
-           {k:"잔금", v:"35만원 · 시공 후"}],
-     pay:"예약금 납부",
+     cost:[{k:"총액", v:"400,000원", total:true},
+           {k:"계약금", v:"50,000원 · 결제완료"},
+           {k:"잔금", v:"350,000원 · 시공 후"}],
+     pay:"deposit",
      memo:"베란다 1 · 세탁실 1 · 실외기실 · 곰팡이 방지약품 도포 + 친환경 탄성코트 2회 시공 (겨울철 열풍기 작업)"},
 
-    {id:8, date:"2026-12-14", cat:"build", status:"예약금 납부완료",
+    {id:8, date:"2026-12-14", cat:"build", status:"예약 완료",
      title:"줄눈 시공",
      vendor:"스마트홈케어 (입주박람회)",
      visit:{state:"예약 완료", text:"12/14(월) 시공 · 탄성코트와 같은 날"},
      cost:[{k:"총액", v:"410,000원", total:true},
-           {k:"계약금", v:"70,000원 · 납부완료"},
+           {k:"계약금", v:"70,000원 · 결제완료"},
            {k:"잔금", v:"340,000원 · 시공 후"}],
-     pay:"계약금 납부"},
+     pay:"deposit"},
 
     {id:9, date:"2026-12-15", cat:"loan", status:"확정",
      title:"대출 실행 및 아파트 잔금 납부",
@@ -725,31 +745,31 @@
      visit:{state:"확정", text:"12/15(화) 잔금 납부일"},
      memo:"중도금 자동상환 처리 예정."},
 
-    {id:12, date:"2026-12-15", time:"오후", cat:"furniture", status:"구매완료 / 일정확인",
+    {id:12, date:"2026-12-15", time:"오후", cat:"furniture", status:"구매완료 · 일정 확인",
      title:"안방 신규 슬라이딩장 설치",
      vendor:"보루네오",
      visit:{state:"확인 필요", text:"12/15(화) 오후 설치 가능 여부 확인"},
-     cost:[{k:"제품가", v:"816,000원 · 결제 완료"},
-           {k:"배송비", v:"100,000원 별도"}],
-     pay:"제품가 결제",
+     cost:[{k:"제품가", v:"816,000원 · 결제완료"},
+           {k:"배송비", v:"100,000원 · 별도"}],
+     pay:"product",
      checks:["12/15 오후 설치 가능 여부 업체 확인"]},
 
-    {id:10, date:"2026-12-16", time:"오전", cat:"build", status:"완납 완료",
+    {id:10, date:"2026-12-16", time:"오전", cat:"build", status:"예약 완료",
      title:"입주청소",
      vendor:"한스클린 (이지웰 복지몰)",
      visit:{state:"확정", text:"12/16(수) 오전 방문 청소"},
      cost:[{k:"총액", v:"271,200원", total:true},
-           {k:"결제", v:"전액 완납"}],
-     pay:"완납"},
+           {k:"결제", v:"전액 결제완료"}],
+     pay:"full"},
 
-    {id:11, date:"2026-12-16", time:"오후", cat:"build", status:"예약금 납부완료",
+    {id:11, date:"2026-12-16", time:"오후", cat:"build", status:"예약 완료",
      title:"새집증후군 시공",
      vendor:"공기수비대 (입주박람회)",
      visit:{state:"예약 완료", text:"12/16(수) 오후 시공"},
      cost:[{k:"총액", v:"370,000원", total:true},
-           {k:"계약금", v:"10,000원 · 납부완료"},
+           {k:"계약금", v:"10,000원 · 결제완료"},
            {k:"잔금", v:"360,000원 · 시공 후"}],
-     pay:"계약금 납부"},
+     pay:"deposit"},
 
     {id:3, date:"2026-12-17", cat:"move", status:"확정", hero:true,
      title:"이사 당일 🎉",
@@ -763,11 +783,12 @@
      title:"나산가구 솔이방·거실 가구 배송",
      vendor:"나산가구 (유교전)",
      visit:{state:"일정 미확정", text:"12/17 이사일 배송 희망으로 요청 · 업체 확정 회신 대기"},
-     cost:[{k:"제품", v:"1,266,400원"},
-           {k:"배송비", v:"120,000원"},
+     cost:[{k:"제품가", v:"1,266,400원 · 결제완료"},
+           {k:"배송비", v:"120,000원 · 별도"},
            {k:"합계", v:"1,386,400원", total:true}],
-     pay:"제품가 결제",
-     checks:["12/17 배송 확정 여부 업체 회신 확인"],
+     pay:"product",
+     checks:["12/17 배송 확정 여부 업체 회신 확인",
+             "주니어옷장 추가 봉 높이 전달하기"],
      memo:"주니어옷장(샌드베이지·봉 추가) / 5단 서랍장 / 북앤드 책장(화이트) / 전면책장 1000(화이트) / 교구장서랍함 3개(레몬크림)"},
 
     {id:13, date:"2026-12-17", cat:"furniture", status:"구매완료",
@@ -775,36 +796,39 @@
      vendor:"트리니홈 (네이버 스마트스토어)",
      visit:{state:"일정 확인", text:"12/17(목) 배송 요청 · 배송 시간 추후 안내"},
      cost:[{k:"총액", v:"379,000원", total:true},
-           {k:"결제", v:"전액 완납"}],
-     pay:"제품가 결제",
+           {k:"결제", v:"전액 결제완료"}],
+     pay:"full",
      checks:["12/17 배송 시간 확정 여부 확인"]},
 
     {id:16, date:"2026-12-17", time:"17:00", cat:"build", status:"확정",
      title:"LG유플러스 TV 이전설치",
      vendor:"LG유플러스",
      visit:{state:"확정", text:"12/17(목) 17:00 방문 확정"},
-     cost:[{k:"이전설치", v:"56,100원", total:true}],
-     pay:"금액 안내 완료",
+     cost:[{k:"이전설치", v:"56,100원", total:true},
+           {k:"결제", v:"미결제"}],
+     pay:"unpaid",
      checks:["현장 요청: 모든 방에서 랜선을 쓸 수 있게 단자함·포트 개방 요청하기"],
      memo:"기존 TV·인터넷 이전설치 · 접수 및 방문 시간 확정 완료."},
 
     {id:15, date:"2026-12-18", cat:"build", status:"예약 완료",
-     title:"SK매직 정수기 재설치",
+     title:"SK매직 정수기 이전설치",
      vendor:"SK매직",
      visit:{state:"확정", text:"12/18(금) 기사 방문 재설치"},
      cost:[{k:"재설치", v:"38,000원", total:true},
-           {k:"해체", v:"28,000원 별도"}],
-     pay:"재설치 예약",
+           {k:"해체", v:"28,000원 · 별도"},
+           {k:"결제", v:"미결제"}],
+     pay:"unpaid",
      checks:["이사업체(yes2424) 정수기 해체 가능 여부 확인 — 가능하면 28,000원 절약"]},
 
-    {id:14, date:null, datelabel:"일정 조율중", cat:"build", status:"완납 · 일정 조율중",
+    {id:14, date:null, datelabel:"일정 조율중", cat:"build", status:"일정 조율중",
      title:"솔이 바닥매트 (거실·주방 매트)",
      vendor:"파크론",
      visit:{state:"연락 대기", text:"담당 팀장 연락 오면 시공일 확정"},
-     cost:[{k:"총액", v:"240만원 · 완납", total:true},
-           {k:"할인", v:"5만원"},
+     cost:[{k:"총액", v:"2,400,000원", total:true},
+           {k:"결제", v:"전액 결제완료"},
+           {k:"할인", v:"50,000원 반영"},
            {k:"환불", v:"실제 시공 후 차액 계좌 환불"}],
-     pay:"완납"}
+     pay:"full"}
   ];
 
   /* 할 일 / 체크리스트 (방별) */
@@ -812,14 +836,13 @@
     {room:"공통",         text:"이사업체(yes2424) 예약 완료 — 12/17(목) · 남2·여2", status:"예약 완료", done:true,
                           memo:"총 180만원 · 견적서·계약 내용 보관"},
     {room:"공통",         text:"이사업체(yes2424)에 쿠시노 침대 이동 방식 확인 (해체 후 이동 vs 통째로 이동)", status:"확인 필요"},
-    {room:"공통",         text:"LG유플러스 TV 이전설치 — 12/17(목) 17:00 방문 확정", status:"일정 확정", done:true,
-                          memo:"접수 완료 · 이전설치 비용 56,100원 안내 · 고객센터 101(무료) / 1644-7000"},
     {room:"공통",         text:"현장 요청: 모든 방에서 랜선 사용할 수 있게 단자함·포트 개방 요청", status:"당일 현장 체크",
                           memo:"12/17(목) 17:00 TV 설치 기사 방문 때 직접 요청"},
-    {room:"공통",         text:"SK매직 정수기 재설치 예약 완료 (12/18 금)", status:"예약 완료", done:true,
+    {room:"공통",         text:"SK매직 정수기 이전설치 예약 완료 (12/18 금)", status:"예약 완료", done:true,
                           memo:"재설치 38,000원 / 해체 28,000원 별도 · 고객센터 1600-1661 (평일 09~18시 · 토 09~13시)"},
     {room:"공통",         text:"이사업체(yes2424)에 정수기 해체 가능 여부 확인", status:"확인 필요",
                           memo:"이사업체가 해체 가능하면 해체비 28,000원 절약 · 불가하면 SK매직에 해체까지 요청"},
+    {room:"솔이방",       text:"나산가구: 주니어옷장 추가 봉 높이 전달하기", status:"전달 필요"},
     {room:"안방",         text:"기존 붙박이장(보루네오) 유상승계 문의 또는 철거 결정",
                           memo:"철거 시 폐기물 신고 별도"},
     {room:"거실",         text:"기존 냉장고장 처분"},
@@ -831,27 +854,27 @@
   /* ---------------- 비용 요약 데이터 ---------------- */
   var MONEY = [
     {name:"yes2424 포장이사", sub:"12/17(목) 진행 · 남2 · 여2", amt:1800000, paidAmt:0,
-     total:"1,800,000원", paid:"0원", left:"1,800,000원 · 잔금", st:["예약 완료","st-confirm"]},
+     total:"1,800,000원", paid:"0원", left:"1,800,000원", pay:"unpaid"},
     {name:"탄성코트 (규조토 C패키지)", sub:"숨고 · 12/14 시공 · 화이트 진주", amt:400000, paidAmt:50000,
-     total:"400,000원", paid:"50,000원", left:"350,000원 · 잔금", st:["예약금 납부","st-paid"]},
+     total:"400,000원", paid:"50,000원", left:"350,000원 · 잔금", pay:"deposit"},
     {name:"줄눈 시공", sub:"스마트홈케어 · 12/14 시공 · 탄성코트와 같은 날", amt:410000, paidAmt:70000,
-     total:"410,000원", paid:"70,000원", left:"340,000원 · 잔금", st:["예약금 납부","st-paid"]},
+     total:"410,000원", paid:"70,000원", left:"340,000원 · 잔금", pay:"deposit"},
     {name:"입주청소 (한스클린)", sub:"이지웰 복지몰 · 12/16 오전", amt:271200, paidAmt:271200,
-     total:"271,200원", paid:"271,200원", left:"0원", st:["완납","st-done"]},
+     total:"271,200원", paid:"271,200원", left:"0원", pay:"full"},
     {name:"새집증후군 시공 (공기수비대)", sub:"입주박람회 · 12/16 오후", amt:370000, paidAmt:10000,
-     total:"370,000원", paid:"10,000원", left:"360,000원 · 잔금", st:["예약금 납부","st-paid"]},
+     total:"370,000원", paid:"10,000원", left:"360,000원 · 잔금", pay:"deposit"},
     {name:"나산가구 (솔이방·거실)", sub:"유교전 · 제품 1,266,400원 + 배송비 120,000원", amt:1386400, paidAmt:1266400,
-     total:"1,386,400원", paid:"1,266,400원", left:"120,000원 · 배송비", st:["제품가 결제","st-bought"]},
+     total:"1,386,400원", paid:"1,266,400원", left:"120,000원 · 배송비", pay:"product"},
     {name:"보루네오 안방 슬라이딩장", sub:"제품 816,000원 + 배송비 100,000원 · 12/15 설치 확인", amt:916000, paidAmt:816000,
-     total:"916,000원", paid:"816,000원", left:"100,000원 · 배송비", st:["제품가 결제","st-bought"]},
+     total:"916,000원", paid:"816,000원", left:"100,000원 · 배송비", pay:"product"},
     {name:"트리니홈 냉장고장", sub:"네이버 스마트스토어 · 12/17(목) 배송 요청", amt:379000, paidAmt:379000,
-     total:"379,000원", paid:"379,000원", left:"0원", st:["결제 완료","st-done"]},
-    {name:"파크론 거실·주방 매트", sub:"5만원 할인 반영 · 시공일 조율중", amt:2400000, paidAmt:2400000,
-     total:"2,400,000원", paid:"2,400,000원", left:"0원 · 시공 후 차액 환불", st:["완납","st-done"]},
+     total:"379,000원", paid:"379,000원", left:"0원", pay:"full"},
+    {name:"파크론 거실·주방 매트", sub:"50,000원 할인 반영 · 시공일 조율중", amt:2400000, paidAmt:2400000,
+     total:"2,400,000원", paid:"2,400,000원", left:"0원 · 시공 후 차액 환불", pay:"full"},
     {name:"LG유플러스 TV 이전설치", sub:"12/17(목) 17:00 방문", amt:56100, paidAmt:0,
-     total:"56,100원", paid:"0원", left:"56,100원", st:["방문 확정","st-confirm"]},
-    {name:"SK매직 정수기 재설치", sub:"12/18(금) 방문 · 해체 시 28,000원 별도", amt:38000, paidAmt:0,
-     total:"38,000원", paid:"0원", left:"38,000원", st:["예약 완료","st-confirm"]}
+     total:"56,100원", paid:"0원", left:"56,100원", pay:"unpaid"},
+    {name:"SK매직 정수기 이전설치", sub:"12/18(금) 방문 · 해체 시 28,000원 별도", amt:38000, paidAmt:0,
+     total:"38,000원", paid:"0원", left:"38,000원", pay:"unpaid"}
   ];
 
   var PLANS = [
@@ -873,9 +896,9 @@
       return '<div class="mrow">' +
         '<div class="mname">' + m.name + '<span class="msub">' + m.sub + '</span></div>' +
         '<div class="mcell"><span class="mlbl">총금액</span><span class="mval big">' + m.total + '</span></div>' +
-        '<div class="mcell"><span class="mlbl">계약금</span><span class="mval' + (paidNa ? " na" : "") + '">' + m.paid + '</span></div>' +
-        '<div class="mcell"><span class="mlbl">잔액</span><span class="mval' + (leftNa ? " na" : "") + '">' + m.left + '</span></div>' +
-        '<div class="mstate"><span class="badge status ' + m.st[1] + '">' + m.st[0] + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">결제한 금액</span><span class="mval' + (paidNa ? " na" : "") + '">' + m.paid + '</span></div>' +
+        '<div class="mcell"><span class="mlbl">남은 금액</span><span class="mval' + (leftNa ? " na" : "") + '">' + m.left + '</span></div>' +
+        '<div class="mstate">' + payTag(m.pay) + '</div>' +
       '</div>';
     }).join("");
 
@@ -890,12 +913,12 @@
     document.getElementById("moneyFoot").innerHTML =
       '<div class="mtotals">' +
         '<div class="mt"><span class="mt-t">총금액 합계</span><span class="mt-n">' + comma(sum) + '원</span></div>' +
-        '<div class="mt paid"><span class="mt-t">기납부 합계</span><span class="mt-n">' + comma(paid) + '원</span></div>' +
-        '<div class="mt rest"><span class="mt-t">남은 잔액 합계</span><span class="mt-n">' + comma(rest) + '원</span></div>' +
+        '<div class="mt paid"><span class="mt-t">결제한 금액 합계</span><span class="mt-n">' + comma(paid) + '원</span></div>' +
+        '<div class="mt rest"><span class="mt-t">남은 금액 합계</span><span class="mt-n">' + comma(rest) + '원</span></div>' +
       '</div>' +
-      '<div class="mf-row"><span class="mf-k">기납부</span><span class="mf-v">파크론 2,400,000 · 나산 제품가 1,266,400 · 보루네오 816,000 · 트리니홈 379,000 · 한스클린 271,200 · 계약금 130,000' +
+      '<div class="mf-row"><span class="mf-k">결제한 금액</span><span class="mf-v">파크론 2,400,000 · 나산 제품가 1,266,400 · 보루네오 816,000 · 트리니홈 379,000 · 한스클린 271,200 · 계약금 130,000' +
         '<small>탄성코트 50,000 + 줄눈 70,000 + 새집증후군 10,000</small></span></div>' +
-      '<div class="mf-row"><span class="mf-k">남은 잔액</span><span class="mf-v">yes2424 1,800,000 · 탄성코트 350,000 · 줄눈 340,000 · 새집증후군 360,000 · 배송비 220,000 · LG 56,100 · SK 38,000' +
+      '<div class="mf-row"><span class="mf-k">남은 금액</span><span class="mf-v">yes2424 1,800,000 · 탄성코트 350,000 · 줄눈 340,000 · 새집증후군 360,000 · 배송비 220,000 · LG 56,100 · SK 38,000' +
         '<small>배송비 220,000 = 나산 120,000 + 보루네오 100,000</small></span></div>' +
       '<div class="mf-row"><span class="mf-k">별도 · 변동</span><span class="mf-v">SK매직 해체 28,000원' +
         '<small>이사업체가 해체하면 절약 · 파크론은 시공 후 차액 환불</small></span></div>' +
@@ -1084,7 +1107,7 @@
     }).join("");
     return '<div class="cost">' +
       '<div class="sect-h"><span class="sh-ico" aria-hidden="true">₩</span>비용·결제' +
-        (e.pay ? '<span class="pay">' + e.pay + '</span>' : '') +
+        (e.pay ? payTag(e.pay, true) : '') +
       '</div>' +
       '<div class="crows">' + rows + '</div>' +
     '</div>';
