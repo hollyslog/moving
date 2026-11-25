@@ -587,6 +587,39 @@
   .pl-total .pl-tv{font-size:13px;font-weight:800;color:var(--terra-ink);letter-spacing:-.02em}
   .pl-next{margin:8px 2px 0;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.5}
 
+  /* 이사 당일 챙길 짐 — 체크 가능한 리스트 */
+  .pack .board-head{background:linear-gradient(135deg,#5F7F66 0%,#3D5843 100%)}
+  .pack-body{padding:4px 18px 14px}
+  .pk-sum{display:flex;align-items:baseline;gap:8px;padding:11px 0 1px;font-size:10.5px;font-weight:800;letter-spacing:.03em;color:#7A6228}
+  .pk-sum b{margin-left:auto;font-size:12px;font-weight:800;letter-spacing:-.01em;color:var(--sage-ink)}
+  .pk-group{padding:2px 0 8px}
+  .pk-group + .pk-group{border-top:1px dashed var(--line);margin-top:3px}
+  .pk-gh{display:flex;align-items:center;gap:6px;margin:11px 0 2px}
+  .pk-gh h4{margin:0;font-size:12px;font-weight:800;letter-spacing:.01em;color:var(--ink)}
+  .pk-cnt{margin-left:auto;padding:2px 8px;border-radius:999px;background:var(--navy-soft);color:var(--navy);font-size:10px;font-weight:800}
+  .pk-sub{margin:0 0 2px;font-size:10.5px;line-height:1.45;font-weight:500;color:var(--muted);letter-spacing:0}
+  .pk-row{
+    display:flex;width:100%;align-items:flex-start;gap:9px;padding:8px 0;
+    background:none;border:0;text-align:left;font:inherit;cursor:pointer;
+  }
+  .pk-row + .pk-row{border-top:1px solid #F3EEE4}
+  .pk-row .ptx{flex:1;min-width:0;font-size:12.6px;line-height:1.5;font-weight:600;color:var(--ink-soft);letter-spacing:-.01em}
+  .pk-row .pnm{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .pk-row:hover .ptx{color:var(--ink)}
+  .pk-row:focus-visible{outline:2px solid var(--sage);outline-offset:2px}
+  .pk-row.done .ptx{color:var(--muted);font-weight:500;text-decoration:line-through;text-decoration-color:rgba(122,112,96,.4)}
+  .pk-row.done .pnm{text-decoration:none}
+  .after .board-head{background:linear-gradient(135deg,#3F5B77 0%,#2E3E5C 100%)}
+
+  /* 기존 집 만료 시 나중에 할 일 */
+  .later .board-head{background:linear-gradient(135deg,#7B7060 0%,#4C5249 100%)}
+  .later-list{list-style:none;margin:4px 0 2px;padding:0;display:flex;flex-direction:column}
+  .later-list li{position:relative;padding:9px 0 9px 15px;font-size:12.4px;line-height:1.5;color:var(--ink-soft)}
+  .later-list li + li{border-top:1px solid #F3EEE4}
+  .later-list li::before{content:"";position:absolute;left:2px;top:15px;width:4px;height:4px;border-radius:50%;background:var(--line-strong)}
+  .later-list b{display:block;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .later-list span{display:block;margin-top:2px;font-size:11px;font-weight:500;color:var(--muted)}
+
   /* ---------- 12/15 조합원 입주수속 가이드 ---------- */
   .guide{
     margin:18px 0 8px;border-radius:var(--radius);overflow:hidden;
@@ -970,6 +1003,7 @@
         <h4>당일 진행 순서</h4>
         <div class="flow">
           <div class="fl"><span class="fl-t">오전</span><span class="fl-x">기존 집 짐 반출 (yes2424 · 남2·여2) → 새 집 이동</span></div>
+          <div class="fl"><span class="fl-t">오전</span><span class="fl-x">서란 · 솔이는 친구집으로 이동 (아기 짐은 전날 밤 미리 분리)</span></div>
           <div class="fl"><span class="fl-t">낮·오후</span><span class="fl-x">새 집 짐 반입 · 일반 커튼 이전설치 · 나산가구(솔이방·거실) & 트리니홈 냉장고장 배송·배치<span class="fl-tag">확정 대기</span></span></div>
           <div class="fl"><span class="fl-t">17:00</span><span class="fl-x">LG유플러스 TV 이전설치 기사 방문</span></div>
         </div>
@@ -1003,6 +1037,24 @@
     </div>
   </section>
 
+  <section class="board pack" id="packBoard" aria-label="이사 당일 챙길 짐 체크리스트">
+    <div class="board-head">
+      <span class="bd-tag">D-DAY · 챙길 짐</span>
+      <h3>당일 챙길 짐 체크리스트</h3>
+      <p class="bd-sub">전날 밤에 미리 빼두고 아침에 한 번 더 확인하세요. 체크는 이 기기에 저장됩니다.</p>
+    </div>
+    <div class="pack-body" id="packHost"></div>
+  </section>
+
+  <section class="board pack after" id="afterBoard" aria-label="새 집 입주 후 할 일 체크리스트">
+    <div class="board-head">
+      <span class="bd-tag">AFTER · 새 집</span>
+      <h3>새 집 입주 후 할 일</h3>
+      <p class="bd-sub">입주하고 며칠 안에 끝내면 되는 것들 · 엘리베이터·사다리차 예약은 이미 완료</p>
+    </div>
+    <div class="pack-body" id="afterHost"></div>
+  </section>
+
   <section class="money" id="money" aria-label="비용 요약">
     <div class="money-head">
       <div class="mh-txt">
@@ -1021,6 +1073,22 @@
     <div class="mfoot" id="moneyFoot"></div>
   </section>
   <div class="empty" id="empty" hidden>이 조건에 맞는 일정이 아직 없어요.</div>
+
+  <section class="board later" id="laterBoard" aria-label="기존 집 만료 시 나중에 할 일">
+    <div class="board-head">
+      <span class="bd-tag">LATER · 기존 집</span>
+      <h3>기존 집 만료 시 나중에 할 일</h3>
+      <p class="bd-sub">지금 사는 집 계약 만료가 남아 있어 정산·처분은 그때 진행해요.</p>
+    </div>
+    <div class="pack-body">
+      <ul class="later-list">
+        <li><b>장기수선충당금 정산</b><span>집주인에게 돌려받기</span></li>
+        <li><b>만료 당일 계랑기 촬영</b><span>가스·전기·수도 계랑기 사진을 찍고 공과금·관리비 정산</span></li>
+        <li><b>안방 붙박이장(보루네오)</b><span>유상승계 또는 철거 — 철거 시 250,000원 + 폐기물 처리</span></li>
+        <li><b>거실 냉장고장 처분</b><span>처리 방식 미정</span></li>
+      </ul>
+    </div>
+  </section>
 
   <footer>
     Managed by <b>홀리</b> · 일정 추가/변경은 홀리에게 말씀해 주세요
@@ -1572,8 +1640,6 @@
   var PREP = [
     {id:"clothes", text:"옷 정리 — 안 입는 옷·작아진 아기 옷 분류해서 처분", memo:"새 집 옷장에 넣을 것만 남기기"},
     {id:"trash",   text:"버릴 물건 정리 · 폐기물 처리", memo:"이사 전에 내놓으면 짐과 이사비가 줄어요"},
-    {id:"closet",  text:"안방 기존 붙박이장 — 유상승계 문의 또는 철거 결정", memo:"철거 시 250,000원 + 폐기물 신고 별도"},
-    {id:"fridge",  text:"거실 기존 냉장고장 처분", memo:"처리 방식 미정"},
     {id:"curtain", text:"암막커튼 처리 결정", memo:"지금은 남겨 두는 방향 · 2027년 6월경 이전 또는 처분"}
   ];
   var PREP_KEY = "moving-prep-state-v1";
@@ -1651,6 +1717,85 @@
     var cnt = document.getElementById("prepCnt");
     if (cnt) cnt.textContent = PREP.filter(function(p){ return prepIsDone(p, st); }).length + "/" + PREP.length;
   });
+
+  /* ---------------- 이사 당일 챙길 짐 (전날 밤 분리 · 직접 챙기는 것) ---------------- */
+  var PACK = [
+    {ico:"\uD83E\uDDF8", group:"솔이 · 서란 — 친구집 갈 때",
+     sub:"이사 전날 밤에 미리 빼두기 · 짐은 간소화 버전",
+     items:[
+       {id:"pack-diaper",  text:"기저귀 · 물티슈 · 기저귀 쓰레기봉투", memo:"하루 종일 쓸 양보다 여유 있게"},
+       {id:"pack-food",    text:"분유(또는 우유) · 이유식 · 간식 · 빨대컵/물병"},
+       {id:"pack-clothes", text:"여벌 옷 · 양말 · 손수건/턱받이 · 낮잠용품(애착템 등)", memo:"여벌 옷은 두 벌이면 넉넉해요"},
+       {id:"pack-kit",     text:"아기 상비약(해열제 등) · 서란님 개인 짐(지갑·충전기·갈아입을 옷 등)", memo:"상비약은 체온계와 함께 한 파우치에"}
+     ]},
+    {ico:"\uD83C\uDF92", group:"이사업체에 안 맡기고 직접 챙기기",
+     sub:"한 가방에 모아 두고 손에 들고 이동",
+     items:[
+       {id:"pack-valuables", text:"귀중품 · 현금 · 시계/주얼리"},
+       {id:"pack-docs",      text:"신분증 · 인감도장 · 계약서/입주서류 등 중요 서류", memo:"12/15 입주수속 서류와 같은 곳에 두기"},
+       {id:"pack-devices",   text:"노트북 · 태블릿 · 휴대폰 충전기 · 멀티탭"},
+       {id:"pack-onsite",    text:"당일 현장 바로 쓸 물품 — 생수 · 휴지 · 물티슈 · 종량제/쓰레기봉투 · 가위/칼"},
+       {id:"pack-night",     text:"당일 밤 바로 쓸 세면도구 · 수건 · 잠옷 · 상비약", memo:"짐 풀리기 전에 씻고 잘 준비"}
+     ]}
+  ];
+  var AFTER = [
+    {ico:"\uD83C\uDFE0", group:"새 집 입주 후 할 일",
+     sub:"입주 후 며칠 안에 끝내면 되는 것들",
+     items:[
+       {id:"after-gas",     text:"새 집 도시가스 연결 예약 · 안전점검", memo:"가스레인지·보일러 첫 사용 전에"},
+       {id:"after-movein",  text:"전입신고 (정부24 또는 주민센터) · 차량 등록/관리소 입주 등록"},
+       {id:"after-address", text:"쇼핑몰·배달앱 기본 배송지 변경 — 네이버 '먼멍이네', 쿠팡, 맘큐 등"}
+     ]}
+  ];
+
+  function mountCheckList(hostId, key, groups, sumLabel){
+    var host = document.getElementById(hostId);
+    if (!host) return;
+    var all = [];
+    groups.forEach(function(g){ g.items.forEach(function(it){ all.push(it); }); });
+    function read(){
+      try { return JSON.parse(localStorage.getItem(key) || "{}") || {}; }
+      catch(e){ return {}; }
+    }
+    function write(st){ try { localStorage.setItem(key, JSON.stringify(st)); } catch(e){} }
+    function cnt(g, st){ return g.items.filter(function(it){ return !!st[it.id]; }).length; }
+    function total(st){ return all.filter(function(it){ return !!st[it.id]; }).length; }
+    var st0 = read();
+    host.innerHTML = '<div class="pk-sum">' + sumLabel + '<b class="pk-total">' + total(st0) + '/' + all.length + '</b></div>' +
+      groups.map(function(g, gi){
+        return '<div class="pk-group">' +
+          '<div class="pk-gh"><span aria-hidden="true">' + g.ico + '</span><h4>' + g.group + '</h4>' +
+            '<span class="pk-cnt" data-cnt="' + gi + '">' + cnt(g, st0) + '/' + g.items.length + '</span></div>' +
+          '<p class="pk-sub">' + g.sub + '</p>' +
+          g.items.map(function(it){
+            var on = !!st0[it.id];
+            return '<button type="button" class="pk-row' + (on ? ' done' : '') + '" data-pack="' + it.id + '" role="checkbox" aria-checked="' + (on ? 'true' : 'false') + '">' +
+                '<span class="box' + (on ? ' done' : '') + '" aria-hidden="true"></span>' +
+                '<span class="ptx">' + it.text + (it.memo ? '<span class="pnm">' + it.memo + '</span>' : '') + '</span>' +
+              '</button>';
+          }).join("") +
+        '</div>';
+      }).join("");
+    host.addEventListener("click", function(ev){
+      var btn = ev.target.closest ? ev.target.closest("[data-pack]") : null;
+      if (!btn) return;
+      var id = btn.getAttribute("data-pack"), st = read(), now = !st[id];
+      st[id] = now;
+      write(st);
+      btn.classList.toggle("done", now);
+      btn.setAttribute("aria-checked", now ? "true" : "false");
+      var box = btn.querySelector(".box");
+      if (box) box.classList.toggle("done", now);
+      groups.forEach(function(g, gi){
+        var c = host.querySelector('[data-cnt="' + gi + '"]');
+        if (c) c.textContent = cnt(g, st) + "/" + g.items.length;
+      });
+      var tot = host.querySelector(".pk-total");
+      if (tot) tot.textContent = total(st) + "/" + all.length;
+    });
+  }
+  mountCheckList("packHost", "moving-daypack-state-v1", PACK, "챙긴 것");
+  mountCheckList("afterHost", "moving-after-state-v1", AFTER, "한 일");
 
   clearBtn.addEventListener("click", function(){
     state.cat = "all"; state.date = null;
