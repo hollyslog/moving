@@ -508,6 +508,28 @@
   }
   .todo-row .nt .nm{flex:1;min-width:0;padding-top:2px}
 
+  /* 이사 전 집 정리 — 직접 체크하는 사전 할 일 */
+  .prep{
+    margin:10px 18px 14px;padding:11px 13px 10px;border-radius:14px;
+    border:1px solid #E7DCC6;background:linear-gradient(180deg,#FCF8EF,#FAF4E7);
+  }
+  .prep-head{display:flex;align-items:center;gap:6px}
+  .prep-head h4{margin:0;font-size:11.5px;font-weight:800;letter-spacing:.01em;color:#7A6228}
+  .prep-cnt{margin-left:auto;padding:2px 8px;border-radius:999px;background:rgba(138,100,31,.12);color:#8A641F;font-size:10px;font-weight:800}
+  .prep-sub{margin:5px 0 3px;font-size:10.5px;line-height:1.45;font-weight:500;color:var(--muted);letter-spacing:0}
+  .prep-row{
+    display:flex;width:100%;align-items:flex-start;gap:9px;padding:7.5px 0;
+    background:none;border:0;text-align:left;font:inherit;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .prep-row + .prep-row{border-top:1px solid #EFE6D4}
+  .prep-row .ptx{flex:1;min-width:0;font-size:12.6px;line-height:1.5;font-weight:600;color:var(--ink-soft);letter-spacing:-.01em}
+  .prep-row .pnm{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .prep-row:hover .ptx{color:var(--ink)}
+  .prep-row:focus-visible{outline:2px solid var(--sage);outline-offset:2px}
+  .prep-row.done .ptx{color:var(--muted);font-weight:500;text-decoration:line-through;text-decoration-color:rgba(122,112,96,.4)}
+  .prep-row.done .pnm{text-decoration:none}
+
   .empty{
     margin-top:16px;padding:34px 20px;text-align:center;
     border:1px dashed var(--line-strong);border-radius:var(--radius);
@@ -577,6 +599,8 @@
     .visit .vt{font-size:12px;flex:1 1 110px}
     .crow{padding:6px 9px;font-size:12px}
     .crow .ck{width:42px;font-size:10px}
+    .prep{margin:8px 15px 12px;padding:10px 12px 8px}
+    .prep-row .ptx{font-size:12.4px}
     .callout{padding:8px 10px 9px}
     .callout li{font-size:12px}
     .memo{font-size:11.8px}
@@ -779,9 +803,8 @@
      title:"이사 당일 🎉",
      vendor:"yes2424 (남2 · 여2)",
      visit:{state:"확정", text:"12/17(목) 이사팀 방문"},
-     checks:["쿠시노 침대: 해체 후 이동인지 통째로 이동인지 확인",
-             "암막커튼 이전 여부 결정 (현재는 남겨 두는 방향)"],
-     memo:"일반 커튼 이전설치"},
+     checks:["쿠시노 침대: 해체 후 이동인지 통째로 이동인지 확인"],
+     memo:"일반 커튼 이전설치 · 암막커튼 처리는 '이사 전 집 정리'에서 결정"},
 
     {id:1, date:"2026-12-17", dateHint:"희망", cat:"furniture", status:"구매완료 · 일정 미확정",
      title:"나산가구 솔이방·거실 가구 배송",
@@ -847,11 +870,8 @@
     {room:"공통",         text:"이사업체(yes2424)에 정수기 해체 가능 여부 확인", status:"확인 필요",
                           memo:"이사업체가 해체 가능하면 해체비 28,000원 절약 · 불가하면 SK매직에 해체까지 요청"},
     {room:"솔이방",       text:"나산가구: 주니어옷장 추가 봉 높이 전달하기", status:"전달 필요"},
-    {room:"안방",         text:"기존 붙박이장(보루네오) 유상승계 문의 또는 철거 결정",
-                          memo:"철거 시 폐기물 신고 별도"},
     {room:"안방",         text:"보루네오 안방 슬라이딩장 — 기사 배정 확정 전화 받고 현관 비밀번호 전달", status:"전화 대기",
                           memo:"12/15(화) 신청 완료 · 비대면 설치"},
-    {room:"거실",         text:"기존 냉장고장 처분"},
     {room:"거실 / 솔이방", text:"소파(에싸 브루클린 컴팩트 4인) 결정 및 배송 예약"},
     {room:"컴퓨터방",     text:"기존 데스커 책상 사이즈 확인 후 유지",
                           memo:"새 책상 미구매 · 기존 데스커 사이즈 확인 후 그대로 사용"}
@@ -1181,6 +1201,42 @@
     }
   }
 
+  /* 이사 전 집 정리 · 사전 할 일 (기본 상태는 코드 데이터, 체크는 이 기기에 저장) */
+  var PREP = [
+    {id:"clothes", text:"옷 정리 — 안 입는 옷·작아진 아기 옷 분류해서 처분", memo:"새 집 옷장에 넣을 것만 남기기"},
+    {id:"trash",   text:"버릴 물건 정리 · 폐기물 처리", memo:"이사 전에 내놓으면 짐과 이사비가 줄어요"},
+    {id:"closet",  text:"안방 기존 붙박이장 — 유상승계 문의 또는 철거 결정", memo:"철거 시 250,000원 + 폐기물 신고 별도"},
+    {id:"fridge",  text:"거실 기존 냉장고장 처분", memo:"처리 방식 미정"},
+    {id:"curtain", text:"암막커튼 처리 결정", memo:"지금은 남겨 두는 방식 · 2027년 6월경 이전 또는 처분"}
+  ];
+  var PREP_KEY = "moving-prep-state-v1";
+  function prepState(){
+    try { return JSON.parse(localStorage.getItem(PREP_KEY) || "{}") || {}; }
+    catch(e){ return {}; }
+  }
+  function prepSave(st){
+    try { localStorage.setItem(PREP_KEY, JSON.stringify(st)); } catch(e){}
+  }
+  function prepIsDone(it, st){
+    return Object.prototype.hasOwnProperty.call(st, it.id) ? !!st[it.id] : !!it.done;
+  }
+  function prepHTML(){
+    var st = prepState();
+    var done = PREP.filter(function(it){ return prepIsDone(it, st); }).length;
+    return '<div class="prep" aria-label="이사 전 집 정리 · 사전 할 일">' +
+      '<div class="prep-head"><span aria-hidden="true">🧹</span><h4>이사 전 집 정리 · 사전 할 일</h4>' +
+        '<span class="prep-cnt" id="prepCnt">' + done + '/' + PREP.length + '</span></div>' +
+      '<p class="prep-sub">이사 전에 끝내면 되는 것들 · 체크는 이 기기에 저장됩니다</p>' +
+      PREP.map(function(it){
+        var on = prepIsDone(it, st);
+        return '<button type="button" class="prep-row' + (on ? ' done' : '') + '" data-prep="' + it.id + '" role="checkbox" aria-checked="' + (on ? 'true' : 'false') + '">' +
+            '<span class="box' + (on ? ' done' : '') + '" aria-hidden="true"></span>' +
+            '<span class="ptx">' + it.text + (it.memo ? '<span class="pnm">' + it.memo + '</span>' : '') + '</span>' +
+          '</button>';
+      }).join("") +
+    '</div>';
+  }
+
   /* ---------------- 체크리스트 ---------------- */
   function renderTodo(){
     var show = !state.date && (state.cat === "all" || state.cat === "check");
@@ -1206,9 +1262,28 @@
     todoHost.innerHTML =
       '<section class="todo" aria-label="할 일 체크리스트">' +
         '<div class="todo-head"><h3>할 일 체크리스트</h3><span class="cnt">' + CHECKS.length + '개</span></div>' +
+        prepHTML() +
         body +
       '</section>';
   }
+
+  todoHost.addEventListener("click", function(ev){
+    var btn = ev.target.closest ? ev.target.closest("[data-prep]") : null;
+    if (!btn) return;
+    var id = btn.getAttribute("data-prep"), it = null;
+    PREP.forEach(function(p){ if (p.id === id) it = p; });
+    if (!it) return;
+    var st = prepState();
+    var now = !prepIsDone(it, st);
+    st[id] = now;
+    prepSave(st);
+    btn.classList.toggle("done", now);
+    btn.setAttribute("aria-checked", now ? "true" : "false");
+    var box = btn.querySelector(".box");
+    if (box) box.classList.toggle("done", now);
+    var cnt = document.getElementById("prepCnt");
+    if (cnt) cnt.textContent = PREP.filter(function(p){ return prepIsDone(p, st); }).length + "/" + PREP.length;
+  });
 
   clearBtn.addEventListener("click", function(){
     state.cat = "all"; state.date = null;
