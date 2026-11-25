@@ -143,12 +143,12 @@
     flex:none;margin-left:auto;padding:3px 9px;border-radius:999px;background:#fff;
     font-size:10.5px;font-weight:800;color:#7A5A22;box-shadow:inset 0 0 0 1px #E7DCC8;
   }
-  .peek.day{
+  .peek--day{
     margin-top:8px;border-color:#CFE0D2;background:linear-gradient(180deg,#F3F8F3,#E9F1E9);color:#33493A;
   }
-  .peek.day .pk-ico{background:#D5E5D7;color:#2E5236;font-size:10px}
-  .peek.day b{color:#2E5236}
-  .peek.day .pk-a{color:#33493A;box-shadow:inset 0 0 0 1px #CFE0D2}
+  .peek--day .pk-ico{background:#D5E5D7;color:#2E5236;font-size:10px}
+  .peek--day b{color:#2E5236}
+  .peek--day .pk-a{color:#33493A;box-shadow:inset 0 0 0 1px #CFE0D2}
 
   /* ---------- 요약 스탯 ---------- */
   .stats{
@@ -574,7 +574,7 @@
   .pl-row{display:flex;gap:10px;align-items:baseline;padding:8px 11px;font-size:12.4px}
   .pl-row + .pl-row{border-top:1px solid #F3EFE7}
   .pl-k{flex:1;min-width:0;font-weight:650;color:var(--ink-soft);letter-spacing:-.01em}
-  .pl-n{display:block;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .pl-note{display:block;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
   .pl-v{flex:none;font-weight:800;color:var(--ink);letter-spacing:-.01em}
   .pl-total{display:flex;gap:10px;align-items:baseline;padding:9px 11px;border-top:1px solid var(--line);background:#FBF7EE}
   .pl-total .pl-tk{flex:1;font-size:10.5px;font-weight:800;letter-spacing:.03em;color:#7A6228}
@@ -691,7 +691,7 @@
       <span>비용 요약 · <b id="peekSum">확인된 합계 8,426,700원</b></span>
       <span class="pk-a">보기</span>
     </button>
-    <button class="peek day" id="peekDay" type="button">
+    <button class="peek peek--day" id="peekDay" type="button">
       <span class="pk-ico" aria-hidden="true">🎉</span>
       <span>이사 당일 가이드 · <b>12/17(목) 순서·요청·정산</b></span>
       <span class="pk-a">보기</span>
@@ -761,7 +761,7 @@
         <div class="pay-list">
           <div class="pl-row"><span class="pl-k">yes2424 포장이사 잔금</span><span class="pl-v">1,700,000원</span></div>
           <div class="pl-row"><span class="pl-k">나산가구 배송비</span><span class="pl-v">120,000원</span></div>
-          <div class="pl-row"><span class="pl-k">LG유플러스 TV 이전설치<span class="pl-n">안내 기준 · 청구·정산 방식 확인</span></span><span class="pl-v">56,100원</span></div>
+          <div class="pl-row"><span class="pl-k">LG유플러스 TV 이전설치<span class="pl-note">안내 기준 · 청구·정산 방식 확인</span></span><span class="pl-v">56,100원</span></div>
           <div class="pl-total"><span class="pl-tk">당일 정산 합계</span><span class="pl-tv">1,876,100원</span></div>
         </div>
         <p class="pl-next">다음날 12/18(금) SK매직 정수기 이전설치 38,000원 (해체 별도 28,000원은 이사업체 해체 시 절약)</p>
