@@ -131,7 +131,26 @@
   }
 
   /* ---------- 확정 방침 ---------- */
-  .rules{margin-top:16px;padding-top:15px;border-top:1px dashed var(--line)}
+  /* ---------- 남은 할 일 ---------- */
+  .remain{margin-top:14px;padding:11px 13px 12px;border:1px solid #E7C9CD;border-radius:15px;background:linear-gradient(180deg,#FFFAFA,#FDF4F5)}
+  .remain .rm-h{
+    display:flex;align-items:center;gap:6px;margin:0 0 8px;
+    font-size:10px;font-weight:800;letter-spacing:.09em;color:var(--rose-ink);
+  }
+  .remain .rm-h .rm-n{
+    margin-left:auto;padding:1px 7px;border-radius:999px;
+    background:rgba(139,74,85,.10);font-size:10px;font-weight:800;
+  }
+  .rm-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .rm-chip{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:6px 10px;border-radius:10px;background:#fff;
+    box-shadow:inset 0 0 0 1px #EBD3D6;
+    font-size:12px;font-weight:700;color:var(--rose-ink);letter-spacing:-0.01em;
+  }
+  .rm-chip:first-child{background:var(--rose);color:#fff;box-shadow:none}
+
+  .rules{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
   .rules .rh{
     display:flex;align-items:center;gap:6px;margin:0 0 9px;
     font-size:10.5px;font-weight:800;letter-spacing:.09em;color:var(--muted);
@@ -187,6 +206,27 @@
   }
   .card:hover{box-shadow:var(--shadow);border-color:var(--line-strong)}
   .card.pick{border-color:#E7C9CD;background:linear-gradient(180deg,#FFFBFB 0%,#FFFFFF 60%)}
+  .card.fixed{border-color:#CFE0D2;background:linear-gradient(180deg,#FBFDFA 0%,#FFFFFF 60%);box-shadow:var(--shadow)}
+
+  /* 접힌 참고 */
+  details.ref{
+    margin-top:12px;border:1px solid var(--line);border-radius:15px;
+    background:rgba(255,255,255,.74);overflow:hidden;
+  }
+  details.ref summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;
+    padding:12px 15px;font-size:12.4px;font-weight:700;color:var(--ink-soft);letter-spacing:-0.01em;
+  }
+  details.ref summary::-webkit-details-marker{display:none}
+  details.ref summary .arw{flex:none;font-size:10px;color:var(--muted);transition:transform .2s ease}
+  details.ref[open] summary .arw{transform:rotate(90deg)}
+  details.ref summary .cnt{
+    margin-left:auto;flex:none;padding:2px 8px;border-radius:999px;background:#F7F3ED;
+    font-size:10px;font-weight:800;color:var(--muted);
+  }
+  details.ref[open] summary{border-bottom:1px solid var(--line)}
+  details.ref .ref-body{padding:12px 13px 13px;display:flex;flex-direction:column;gap:10px}
+  details.ref .ref-tx{margin:0;font-size:11.6px;line-height:1.55;color:var(--muted)}
   .card.soft{border-style:dashed;background:rgba(255,255,255,.7)}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;row-gap:7px}
   .when{
@@ -273,6 +313,7 @@
   .pay-tag::before{content:"";flex:none;width:4.5px;height:4.5px;border-radius:50%;background:currentColor;opacity:.75}
   .pay-tag.pay-full{background:#3D5843;color:#fff;box-shadow:none}
   .pay-tag.pay-full::before{background:#D3E4D6;opacity:1}
+  .pay-tag.pay-booked{background:var(--sage-soft);color:var(--sage-ink);box-shadow:inset 0 0 0 1px #CFE0D2}
 
   /* ---------- 후보 비교 표 ---------- */
   .vs{
@@ -440,8 +481,17 @@
     <p class="sub">2027.1.17(일)<span class="dotsep">·</span>63빌딩 백리향<span class="dotsep">·</span>시간대 미정</p>
     <div class="nextup">
       <span class="lbl">NEXT</span>
-      <span id="nextUp">백리향에 1/17 <b>시간대·보증인원</b> 확인하기</span>
-      <span class="tick" id="nextTick">1순위</span>
+      <span>돌상 <b>원파티 황색동 예약 완료</b> · 다음은 <b>출장 메이크업 예약</b></span>
+      <span class="tick">남은 3</span>
+    </div>
+
+    <div class="remain">
+      <p class="rm-h"><span aria-hidden="true">✳</span>남은 할 일<span class="rm-n">3</span></p>
+      <div class="rm-chips">
+        <span class="rm-chip">출장 메이크업 예약</span>
+        <span class="rm-chip">솔이 드레스 대여 · 예약</span>
+        <span class="rm-chip">엄마 의상 결정</span>
+      </div>
     </div>
 
     <div class="rules">
@@ -467,10 +517,44 @@
     <div class="sec-head">
       <span class="sec-no">1</span>
       <div class="sec-tx">
-        <h2>돌상 — 제휴 5곳 중 원파티 2종 집중 비교</h2>
-        <p>외부 반입 불가 · <b>원파티 화이트 / 윤슬</b>이 지금 1순위, 베베궁은 2순위 참고</p>
+        <h2>돌상 — 원파티 황색동 확정</h2>
+        <p>외부 반입 불가 · 제휴 5곳 중 <b>원파티 황색동으로 예약 완료</b> · 화이트·윤슬과 다른 업체는 참고로 접어둠</p>
       </div>
     </div>
+
+    <div class="cards">
+      <article class="card fixed" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">돌상</span>원파티</span>
+          <span class="badge status st-confirm">확정</span>
+        </div>
+        <h3>황색동 상차림 · 예약 완료</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
+        </div>
+        <p class="desc">원파티 상차림 중 <b>황색동</b>으로 예약 완료. 화이트·윤슬(465,000원)보다 <b>85,000원 높은 구성</b>. 후기 혜택까지 받으면 체감 <b>450,000원</b>.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag pay-booked">예약 완료</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv">550,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 450,000원</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span><b>예약금·잔금</b> 금액과 납부일</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>설치 시간</b>·장소 전달 (백리향 시간대 확정 후)</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>후기 상품권 10만 원 <b>적용 조건</b> (예약 경로·후기 게시처)</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <details class="ref">
+      <summary><span class="arw" aria-hidden="true">▶</span>참고 — 화이트·윤슬 비교와 다른 제휴 3곳<span class="cnt">5</span></summary>
+      <div class="ref-body">
+        <p class="ref-tx">황색동으로 정했으니 아래는 <b>기록용</b>이에요. 가격·구성만 비교해 둡니다.</p>
 
     <div class="vs">
       <div class="vs-head">
@@ -511,7 +595,7 @@
         <span class="vv">465,000원 → 체감 365,000원</span>
       </div>
       <div class="vs-note">
-        <span class="pick-tag">결정 기준</span>
+        <span class="pick-tag">참고</span>
         <b>깔끔함이면 화이트, 꽃 색감이 좋으면 윤슬.</b> 본식이 드레스라 흰 배경에 아기가 잘 살고, 촬영 사진이 무난한 건 화이트. 윤슬은 딥그린·오렌지가 사진에 확실히 남는다.
       </div>
     </div>
@@ -520,7 +604,7 @@
       <article class="card pick" data-cat="dolsang">
         <div class="card-top">
           <span class="when"><span class="tag">돌상</span>원파티</span>
-          <span class="badge status st-pick">후보 비교</span>
+          <span class="badge status st-undecided">참고</span>
         </div>
         <h3>화이트 상차림</h3>
         <div class="vendor">
@@ -548,7 +632,7 @@
       <article class="card pick" data-cat="dolsang">
         <div class="card-top">
           <span class="when"><span class="tag">돌상</span>원파티</span>
-          <span class="badge status st-pick">후보 비교</span>
+          <span class="badge status st-undecided">참고</span>
         </div>
         <h3>윤슬 상차림</h3>
         <div class="vendor">
@@ -611,9 +695,11 @@
       </div>
       <div class="mini" data-cat="dolsang">
         <div class="mini-top"><h4>스트릿가든</h4><span class="badge status st-undecided">참고</span></div>
-        <p><a class="tel" href="tel:07082896601">070-8289-6601</a> · <a href="https://stgarden.co.kr" target="_blank" rel="noopener">stgarden.co.kr</a><br>66~77만 원대 · 전통 위주라 이번 기준과는 거리가 있음</p>
+        <p><a class="tel" href="tel:07082896601">070-8289-6601</a> · <a href="https://stgarden.co.kr" target="_blank" rel="noopener">stgarden.co.kr</a><br>66~77만 원대 · 전통 위주라 이번 기분과는 거리가 있음</p>
       </div>
     </div>
+      </div>
+    </details>
   </section>
 
   <!-- ================= 2. 스냅 · 스튜디오 ================= -->
@@ -870,11 +956,11 @@
       <div class="money-head">
         <div>
           <h3>항목 · 상태 · 금액</h3>
-          <p class="money-sub">7개 항목 · 파악된 금액은 돌상 한 건뿐 · 나머지는 업체 문의 후 채우기</p>
+          <p class="money-sub">7개 항목 · 파악된 금액은 확정된 돌상 한 건 · 나머지는 업체 문의 후 채우기</p>
         </div>
         <div class="money-total">
           <span class="mt-k">파악된 금액 합계</span>
-          <span class="mt-v" id="moneySum">465,000<small>원</small></span>
+          <span class="mt-v" id="moneySum">550,000<small>원</small></span>
         </div>
       </div>
       <div class="mhead" aria-hidden="true">
@@ -883,7 +969,7 @@
       <div class="mtable" id="moneyRows"></div>
       <div class="mfoot">
         <span class="fk">합계 기준</span>
-        <span class="fv" id="moneyFoot">465,000원</span>
+        <span class="fv" id="moneyFoot">550,000원</span>
         <span class="fnote">금액이 <b>미정</b>인 항목은 합계에서 빠져 있어요. 견적을 받는 대로 이 표에 채우면 됩니다.</span>
       </div>
     </div>
@@ -986,7 +1072,7 @@
   /* ---------- 예산 표 ---------- */
   var ROWS = [
     {name:"백리향 장소·식대", sub:"63빌딩 백리향", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"시간대·보증인원 확정 후 산정"},
-    {name:"돌상", sub:"원파티 화이트 또는 윤슬", state:{t:"후보 비교", c:"st-pick"}, total:"465,000원", dep:null, bal:null, memo:"모멘트리 가격표 · 후기 시 체감 365,000원"},
+    {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", dep:null, bal:null, memo:"후기 시 체감 450,000원"},
     {name:"본식 스냅", sub:"백리향 제휴 3곳 중 1", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"견적 문의 전"},
     {name:"스튜디오 돌촬영", sub:"한복 촬영 · 업체 미선정", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"1월 초 촬영 가능한 곳"},
     {name:"본식 의상", sub:"아기·엄마 드레스 + 아빠 정장", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"대여 vs 구매 미정"},
@@ -1014,7 +1100,7 @@
   var PHASES = [
     {d:"D-50~40", title:"지금 ~ 12월 초", items:[
       {id:"p1", text:"백리향에 1/17 시간대 · 보증인원 · 룸 확인", memo:"돌상·스냅·식대가 여기서부터 풀린다"},
-      {id:"p2", text:"원파티 화이트 vs 윤슬 결정 → 예약", memo:"예약금·잔금·후기 혜택 조건까지 함께 확인"},
+      {id:"p2", text:"원파티 황색동 예약 완료", memo:"예약금·잔금 납부일과 후기 혜택 조건 확인", done:true},
       {id:"p3", text:"제휴 스냅 3곳 문의 · 비교 후 예약", memo:"원본·보정본·앨범 구성과 제휴가 비교"},
       {id:"p4", text:"스튜디오 한복 촬영 예약", memo:"아기·가족 한복 대여 포함 여부 확인"}
     ]},
@@ -1040,6 +1126,9 @@
     catch(e){ return {}; }
   }
   function write(st){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e){} }
+  function isDone(it, st){
+    return Object.prototype.hasOwnProperty.call(st, it.id) ? !!st[it.id] : !!it.done;
+  }
 
   var all = [];
   PHASES.forEach(function(p){ p.items.forEach(function(it){ all.push(it); }); });
@@ -1050,12 +1139,12 @@
 
   function paint(){
     var st = read();
-    var done = all.filter(function(it){ return !!st[it.id]; }).length;
+    var done = all.filter(function(it){ return isDone(it, st); }).length;
     if (cntEl) cntEl.textContent = done + "/" + all.length;
     if (barEl) barEl.style.width = (all.length ? Math.round(done / all.length * 100) : 0) + "%";
     PHASES.forEach(function(p, pi){
       var c = document.querySelector('[data-phc="' + pi + '"]');
-      if (c) c.textContent = p.items.filter(function(it){ return !!st[it.id]; }).length + "/" + p.items.length;
+      if (c) c.textContent = p.items.filter(function(it){ return isDone(it, st); }).length + "/" + p.items.length;
     });
   }
 
@@ -1064,9 +1153,9 @@
     body.innerHTML = PHASES.map(function(p, pi){
       return '<div class="phase">' +
         '<div class="phase-h"><span class="ph-d">' + p.d + '</span><h4>' + p.title + '</h4>' +
-          '<span class="ph-c" data-phc="' + pi + '">' + p.items.filter(function(it){ return !!st0[it.id]; }).length + "/" + p.items.length + '</span></div>' +
+          '<span class="ph-c" data-phc="' + pi + '">' + p.items.filter(function(it){ return isDone(it, st0); }).length + "/" + p.items.length + '</span></div>' +
         p.items.map(function(it){
-          var on = !!st0[it.id];
+          var on = isDone(it, st0);
           return '<button type="button" class="ck-row' + (on ? " done" : "") + '" data-ck="' + it.id + '" role="checkbox" aria-checked="' + (on ? "true" : "false") + '">' +
               '<span class="box' + (on ? " done" : "") + '" aria-hidden="true"></span>' +
               '<span class="ck-tx">' + it.text + (it.memo ? '<span class="ckm">' + it.memo + '</span>' : '') + '</span>' +
@@ -1080,7 +1169,7 @@
       if (!btn) return;
       var id = btn.getAttribute("data-ck");
       var st = read();
-      var now = !st[id];
+      var now = !isDone({id:id}, st);
       st[id] = now;
       write(st);
       btn.classList.toggle("done", now);
@@ -1096,7 +1185,9 @@
   if (reset) {
     reset.addEventListener("click", function(){
       if (!window.confirm("체크를 모두 해제할까요?")) return;
-      write({});
+      var cleared = {};
+      all.forEach(function(it){ cleared[it.id] = false; });
+      write(cleared);
       document.querySelectorAll("[data-ck]").forEach(function(btn){
         btn.classList.remove("done");
         btn.setAttribute("aria-checked", "false");
