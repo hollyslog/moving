@@ -348,32 +348,6 @@
   .pay-tag.pay-full::before{background:#D3E4D6;opacity:1}
   .pay-tag.pay-booked{background:var(--sage-soft);color:var(--sage-ink);box-shadow:inset 0 0 0 1px #CFE0D2}
 
-  /* ---------- 후보 비교 표 ---------- */
-  .vs{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;
-  }
-  .vs-head{padding:14px 17px 12px;border-bottom:1px solid var(--line)}
-  .vs-head h3{margin:0;font-size:14px;font-weight:800;letter-spacing:-0.02em}
-  .vs-head p{margin:4px 0 0;font-size:11.8px;line-height:1.5;color:var(--muted)}
-  .vs-row{
-    display:grid;grid-template-columns:86px 1fr 1fr;gap:10px;
-    padding:10px 17px;font-size:12.4px;align-items:baseline;
-  }
-  .vs-row + .vs-row{border-top:1px solid #F5F2EC}
-  .vs-row .vk{font-size:10px;font-weight:800;letter-spacing:.03em;color:var(--muted)}
-  .vs-row .vv{font-weight:600;color:var(--ink-soft);line-height:1.45}
-  .vs-row .vh{font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--ink);padding-bottom:2px}
-  .vs-note{
-    padding:11px 17px 13px;border-top:1px dashed var(--line);background:#FEFDFB;
-    font-size:11.8px;line-height:1.55;color:var(--ink-soft);
-  }
-  .vs-note b{font-weight:750;color:var(--ink)}
-  .vs-note .pick-tag{
-    display:inline-block;margin-right:5px;padding:1px 7px;border-radius:999px;
-    background:var(--rose-soft);color:var(--rose-ink);font-size:10px;font-weight:800;
-  }
-
   /* ---------- 미니 업체 목록 ---------- */
   .mini{
     background:var(--card);border:1px solid var(--line);border-radius:15px;
@@ -520,7 +494,6 @@
     header.hero{padding:20px 18px 17px;border-radius:22px}
     .card{padding:14px 14px 13px;border-radius:16px}
     .rules li{font-size:12.6px}
-    .vs-row{grid-template-columns:72px 1fr 1fr;padding:9px 14px;font-size:11.9px}
     .money-head{padding:15px 15px 12px}
     .mhead{display:none}
     .mrow{grid-template-columns:1fr 1fr;gap:6px 10px;padding:11px 15px;position:relative}
@@ -558,7 +531,7 @@
       <p class="dp-h"><span aria-hidden="true">⏱</span>당일 타임테이블<span class="dp-d">1.17(일)</span></p>
       <ol class="dp-list">
         <li><span class="dp-t">06:45</span><span class="dp-x"><b>출장 메이크업 시작</b><em>07:00 늦어도 시작 · 08:45 마무리 목표</em></span></li>
-        <li><span class="dp-t">09:00</span><span class="dp-x"><b>새 집(은평구) 출발</b><em>63빌딩까지 일요일 오전 차로 35~45분 · 주차·57층 이동 포함</em></span></li>
+        <li><span class="dp-t">09:00</span><span class="dp-x"><b>집(은평구) 출발</b><em>63빌딩까지 일요일 오전 차로 35~45분 · 주차·57층 이동 포함</em></span></li>
         <li><span class="dp-t">10:00</span><span class="dp-x"><b>본식 스냅 촬영 시작</b><em>쁘띠라뮤 · 백리향 룸</em></span></li>
       </ol>
     </div>
@@ -598,7 +571,7 @@
       <span class="sec-no">1</span>
       <div class="sec-tx">
         <h2>돌상 — 원파티 황색동 확정</h2>
-        <p>외부 반입 불가 · 제휴 5곳 중 <b>원파티 황색동으로 예약 완료</b> · 화이트·윤슬과 다른 업체는 참고로 접어둠</p>
+        <p>외부 반입 불가 · 제휴 5곳 중 <b>원파티 황색동으로 예약 완료</b></p>
       </div>
     </div>
 
@@ -613,17 +586,16 @@
           <span class="k">업체</span>
           <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
         </div>
-        <p class="desc">원파티 상차림 중 <b>황색동</b>으로 예약 완료. 화이트·윤슬(465,000원)보다 <b>85,000원 높은 구성</b>. 후기 혜택까지 받으면 체감 <b>450,000원</b>.</p>
+        <p class="desc">원파티 상차림 중 <b>황색동</b>으로 예약 완료. 후기 혜택까지 받으면 체감 <b>450,000원</b>.</p>
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag pay-booked">예약 완료</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv">550,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 450,000원</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv">없음</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv">당일 일괄 결제<span class="cvn">550,000원 · 1/17 백리향에서 식대와 함께 한 번에 결제</span></span></div>
         </div>
         <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
           <ul>
-            <li><span class="cb" aria-hidden="true"></span><span><b>예약금·잔금</b> 금액과 납부일</span></li>
             <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>설치 시간</b>·장소 전달 (백리향 시간대 확정 후)</span></li>
             <li><span class="cb" aria-hidden="true"></span><span>후기 상품권 10만 원 <b>적용 조건</b> (예약 경로·후기 게시처)</span></li>
           </ul>
@@ -631,155 +603,6 @@
       </article>
     </div>
 
-    <details class="ref">
-      <summary><span class="arw" aria-hidden="true">▶</span>참고 — 화이트·윤슬 비교와 다른 제휴 3곳<span class="cnt">5</span></summary>
-      <div class="ref-body">
-        <p class="ref-tx">황색동으로 정했으니 아래는 <b>기록용</b>이에요. 가격·구성만 비교해 둡니다.</p>
-
-    <div class="vs">
-      <div class="vs-head">
-        <h3>원파티 화이트 vs 윤슬</h3>
-        <p>같은 465,000원 · 후기 혜택도 동일 · 다른 건 분위기뿐</p>
-      </div>
-      <div class="vs-row">
-        <span class="vh"> </span><span class="vh">화이트</span><span class="vh">윤슬</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">분위기</span>
-        <span class="vv">깔끔한 현수막 배경 · 무채색</span>
-        <span class="vv">딥그린 테이블보 + 오렌지·옐로우 꽃</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">현수막</span>
-        <span class="vv">기본 현수막 배경</span>
-        <span class="vv">1.8m 현수막</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">떡</span>
-        <span class="vv">백설기 · 수수팥떡 2종</span>
-        <span class="vv">백설기 · 수수팥떡 2종</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">포장</span>
-        <span class="vv">포장 포함</span>
-        <span class="vv">포장 포함</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">옵션</span>
-        <span class="vv">이름 현수막 · 병풍</span>
-        <span class="vv">이름 현수막 · 병풍 (둘 다 유료)</span>
-      </div>
-      <div class="vs-row">
-        <span class="vk">총액</span>
-        <span class="vv">465,000원 → 체감 365,000원</span>
-        <span class="vv">465,000원 → 체감 365,000원</span>
-      </div>
-      <div class="vs-note">
-        <span class="pick-tag">참고</span>
-        <b>깔끔함이면 화이트, 꽃 색감이 좋으면 윤슬.</b> 본식이 드레스라 흰 배경에 아기가 잘 살고, 촬영 사진이 무난한 건 화이트. 윤슬은 딥그린·오렌지가 사진에 확실히 남는다.
-      </div>
-    </div>
-
-    <div class="cards">
-      <article class="card pick" data-cat="dolsang">
-        <div class="card-top">
-          <span class="when"><span class="tag">돌상</span>원파티</span>
-          <span class="badge status st-undecided">참고</span>
-        </div>
-        <h3>화이트 상차림</h3>
-        <div class="vendor">
-          <span class="k">업체</span>
-          <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
-        </div>
-        <p class="desc">깔끔한 현수막 배경에 무채색 구성. 주름 커튼·가렌드가 없어 <b>모던한 무드</b>에 가장 가깝다.</p>
-        <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv">465,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 365,000원</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
-        </div>
-        <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
-          <ul>
-            <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>시간대</b> 확정 후 예약 가능 여부</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>백리향 제휴 <b>실제 견적</b>이 465,000원인지 (가격표는 모멘트리 기준)</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 <b>금액과 납부 시점</b></span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>후기 상품권 10만 원 <b>적용 조건</b> (예약 경로·후기 게시처)</span></li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card pick" data-cat="dolsang">
-        <div class="card-top">
-          <span class="when"><span class="tag">돌상</span>원파티</span>
-          <span class="badge status st-undecided">참고</span>
-        </div>
-        <h3>윤슬 상차림</h3>
-        <div class="vendor">
-          <span class="k">업체</span>
-          <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
-        </div>
-        <p class="desc">딥그린 테이블보에 오렌지·옐로우 꽃, 1.8m 현수막. 떡 2종·포장·돌잡이 용품까지 포함.</p>
-        <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv">465,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 365,000원</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
-        </div>
-        <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
-          <ul>
-            <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>시간대</b> 확정 후 예약 가능 여부</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>이름 현수막·병풍 <b>유료 옵션 가격</b></span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>떡 2종·포장·돌잡이 용품 <b>포함 범위</b> 재확인</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 금액과 후기 상품권 적용 조건</span></li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card" data-cat="dolsang">
-        <div class="card-top">
-          <span class="when"><span class="tag">돌상</span>베베궁</span>
-          <span class="badge status st-check">확인 필요</span>
-        </div>
-        <h3>전통상 (플로리아 · 그린나래)</h3>
-        <div class="vendor">
-          <span class="k">업체</span>
-          <span class="v">베베궁 · <a class="tel" href="tel:01073602131">010-7360-2131</a> · <a class="site" href="https://bebegoong.co.kr" target="_blank" rel="noopener">bebegoong.co.kr</a></span>
-        </div>
-        <p class="desc">전통상이 주력. <b>2순위 참고</b> — 원파티보다 전통적인 느낌을 원할 때만.</p>
-        <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv">50만 원대<span class="cvn">플로리아·그린나래 기준 · 후기 시 5만 원 캐시백</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
-        </div>
-        <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
-          <ul>
-            <li><span class="cb" aria-hidden="true"></span><span>플로리아·그린나래 <b>정확한 견적</b>과 1/17 가능 여부</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>후기 5만 원 캐시백 조건</span></li>
-          </ul>
-        </div>
-      </article>
-    </div>
-
-    <div class="mini-grid" style="margin-top:10px">
-      <div class="mini" data-cat="dolsang">
-        <div class="mini-top"><h4>가든제이</h4><span class="badge status st-undecided">참고</span></div>
-        <p><a class="tel" href="tel:01067007647">010-6700-7647</a> · <a href="https://thegardenj.com" target="_blank" rel="noopener">thegardenj.com</a><br>사이트 접속이 불안정하고 백리향 현대 돌상 자료가 적음</p>
-      </div>
-      <div class="mini" data-cat="dolsang">
-        <div class="mini-top"><h4>로맨틱 플라워 파티</h4><span class="badge status st-undecided">참고</span></div>
-        <p><a class="tel" href="tel:01068864620">010-6886-4620</a> · <a href="https://romanticdol.com" target="_blank" rel="noopener">romanticdol.com</a><br>50만 원대~ · 자개·전통 위주 (현대식은 풍선·큰 꽃 장식)</p>
-      </div>
-      <div class="mini" data-cat="dolsang">
-        <div class="mini-top"><h4>스트릿가든</h4><span class="badge status st-undecided">참고</span></div>
-        <p><a class="tel" href="tel:07082896601">070-8289-6601</a> · <a href="https://stgarden.co.kr" target="_blank" rel="noopener">stgarden.co.kr</a><br>66~77만 원대 · 전통 위주라 이번 기준과는 거리가 있음</p>
-      </div>
-    </div>
-      </div>
-    </details>
   </section>
 
   <!-- ================= 2. 스냅 · 스튜디오 ================= -->
@@ -904,13 +727,14 @@
         </div>
         <p class="paynote">식대 + 돌상(원파티 황색동)은 <b>백리향에서 일괄 결제</b> · 상품권 10% 할인 구매분으로 내면 <b>실부담 135만 원</b> — 계산은 <b>4. 예산</b> 아래 참고</p>
         <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">5</span></div>
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">6</span></div>
           <ul>
             <li><span class="cb" aria-hidden="true"></span><span><b>9명 미만 소규모 룸</b> — 최소 보증금액·코스 기준<br><span class="note-in">성인 코스 최저 158,000원 · 6명이면 보증금 충족되는지</span></span></li>
             <li><span class="cb" aria-hidden="true"></span><span><b>10:00 스냅 룸 사전 입장</b> 가능 여부<br><span class="note-in">촬영 시작 전 돌상 세팅·의상 갈아입을 시간이 나오는지</span></span></li>
             <li><span class="cb" aria-hidden="true"></span><span><b>초3 조카</b> — 어린이 코스(55,000원대) vs 단품<br><span class="note-in">어린이 코스: 게살스프·크림새우·탕수육·식사·아이스크림 · 단품도 된다고 함</span></span></li>
             <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상</b> — 재생비 5만 원 별도, 소규모라 <b>생략 검토</b></span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 납부 시점 · 제휴 돌상·스냅 <b>전달 마감일</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>예약금·잔금 납부 시점</b><br><span class="note-in">식대·돌상은 당일 한 번에 결제 — 상품권 결제 방법 확인</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>제휴 돌상·스냅 <b>전달 마감일</b></span></li>
           </ul>
         </div>
       </article>
@@ -1102,7 +926,7 @@
       </div>
       <ul class="pp-list">
         <li><span class="dot" aria-hidden="true"></span><span>150만 원권으로 부족한 <b>초과분·주류는 현장에서 따로 결제</b>하는 게 깔끔</span></li>
-        <li><span class="dot" aria-hidden="true"></span><span><b>예약금을 미리 냈다면</b> 그만큼 잔금에서 차감되는지 확인</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><b>예약금 선납 없음</b> — 돌상·식대 모두 당일 백리향에서 한 번에 결제</span></li>
         <li><span class="dot" aria-hidden="true"></span><span>상품권 <b>사용 가능 지점·유효기간</b>과 백리향에서 받는지 먼저 확인</span></li>
       </ul>
     </div>
@@ -1205,7 +1029,7 @@
   /* ---------- 예산 표 ---------- */
   var ROWS = [
     {name:"백리향 장소·식대", sub:"63빌딩 백리향 · 8명 (성인 6 + 초3 조카 + 홀리)", state:{t:"확인 필요", c:"st-check"}, total:"약 1,003,000원<span class=\"est\">(예상)</span>", dep:null, bal:null, memo:"성인 6×158,000 + 어린이 55,000 · 백리향 일괄 결제"},
-    {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", dep:null, bal:null, memo:"후기 시 체감 450,000원"},
+    {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", dep:"없음", bal:"당일 일괄", memo:"예약금 없음 · 백리향에서 식대와 일괄 결제 · 후기 시 체감 450,000원"},
     {name:"본식 스냅", sub:"쁘띠라뮤 아이폰스냅 · 작가 확인 필요", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"카톡 채널 문의 전"},
     {name:"스튜디오 돌촬영", sub:"한복 촬영 · 업체 미선정", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"1월 초 촬영 가능한 곳"},
     {name:"본식 의상", sub:"홀리 드레스 택배 대여 · 엄마·아빠", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"후보 5곳 중 미선정"},
@@ -1233,7 +1057,7 @@
   var PHASES = [
     {d:"D-50~40", title:"지금 ~ 12월 초", items:[
       {id:"p1", text:"백리향에 8명·룸·식대 기준 확인", memo:"성인 코스 158,000원 · 소규모 룸 보증금 · 10:00 스냅 룸 입장"},
-      {id:"p2", text:"원파티 황색동 예약 완료", memo:"예약금·잔금 납부일과 후기 혜택 조건 확인", done:true},
+      {id:"p2", text:"원파티 황색동 예약 완료", memo:"예약금 없음 · 당일 백리향 일괄 결제 · 후기 혜택 조건 확인", done:true},
       {id:"p3", text:"쁘띠라뮤 카톡 문의 — 1/17 백리향 · 작가 지정", memo:"누누작가 1순위 · 리브작가 2순위 가능한지"},
       {id:"p4", text:"스튜디오 한복 촬영 예약", memo:"아기·가족 한복 대여 포함 여부 확인"}
     ]},
