@@ -150,6 +150,32 @@
   }
   .rm-chip:first-child{background:var(--rose);color:#fff;box-shadow:none}
 
+  /* ---------- 당일 타임테이블 ---------- */
+  .dayplan{
+    margin-top:14px;padding:11px 13px 12px;
+    border:1px solid #D6E2D7;border-radius:15px;
+    background:linear-gradient(180deg,#FBFDFA,#F6FAF5);
+  }
+  .dayplan .dp-h{
+    display:flex;align-items:center;gap:6px;margin:0 0 6px;
+    font-size:10px;font-weight:800;letter-spacing:.09em;color:var(--sage-ink);
+  }
+  .dayplan .dp-h .dp-d{
+    margin-left:auto;padding:1px 7px;border-radius:999px;
+    background:rgba(61,88,67,.10);font-size:10px;font-weight:800;letter-spacing:0;
+  }
+  .dp-list{list-style:none;margin:0;padding:0}
+  .dp-list li{display:flex;gap:11px;align-items:flex-start;padding:6px 0}
+  .dp-list li + li{border-top:1px solid rgba(61,88,67,.10)}
+  .dp-t{
+    flex:none;width:44px;padding-top:1px;
+    font-size:12px;font-weight:800;letter-spacing:-0.01em;color:var(--sage-ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .dp-x{flex:1;min-width:0;font-size:12.5px;line-height:1.45;color:var(--ink-soft);letter-spacing:-0.005em}
+  .dp-x b{display:block;font-weight:700;color:var(--ink)}
+  .dp-x em{display:block;margin-top:1px;font-style:normal;font-size:10.7px;font-weight:500;color:var(--muted);line-height:1.4}
+
   .rules{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
   .rules .rh{
     display:flex;align-items:center;gap:6px;margin:0 0 9px;
@@ -291,6 +317,13 @@
     background:#fff;border:1.5px solid #D6BE8C;
   }
   .callout li b{font-weight:750;color:#5E4310}
+  .callout li .note-in{display:block;margin-top:1px;font-size:10.8px;font-weight:500;color:#8A6E33;letter-spacing:0;line-height:1.4}
+  .paynote{
+    margin:10px 0 0;padding:8px 11px 9px;border-radius:11px;
+    background:var(--navy-soft);border:1px solid #DCE4F0;
+    font-size:11.7px;line-height:1.5;color:#33456B;font-weight:550;letter-spacing:-0.005em;
+  }
+  .paynote b{font-weight:750;color:var(--navy)}
 
   /* 배지 */
   .badge{
@@ -369,6 +402,7 @@
   .money-total .mt-k{font-size:10px;font-weight:750;letter-spacing:.05em;color:var(--muted)}
   .money-total .mt-v{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--terra-ink);line-height:1.2}
   .money-total .mt-v small{font-size:11.5px;font-weight:700;margin-left:1px}
+  .money-total .mt-e{font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:-0.005em}
   .mhead,.mrow{display:grid;grid-template-columns:minmax(0,1.42fr) .86fr 1fr .9fr .9fr;gap:8px}
   .mhead{
     padding:8px 16px 7px;background:#FAF7F2;border-bottom:1px solid var(--line);
@@ -383,6 +417,7 @@
   .mval{font-size:12.4px;font-weight:650;color:var(--ink-soft);letter-spacing:-0.01em;line-height:1.45;overflow-wrap:anywhere}
   .mval.big{font-weight:800;color:var(--terra-ink)}
   .mval.na{font-weight:500;color:var(--muted)}
+  .mval .est{display:block;margin-top:1px;font-size:9.5px;font-weight:600;color:var(--muted);letter-spacing:0}
   .mstate{justify-self:start}
   .mstate .badge{font-size:10px;padding:3px 8px}
   .mfoot{
@@ -392,6 +427,40 @@
   .mfoot .fk{font-size:11px;font-weight:750;letter-spacing:.03em;color:var(--muted)}
   .mfoot .fv{font-size:13px;font-weight:800;color:var(--ink)}
   .mfoot .fnote{flex:1 1 100%;font-size:10.5px;line-height:1.5;color:var(--muted)}
+
+  /* ---------- 결제 방법 ---------- */
+  .payplan{
+    margin-top:12px;padding:14px 15px 15px;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);
+  }
+  .payplan .pp-h{
+    display:flex;align-items:center;gap:6px;margin:0 0 5px;
+    font-size:10px;font-weight:800;letter-spacing:.09em;color:var(--navy);
+  }
+  .payplan .pp-h .pp-tag{
+    margin-left:auto;padding:2px 8px;border-radius:999px;
+    background:var(--navy-soft);color:var(--navy);
+    font-size:10px;font-weight:800;letter-spacing:0;
+  }
+  .payplan .pp-lead{margin:0;font-size:12.4px;line-height:1.55;font-weight:500;color:var(--ink-soft);letter-spacing:-0.005em}
+  .payplan .pp-lead b{font-weight:700;color:var(--ink)}
+  .pp-calc{
+    display:flex;flex-direction:column;margin:10px 0 0;
+    border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#FDFCF9;
+  }
+  .pp-row{display:flex;align-items:baseline;gap:10px;padding:7.5px 12px;font-size:12.4px;color:var(--ink-soft)}
+  .pp-row + .pp-row{border-top:1px solid #F3EFE7}
+  .pp-row .pk{flex:none;font-size:10.5px;font-weight:750;color:var(--muted)}
+  .pp-row .pv{margin-left:auto;font-weight:700;color:var(--ink);letter-spacing:-0.01em;font-variant-numeric:tabular-nums;text-align:right}
+  .pp-row .pv em{display:block;font-style:normal;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .pp-row.sum{background:#F8F5EF}
+  .pp-row.sum .pv{font-weight:800;color:var(--terra-ink)}
+  .pp-row.save .pv{color:var(--sage-ink);font-weight:800}
+  .pp-list{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .pp-list li{display:flex;gap:7px;align-items:flex-start;font-size:12.2px;line-height:1.5;color:var(--ink-soft);letter-spacing:-0.005em}
+  .pp-list li .dot{flex:none;width:5px;height:5px;margin-top:8px;border-radius:50%;background:var(--navy);opacity:.55}
+  .pp-list li b{font-weight:750;color:var(--ink)}
 
   /* ---------- 타임라인 체크리스트 ---------- */
   .tlv{
@@ -478,19 +547,29 @@
       <h1>홀리 첫 돌잔치 준비</h1>
       <div class="dday" id="dday" aria-live="polite"><span class="dd" id="ddayNum">D-…</span><small>DAYS</small></div>
     </div>
-    <p class="sub">2027.1.17(일)<span class="dotsep">·</span>63빌딩 백리향<span class="dotsep">·</span>시간대 미정</p>
+    <p class="sub">2027.1.17(일)<span class="dotsep">·</span>63빌딩 백리향<span class="dotsep">·</span>촬영 10:00 시작<span class="dotsep">·</span>총 8명</p>
     <div class="nextup">
       <span class="lbl">NEXT</span>
-      <span>돌상 <b>원파티 황색동 예약 완료</b> · 다음은 <b>쁘띠라뮤 스냅 문의</b></span>
-      <span class="tick">남은 4</span>
+      <span>돌상 <b>원파티 황색동 예약 완료</b> · 다음은 <b>백리향 인원·룸 확인</b></span>
+      <span class="tick">남은 5</span>
+    </div>
+
+    <div class="dayplan">
+      <p class="dp-h"><span aria-hidden="true">⏱</span>당일 타임테이블<span class="dp-d">1.17(일)</span></p>
+      <ol class="dp-list">
+        <li><span class="dp-t">06:45</span><span class="dp-x"><b>출장 메이크업 시작</b><em>07:00 늦어도 시작 · 08:45 마무리 목표</em></span></li>
+        <li><span class="dp-t">09:00</span><span class="dp-x"><b>새 집(은평구) 출발</b><em>63빌딩까지 일요일 오전 차로 35~45분 · 주차·57층 이동 포함</em></span></li>
+        <li><span class="dp-t">10:00</span><span class="dp-x"><b>본식 스냅 촬영 시작</b><em>쁘띠라뮤 · 백리향 룸</em></span></li>
+      </ol>
     </div>
 
     <div class="remain">
-      <p class="rm-h"><span aria-hidden="true">✳</span>남은 할 일<span class="rm-n">4</span></p>
+      <p class="rm-h"><span aria-hidden="true">✳</span>남은 할 일<span class="rm-n">5</span></p>
       <div class="rm-chips">
+        <span class="rm-chip">백리향 인원·식대 통보</span>
+        <span class="rm-chip">아기 드레스 대여 · 예약</span>
         <span class="rm-chip">쁘띠라뮤 스냅 문의</span>
         <span class="rm-chip">출장 메이크업 예약</span>
-        <span class="rm-chip">솔이 드레스 대여 · 예약</span>
         <span class="rm-chip">엄마 의상 결정</span>
       </div>
     </div>
@@ -797,7 +876,7 @@
       <span class="sec-no">3</span>
       <div class="sec-tx">
         <h2>의상 · 헤어메이크업 · 답례품 · 백리향</h2>
-        <p>장소·날짜만 확정 · 나머지는 12월 중순부터 순서대로 정하면 됨</p>
+        <p>장소·날짜·인원(8명) 확정 · 식대는 158,000원 기준 예상 · 남은 건 12월 중순부터 순서대로</p>
       </div>
     </div>
 
@@ -812,31 +891,36 @@
           <span class="k">업체</span>
           <span class="v">63빌딩 백리향 · <a class="tel" href="tel:027895741">02-789-5741</a></span>
         </div>
-        <p class="desc">시간대·룸·보증인원이 정해져야 돌상·스냅·식대가 전부 확정된다. <b>가장 먼저 풀어야 하는 열쇠.</b></p>
+        <div class="vendor">
+          <span class="k">인원</span>
+          <span class="v"><b>총 8명</b> — 어른 6(시부모님 2 · 고모·고모부 2 · 부부 2) + 초3 조카 1 + 홀리 1<br>친정 식구는 추후 따로 간단하게</span>
+        </div>
+        <p class="desc">10:00 스냅 시작 기준. <b>성인 코스 최저 158,000원</b>부터라 룸 보증금액을 먼저 봐야 식대가 정해진다. <b>가장 먼저 풀어야 하는 열쇠.</b></p>
         <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">식대 · 보증인원 확정 후 산정</span></span></div>
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">예상</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv">약 1,003,000원<span class="cvn">성인 158,000원 × 6 = 948,000원 + 어린이 코스 55,000원 = 1,003,000원 · 확정 전 예상치</span></span></div>
           <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
           <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
         </div>
+        <p class="paynote">식대 + 돌상(원파티 황색동)은 <b>백리향에서 일괄 결제</b> · 상품권 10% 할인 구매분으로 내면 <b>실부담 135만 원</b> — 계산은 <b>4. 예산</b> 아래 참고</p>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">5</span></div>
           <ul>
-            <li><span class="cb" aria-hidden="true"></span><span><b>1/17 시간대</b> — 점심·저녁 중 어디로 할지</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>룸 배정 · <b>보증인원</b> 기준</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span><b>식대</b> 1인당 금액과 초과 인원 요금</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 납부 시점</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>제휴 돌상·스냅 <b>확정 전달</b> 마감일</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>9명 미만 소규모 룸</b> — 최소 보증금액·코스 기준<br><span class="note-in">성인 코스 최저 158,000원 · 6명이면 보증금 충족되는지</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>10:00 스냅 룸 사전 입장</b> 가능 여부<br><span class="note-in">촬영 시작 전 돌상 세팅·의상 갈아입을 시간이 나오는지</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>초3 조카</b> — 어린이 코스(55,000원대) vs 단품<br><span class="note-in">어린이 코스: 게살스프·크림새우·탕수육·식사·아이스크림 · 단품도 된다고 함</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상</b> — 재생비 5만 원 별도, 소규모라 <b>생략 검토</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 납부 시점 · 제휴 돌상·스냅 <b>전달 마감일</b></span></li>
           </ul>
         </div>
       </article>
 
       <article class="card" data-cat="prep">
         <div class="card-top">
-          <span class="when"><span class="tag">의상</span>솔이</span>
+          <span class="when"><span class="tag">의상</span>홀리</span>
           <span class="badge status st-check">후보 비교 중</span>
         </div>
-        <h3>솔이 돌드레스 · 택배 대여</h3>
+        <h3>홀리 돌드레스 · 택배 대여</h3>
         <div class="vendor">
           <span class="k">업체</span>
           <span class="v">피팅 없이 <b>택배 대여</b>로 진행 · 후보 5곳</span>
@@ -869,7 +953,7 @@
           <span class="k">업체</span>
           <span class="v"><span class="none">미선정</span></span>
         </div>
-        <p class="desc">한복은 스튜디오에서. 본식은 <b>엄마 드레스 + 아빠 정장</b>. 솔이 드레스는 따로 카드로.</p>
+        <p class="desc">한복은 스튜디오에서. 본식은 <b>엄마 드레스 + 아빠 정장</b>. 홀리 드레스는 따로 카드로.</p>
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
@@ -886,55 +970,87 @@
         </div>
       </article>
 
-      <article class="card" data-cat="prep">
+      <article class="card pick" data-cat="prep">
         <div class="card-top">
           <span class="when"><span class="tag">의상</span>헤어·메이크업</span>
-          <span class="badge status st-undecided">미정</span>
+          <span class="badge status st-check">후보 4곳 · 예약 전</span>
         </div>
-        <h3>엄마 헤어·메이크업</h3>
+        <h3>출장 메이크업 · 06:45 시작 조건</h3>
         <div class="vendor">
           <span class="k">업체</span>
-          <span class="v"><span class="none">미선정</span></span>
+          <span class="v">출장 4곳 후보 · 엄마+아빠 2인 기준<br>09:00 출발 역산 → <b>08:45 마무리</b></span>
         </div>
-        <p class="desc">아기를 안고 이동해야 하니 <b>출장</b>이 편한지, <b>샵</b>이 나은지부터 정하기.</p>
+        <p class="desc">아기 안고 나가는 아침이라 <b>집에서 출장</b>으로. <b>06:45~07:00 시작 → 08:45 종료</b>가 되는지가 예약의 전부다.</p>
         <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">17만~27만 원대<span class="cvn">2인 기준 · 업체 공개가 기준, 실제 견적 확인 전</span></span></div>
           <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
           <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
           <ul>
-            <li><span class="cb" aria-hidden="true"></span><span><b>출장 vs 샵</b> 결정 (백리향 출장 가능 여부 포함)</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>1/17 오전 <b>시간대 예약</b> 가능 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>1/17(일) <b>06:45~07:00 시작 · 08:45 마무리</b> 가능한지<br><span class="note-in">일요일 이른 시간 출장이라 업체별로 먼저 잡아야 함</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>쌩크드보떼</b> 1인 20만 / 2인 27만 · 아빠 헤메 무료<br><span class="note-in">맘카페 후기 다수 · 출장비 무료</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>브러쉬앤꼬리빗</b> 엄마 21만 + 아빠 2만 / <b>디메이크업</b> 2인 25만(계좌이체 1만 할인)</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>더헤디</b> 이벤트 시 2인 17만대 — 가성비 1순위<br><span class="note-in">헤어는 시안 확실히 요청하기</span></span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card pick" data-cat="prep">
+        <div class="card-top">
+          <span class="when"><span class="tag">준비</span>답례품·초대</span>
+          <span class="badge status st-check">후보 4종 · 미선정</span>
+        </div>
+        <h3>답례품 · 모바일 초대장 · 성장동영상</h3>
+        <div class="vendor">
+          <span class="k">수량</span>
+          <span class="v"><b>5~10세트</b> — 시댁·고모네 + 친정 식구까지<br><span class="note-in" style="font-size:10.5px;color:var(--muted);font-weight:500">자수 수건처럼 최소수량이 큰 건 피하고 소량으로 되는 것</span></span>
+        </div>
+        <p class="desc">8명 소규모라 <b>세트당 1.5~4만 원</b> 선에서 성의 있고 촌스럽지 않은 것. 1월 초에 한 번에 주문하면 된다.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">세트당 1.5~4만 원 × 5~10세트 = 7만~40만 원대</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>후보 4종<span class="co-n">4</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>① <b>고급 올리브오일·발사믹 / 트러플 세트</b> 2~3만<br><span class="note-in">어른·고모네 모두 무난 · 유통기한 넉넉해 미리 주문 가능</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>② <b>프리미엄 핸드워시·주방세제</b> 2~4만<br><span class="note-in">논픽션·이솝·뮈흐 등 · 패키지 깔끔하고 무겁지 않음</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>③ <b>티·드립백·전통 다과</b> 1.5~3만<br><span class="note-in">오설록·TWG 등 · 시부모님·친정 어른들께 무난</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>④ <b>무지 호텔타월 2~3장 박스</b><br><span class="note-in">자수 없이 감사 택만 · 소량 주문되고 집에서 제일 잘 씀</span></span></li>
+          </ul>
+        </div>
+        <div class="callout" style="margin-top:8px">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>같이 정할 것<span class="co-n">2</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span><b>모바일 초대장</b> 제작·발송 시점 (장소·시간·주차 안내)</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상</b> — 재생비 5만 원 별도, 소규모라 생략 검토</span></li>
           </ul>
         </div>
       </article>
 
       <article class="card soft" data-cat="prep">
         <div class="card-top">
-          <span class="when"><span class="tag">준비</span>답례품·초대</span>
-          <span class="badge status st-undecided">미정</span>
+          <span class="when"><span class="tag">당일</span>아기 짐</span>
+          <span class="badge status st-undecided">1/16 밤에 싸기</span>
         </div>
-        <h3>답례품 · 모바일 초대장 · 성장동영상</h3>
+        <h3>당일 아기 짐 체크리스트</h3>
         <div class="vendor">
-          <span class="k">업체</span>
-          <span class="v"><span class="none">미선정</span></span>
+          <span class="k">기본</span>
+          <span class="v">여벌 옷 · 기저귀 · 분유/이유식 · 물티슈</span>
         </div>
-        <p class="desc">1월 초에 한 번에 주문·발송하면 된다. 인원이 확정돼야 수량이 나온다.</p>
-        <div class="cost">
-          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
-          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
-        </div>
+        <p class="desc">1월이라 <b>로비 이동용 보온 외투·담요</b>가 필수. 스냅 때 울지 않게 <b>작은 간식·장난감</b>도 같이.</p>
         <div class="callout">
-          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>체크<span class="co-n">4</span></div>
           <ul>
-            <li><span class="cb" aria-hidden="true"></span><span><b>답례품 품목·수량</b> — 인원 확정 후 주문</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span><b>모바일 초대장</b> 제작·발송 시점</span></li>
-            <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상 · 포토테이블</b> 할지 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>여벌 옷 2벌 · 기저귀 6장+ · 물티슈 · 손수건</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>분유/이유식 + 보온병</b> — 10:00 촬영 전 수유 타이밍 맞추기</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>보온 외투·담요</b> — 1월 차량·로비·57층 이동</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>스냅용 작은 간식·장난감</b> + 돌잡이 소품</span></li>
           </ul>
         </div>
       </article>
@@ -955,11 +1071,12 @@
       <div class="money-head">
         <div>
           <h3>항목 · 상태 · 금액</h3>
-          <p class="money-sub">7개 항목 · 파악된 금액은 확정된 돌상 한 건 · 나머지는 업체 문의 후 채우기</p>
+          <p class="money-sub">7개 항목 · 확정은 돌상 한 건 · 백리향 식대는 158,000원 기준 예상치</p>
         </div>
         <div class="money-total">
-          <span class="mt-k">파악된 금액 합계</span>
+          <span class="mt-k">확정 금액</span>
           <span class="mt-v" id="moneySum">550,000<small>원</small></span>
+          <span class="mt-e">예상 포함 약 1,553,000원</span>
         </div>
       </div>
       <div class="mhead" aria-hidden="true">
@@ -968,9 +1085,26 @@
       <div class="mtable" id="moneyRows"></div>
       <div class="mfoot">
         <span class="fk">합계 기준</span>
-        <span class="fv" id="moneyFoot">550,000원</span>
-        <span class="fnote">금액이 <b>미정</b>인 항목은 합계에서 빠져 있어요. 견적을 받는 대로 이 표에 채우면 됩니다.</span>
+        <span class="fv" id="moneyFoot">확정 550,000원</span>
+        <span class="fnote">식대 예상 1,003,000원(성인 6×158,000 + 어린이 55,000)까지 더하면 <b>약 1,553,000원</b>. 금액이 <b>미정</b>인 항목은 합계에서 빠져 있어요.</span>
       </div>
+    </div>
+
+    <div class="payplan">
+      <p class="pp-h"><span aria-hidden="true">💳</span>결제 방법<span class="pp-tag">상품권 10% 할인</span></p>
+      <p class="pp-lead">식대 + 돌상(원파티 황색동) 비용은 <b>백리향에서 일괄 결제</b>. 지인에게 <b>10% 할인받아 산 상품권</b>으로 낼 예정.</p>
+      <div class="pp-calc">
+        <div class="pp-row"><span class="pk">성인 식대</span><span class="pv">948,000원<em>158,000원 × 6명</em></span></div>
+        <div class="pp-row"><span class="pk">돌상</span><span class="pv">550,000원<em>원파티 황색동</em></span></div>
+        <div class="pp-row sum"><span class="pk">일괄 결제</span><span class="pv">1,498,000원<em>어린이 코스 55,000원 포함 시 1,553,000원</em></span></div>
+        <div class="pp-row"><span class="pk">상품권</span><span class="pv">150만 원권 · 10% 할인 구매<em>실부담 1,350,000원</em></span></div>
+        <div class="pp-row save"><span class="pk">절약</span><span class="pv">150,000원</span></div>
+      </div>
+      <ul class="pp-list">
+        <li><span class="dot" aria-hidden="true"></span><span>150만 원권으로 부족한 <b>초과분·주류는 현장에서 따로 결제</b>하는 게 깔끔</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><b>예약금을 미리 냈다면</b> 그만큼 잔금에서 차감되는지 확인</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span>상품권 <b>사용 가능 지점·유효기간</b>과 백리향에서 받는지 먼저 확인</span></li>
+      </ul>
     </div>
   </section>
 
@@ -1070,13 +1204,13 @@
 
   /* ---------- 예산 표 ---------- */
   var ROWS = [
-    {name:"백리향 장소·식대", sub:"63빌딩 백리향", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"시간대·보증인원 확정 후 산정"},
+    {name:"백리향 장소·식대", sub:"63빌딩 백리향 · 8명 (성인 6 + 초3 조카 + 홀리)", state:{t:"확인 필요", c:"st-check"}, total:"약 1,003,000원<span class=\"est\">(예상)</span>", dep:null, bal:null, memo:"성인 6×158,000 + 어린이 55,000 · 백리향 일괄 결제"},
     {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", dep:null, bal:null, memo:"후기 시 체감 450,000원"},
     {name:"본식 스냅", sub:"쁘띠라뮤 아이폰스냅 · 작가 확인 필요", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"카톡 채널 문의 전"},
     {name:"스튜디오 돌촬영", sub:"한복 촬영 · 업체 미선정", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"1월 초 촬영 가능한 곳"},
-    {name:"본식 의상", sub:"솔이 드레스 택배 대여 · 엄마·아빠", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"후보 5곳 중 미선정"},
-    {name:"헤어·메이크업", sub:"엄마 · 출장 vs 샵", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"방식부터 결정"},
-    {name:"답례품·초대", sub:"답례품 · 모바일 초대장", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"인원 확정 후 수량"}
+    {name:"본식 의상", sub:"홀리 드레스 택배 대여 · 엄마·아빠", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"후보 5곳 중 미선정"},
+    {name:"헤어·메이크업", sub:"출장 · 엄마+아빠 2인", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"후보 4곳 17만~27만 원대 · 06:45 시작"},
+    {name:"답례품·초대", sub:"답례품 · 모바일 초대장", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"5~10세트 · 세트당 1.5~4만 원"}
   ];
   function cell(v, big){
     if (v === null || v === undefined || v === "") return '<span class="mval na">미정</span>';
@@ -1098,26 +1232,26 @@
   /* ---------- 타임라인 체크리스트 ---------- */
   var PHASES = [
     {d:"D-50~40", title:"지금 ~ 12월 초", items:[
-      {id:"p1", text:"백리향에 1/17 시간대 · 보증인원 · 룸 확인", memo:"돌상·스냅·식대가 여기서부터 풀린다"},
+      {id:"p1", text:"백리향에 8명·룸·식대 기준 확인", memo:"성인 코스 158,000원 · 소규모 룸 보증금 · 10:00 스냅 룸 입장"},
       {id:"p2", text:"원파티 황색동 예약 완료", memo:"예약금·잔금 납부일과 후기 혜택 조건 확인", done:true},
       {id:"p3", text:"쁘띠라뮤 카톡 문의 — 1/17 백리향 · 작가 지정", memo:"누누작가 1순위 · 리브작가 2순위 가능한지"},
       {id:"p4", text:"스튜디오 한복 촬영 예약", memo:"아기·가족 한복 대여 포함 여부 확인"}
     ]},
     {d:"D-30", title:"12월 중순 · 이사 직후", items:[
-      {id:"p5",  text:"출장 메이크업 예약", memo:"출장으로 진행 · 1/17 오전 시간대 가능한지"},
-      {id:"p6",  text:"솔이 드레스 대여 · 예약", memo:"피팅 없이 택배 대여 · 후보 5곳 비교 후 예약"},
+      {id:"p5",  text:"출장 메이크업 예약", memo:"06:45~07:00 시작 → 08:45 마무리로 잡기"},
+      {id:"p6",  text:"홀리 드레스 대여 · 예약", memo:"피팅 없이 택배 대여 · 후보 5곳 비교 후 예약"},
       {id:"p7",  text:"엄마 의상 결정", memo:"드레스 대여처 비교 · 아빠 정장은 보유 확인"},
-      {id:"p7b", text:"초대 인원 확정해 백리향에 전달", memo:"보증인원 기준이 바뀌면 식대도 바뀐다"}
+      {id:"p7b", text:"8명으로 인원 통보 · 조카 식사 방식 결정", memo:"어린이 코스 vs 단품 — 코스 먹는 어른들 사이에 혼자 단품이라도 괜찮은지"}
     ]},
     {d:"D-14~7", title:"1월 초", items:[
-      {id:"p8",  text:"답례품 품목·수량 주문", memo:"인원 확정 후 주문해야 남지 않는다"},
+      {id:"p8",  text:"답례품 5~10세트 주문", memo:"시댁·고모네 + 친정까지 · 세트당 1.5~4만 원"},
       {id:"p9",  text:"모바일 초대장 제작 · 발송", memo:"장소·시간·주차 안내까지 한 장에"},
-      {id:"p10", text:"백리향 최종 보증인원 · 식수 확정", memo:"마감일 확인해서 넘기지 않기"},
-      {id:"p11", text:"성장동영상 · 포토테이블 여부 결정", memo:"할 거면 업체 리드타임 확인"}
+      {id:"p10", text:"백리향 최종 인원 · 식수 확정", memo:"마감일 확인해서 넘기지 않기"},
+      {id:"p11", text:"성장동영상 여부 결정 (재생비 5만 원)", memo:"소규모라 생략하는 쪽도 검토"}
     ]},
     {d:"D-1~D-DAY", title:"1/16 ~ 1/17", items:[
       {id:"p12", text:"의상·한복·소품 최종 점검", memo:"드레스 3벌 · 돌잡이 소품 · 여벌 옷"},
-      {id:"p13", text:"아기 컨디션 · 수유·낮잠 계획 · 당일 챙길 것", memo:"기저귀·분유·물티슈·손수건·체온계"}
+      {id:"p13", text:"아기 짐 싸기 · 당일 동선 확인", memo:"기저귀·분유·여벌 옷 + 보온 외투·담요 + 스냅용 간식·장난감"}
     ]}
   ];
   var KEY = "doljanchi-timeline-v1";
