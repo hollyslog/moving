@@ -234,25 +234,6 @@
   .card.pick{border-color:#E7C9CD;background:linear-gradient(180deg,#FFFBFB 0%,#FFFFFF 60%)}
   .card.fixed{border-color:#CFE0D2;background:linear-gradient(180deg,#FBFDFA 0%,#FFFFFF 60%);box-shadow:var(--shadow)}
 
-  /* 접힌 참고 */
-  details.ref{
-    margin-top:12px;border:1px solid var(--line);border-radius:15px;
-    background:rgba(255,255,255,.74);overflow:hidden;
-  }
-  details.ref summary{
-    cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;
-    padding:12px 15px;font-size:12.4px;font-weight:700;color:var(--ink-soft);letter-spacing:-0.01em;
-  }
-  details.ref summary::-webkit-details-marker{display:none}
-  details.ref summary .arw{flex:none;font-size:10px;color:var(--muted);transition:transform .2s ease}
-  details.ref[open] summary .arw{transform:rotate(90deg)}
-  details.ref summary .cnt{
-    margin-left:auto;flex:none;padding:2px 8px;border-radius:999px;background:#F7F3ED;
-    font-size:10px;font-weight:800;color:var(--muted);
-  }
-  details.ref[open] summary{border-bottom:1px solid var(--line)}
-  details.ref .ref-body{padding:12px 13px 13px;display:flex;flex-direction:column;gap:10px}
-  details.ref .ref-tx{margin:0;font-size:11.6px;line-height:1.55;color:var(--muted)}
   .card.soft{border-style:dashed;background:rgba(255,255,255,.7)}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;row-gap:7px}
   .when{
@@ -281,7 +262,7 @@
   }
   .desc b{font-weight:700;color:var(--ink)}
 
-  /* 비용 3줄 (총액 · 예약금 · 잔금) */
+  /* 비용 (총액 · 결제) */
   .cost{margin-top:11px;border:1px solid var(--line);border-radius:13px;background:#FDFCF9;overflow:hidden}
   .sect-h{
     display:flex;align-items:center;gap:6px;
@@ -348,19 +329,6 @@
   .pay-tag.pay-full::before{background:#D3E4D6;opacity:1}
   .pay-tag.pay-booked{background:var(--sage-soft);color:var(--sage-ink);box-shadow:inset 0 0 0 1px #CFE0D2}
 
-  /* ---------- 미니 업체 목록 ---------- */
-  .mini{
-    background:var(--card);border:1px solid var(--line);border-radius:15px;
-    padding:12px 14px;box-shadow:0 1px 2px rgba(34,38,31,.035);
-    display:flex;flex-direction:column;gap:5px;
-  }
-  .mini-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .mini h4{margin:0;font-size:13.2px;font-weight:750;letter-spacing:-0.02em}
-  .mini p{margin:0;font-size:11.9px;line-height:1.5;color:var(--muted)}
-  .mini p a{text-decoration:none;border-bottom:1px solid var(--line-strong);font-weight:650;color:var(--ink-soft)}
-  .mini p .tel{color:var(--rose-ink);font-weight:750;white-space:nowrap}
-  .mini-grid{display:grid;grid-template-columns:1fr;gap:9px}
-
   /* ---------- 예산 표 ---------- */
   .money{
     background:var(--card);border:1px solid var(--line);
@@ -377,7 +345,7 @@
   .money-total .mt-v{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--terra-ink);line-height:1.2}
   .money-total .mt-v small{font-size:11.5px;font-weight:700;margin-left:1px}
   .money-total .mt-e{font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:-0.005em}
-  .mhead,.mrow{display:grid;grid-template-columns:minmax(0,1.42fr) .86fr 1fr .9fr .9fr;gap:8px}
+  .mhead,.mrow{display:grid;grid-template-columns:minmax(0,1.42fr) .86fr 1fr 1.05fr;gap:8px}
   .mhead{
     padding:8px 16px 7px;background:#FAF7F2;border-bottom:1px solid var(--line);
     font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--muted);
@@ -550,7 +518,7 @@
     <div class="rules">
       <p class="rh"><span aria-hidden="true">📌</span>확정 방침</p>
       <ul>
-        <li><span class="dot" aria-hidden="true"></span><span><b>본식 착장은 드레스만</b> — 한복 촬영은 온듀오 스튜디오 패키지로 진행</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><b>본식 착장은 드레스만</b> — 한복 촬영은 온듀 스튜디오 패키지로 진행</span></li>
         <li><span class="dot" aria-hidden="true"></span><span><b>가성비 우선 · 모던하고 깔끔하게</b> — 주름 커튼·가렌드·과한 풍선은 제외</span></li>
         <li><span class="dot" aria-hidden="true"></span><span><b>백리향 조건</b> — 외부 돌상 반입 불가(제휴 5곳 중 선택), 돌잡이 사회는 담당 직원이 진행</span></li>
       </ul>
@@ -590,8 +558,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag pay-booked">예약 완료</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv">550,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 450,000원</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv">없음</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv">당일 일괄 결제<span class="cvn">550,000원 · 1/17 백리향에서 식대와 함께 한 번에 결제</span></span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv">당일 일괄 결제<span class="cvn">예약금 없음 · 550,000원을 1/17 백리향에서 식대와 함께 한 번에 결제</span></span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
@@ -611,7 +578,7 @@
       <span class="sec-no">2</span>
       <div class="sec-tx">
         <h2>본식 스냅 · 스튜디오 촬영</h2>
-        <p>본식 아이폰 스냅은 <b>쁘띠라뮤</b>로 진행 중 · 한복 촬영은 <b>온듀오 패키지</b>로 진행</p>
+        <p>본식 아이폰 스냅은 <b>쁘띠라뮤</b>로 진행 중 · 한복 촬영은 <b>온듀 패키지</b>로 진행</p>
       </div>
     </div>
 
@@ -630,8 +597,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">카톡 채널 상담 후 견적</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
@@ -648,35 +614,14 @@
           <span class="when"><span class="tag">스튜디오</span>한복 촬영</span>
           <span class="badge status st-confirm">진행 중 · 별도 예약 없음</span>
         </div>
-        <h3>스튜디오 돌촬영 — 온듀오 패키지</h3>
+        <h3>스튜디오 돌촬영 — 온듀 패키지</h3>
         <div class="vendor">
           <span class="k">업체</span>
-          <span class="v">스튜디오 온듀오 · 패키지로 진행</span>
+          <span class="v">스튜디오 온듀 · 패키지로 진행</span>
         </div>
-        <p class="desc">한복 촬영은 <b>온듀오 패키지</b>로 이미 진행 중. 따로 예약하거나 고를 것은 없다.</p>
+        <p class="desc">한복 촬영은 <b>온듀 패키지</b>로 이미 진행 중. 따로 예약하거나 고를 것은 없다.</p>
       </article>
     </div>
-
-    <details class="ref">
-      <summary><span class="arw" aria-hidden="true">▶</span>참고 — 백리향 제휴 스냅 3곳<span class="cnt">3</span></summary>
-      <div class="ref-body">
-        <p class="ref-tx">쁘띠라뮤로 진행하지 못할 때를 위한 <b>차선</b> 기록. 백리향 제휴라 동선 문제가 없다.</p>
-        <div class="mini-grid">
-          <div class="mini" data-cat="dolsang">
-            <div class="mini-top"><h4>TEAM ALL ABOUT63</h4><span class="badge status st-undecided">참고</span></div>
-            <p><a class="tel" href="tel:01033533422">010-3353-3422</a> · <a href="https://allabout63.com" target="_blank" rel="noopener">allabout63.com</a><br>백리향 제휴가 · 원본·보정본 수량과 앨범 구성 확인</p>
-          </div>
-          <div class="mini" data-cat="dolsang">
-            <div class="mini-top"><h4>63포토그래피</h4><span class="badge status st-undecided">참고</span></div>
-            <p><a class="tel" href="tel:01059065871">010-5906-5871</a> · <a href="https://63photography.co.kr" target="_blank" rel="noopener">63photography.co.kr</a><br>백리향 제휴가 · 원본·보정본 수량과 앨범 구성 확인</p>
-          </div>
-          <div class="mini" data-cat="dolsang">
-            <div class="mini-top"><h4>아워스토리63</h4><span class="badge status st-undecided">참고</span></div>
-            <p><a class="tel" href="tel:01091545148">010-9154-5148</a> · <a href="https://ssongsnap.kr" target="_blank" rel="noopener">ssongsnap.kr</a><br>백리향 제휴가 · 원본·보정본 수량과 앨범 구성 확인</p>
-          </div>
-        </div>
-      </div>
-    </details>
   </section>
 
   <!-- ================= 3. 의상 · 준비 ================= -->
@@ -708,8 +653,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">예상</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv">약 1,003,000원<span class="cvn">성인 158,000원 × 6 = 948,000원 + 어린이 코스 55,000원 = 1,003,000원 · 확정 전 예상치</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv">당일 일괄 결제<span class="cvn">예약금 없음 · 1/17 식대와 함께 백리향에서 한 번에 결제</span></span></div>
         </div>
         <p class="paynote">식대 + 돌상(원파티 황색동)은 <b>백리향에서 일괄 결제</b> · 상품권 10% 할인 구매분으로 내면 <b>실부담 135만 원</b> — 계산은 <b>4. 예산</b> 아래 참고</p>
         <div class="callout">
@@ -719,8 +663,8 @@
             <li><span class="cb" aria-hidden="true"></span><span><b>10:00 스냅 룸 사전 입장</b> 가능 여부<br><span class="note-in">촬영 시작 전 돌상 세팅·의상 갈아입을 시간이 나오는지</span></span></li>
             <li><span class="cb" aria-hidden="true"></span><span><b>초3 조카</b> — 어린이 코스(55,000원대) vs 단품<br><span class="note-in">어린이 코스: 게살스프·크림새우·탕수육·식사·아이스크림 · 단품도 된다고 함</span></span></li>
             <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상</b> — 재생비 5만 원 별도, 소규모라 <b>생략 검토</b></span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>예약금·잔금 납부 시점</b><br><span class="note-in">식대·돌상은 당일 한 번에 결제 — 상품권 결제 방법 확인</span></span></li>
-            <li><span class="cb" aria-hidden="true"></span><span>제휴 돌상·스냅 <b>전달 마감일</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>당일 결제 방식</b> — 상품권 결제 가능 여부<br><span class="note-in">예약금 없음 · 식대·돌상 모두 당일 한 번에 결제</span></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>돌상·스냅 업체 <b>전달 마감일</b></span></li>
           </ul>
         </div>
       </article>
@@ -739,8 +683,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">후보 기준 6~15만 원대</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
@@ -763,12 +706,11 @@
           <span class="k">업체</span>
           <span class="v"><span class="none">미선정</span></span>
         </div>
-        <p class="desc">한복 촬영은 온듀오 패키지로 진행. 본식은 <b>엄마 드레스 + 아빠 정장</b>. 홀리 드레스는 따로 카드로.</p>
+        <p class="desc">한복 촬영은 온듀 패키지로 진행. 본식은 <b>엄마 드레스 + 아빠 정장</b>. 홀리 드레스는 따로 카드로.</p>
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
@@ -794,8 +736,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">17만~27만 원대<span class="cvn">2인 기준 · 업체 공개가 기준, 실제 견적 확인 전</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
@@ -822,8 +763,7 @@
         <div class="cost">
           <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
           <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">세트당 1.5~4만 원 × 5~10세트 = 7만~40만 원대</span></span></div>
-          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
-          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">결제</span><span class="cv na">미정</span></div>
         </div>
         <div class="callout">
           <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>후보 4종<span class="co-n">4</span></div>
@@ -890,7 +830,7 @@
         </div>
       </div>
       <div class="mhead" aria-hidden="true">
-        <span>항목</span><span>상태</span><span>총액</span><span>예약금</span><span>잔금</span>
+        <span>항목</span><span>상태</span><span>총액</span><span>결제</span>
       </div>
       <div class="mtable" id="moneyRows"></div>
       <div class="mfoot">
@@ -1014,12 +954,12 @@
 
   /* ---------- 예산 표 ---------- */
   var ROWS = [
-    {name:"백리향 장소·식대", sub:"63빌딩 백리향 · 8명 (성인 6 + 초3 조카 + 홀리)", state:{t:"확인 필요", c:"st-check"}, total:"약 1,003,000원<span class=\"est\">(예상)</span>", dep:null, bal:null, memo:"성인 6×158,000 + 어린이 55,000 · 백리향 일괄 결제"},
-    {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", dep:"없음", bal:"당일 일괄", memo:"예약금 없음 · 백리향에서 식대와 일괄 결제 · 후기 시 체감 450,000원"},
-    {name:"본식 스냅", sub:"쁘띠라뮤 아이폰스냅 · 작가 확인 필요", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"카톡 채널 문의 전"},
-    {name:"본식 의상", sub:"홀리 드레스 택배 대여 · 엄마·아빠", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"후보 5곳 중 미선정"},
-    {name:"헤어·메이크업", sub:"출장 · 엄마+아빠 2인", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"후보 4곳 17만~27만 원대 · 06:45 시작"},
-    {name:"답례품·초대", sub:"답례품 · 모바일 초대장", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"5~10세트 · 세트당 1.5~4만 원"}
+    {name:"백리향 장소·식대", sub:"63빌딩 백리향 · 8명 (성인 6 + 초3 조카 + 홀리)", state:{t:"확인 필요", c:"st-check"}, total:"약 1,003,000원<span class=\"est\">(예상)</span>", pay:"당일 일괄", memo:"예약금 없음 · 성인 6×158,000 + 어린이 55,000 · 당일 일괄 결제"},
+    {name:"돌상", sub:"원파티 황색동 · 예약 완료", state:{t:"확정", c:"st-confirm"}, total:"550,000원", pay:"당일 일괄", memo:"예약금 없음 · 백리향에서 식대와 일괄 결제 · 후기 시 체감 450,000원"},
+    {name:"본식 스냅", sub:"쁘띠라뮤 아이폰스냅 · 작가 확인 필요", state:{t:"확인 필요", c:"st-check"}, total:null, pay:null, memo:"카톡 채널 문의 전"},
+    {name:"본식 의상", sub:"홀리 드레스 택배 대여 · 엄마·아빠", state:{t:"미정", c:"st-undecided"}, total:null, pay:null, memo:"후보 5곳 중 미선정"},
+    {name:"헤어·메이크업", sub:"출장 · 엄마+아빠 2인", state:{t:"확인 필요", c:"st-check"}, total:null, pay:null, memo:"후보 4곳 17만~27만 원대 · 06:45 시작"},
+    {name:"답례품·초대", sub:"답례품 · 모바일 초대장", state:{t:"확인 필요", c:"st-check"}, total:null, pay:null, memo:"5~10세트 · 세트당 1.5~4만 원"}
   ];
   function cell(v, big){
     if (v === null || v === undefined || v === "") return '<span class="mval na">미정</span>';
@@ -1032,8 +972,7 @@
         '<span class="mname">' + r.name + '<span class="msub">' + r.sub + '</span></span>' +
         '<span class="mcell mstate" data-c="state"><span class="badge status ' + r.state.c + '">' + r.state.t + '</span></span>' +
         '<span class="mcell" data-c="total"><span class="mlbl">총액</span>' + cell(r.total, true) + '</span>' +
-        '<span class="mcell" data-c="dep"><span class="mlbl">예약금</span>' + cell(r.dep) + '</span>' +
-        '<span class="mcell" data-c="bal"><span class="mlbl">잔금</span>' + cell(r.bal) + '</span>' +
+        '<span class="mcell" data-c="pay"><span class="mlbl">결제</span>' + cell(r.pay) + '</span>' +
       '</div>';
     }).join("");
   }
