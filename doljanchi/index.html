@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>홀리 첫 돌잔치 준비 · 2027.1.17</title>
+<meta name="description" content="2027년 1월 17일 63빌딩 백리향 돌잔치 준비 메모 — 돌상·스냅·의상·예산·타임라인.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FAF8F5">
+<meta property="og:title" content="홀리 첫 돌잔치 준비">
+<meta property="og:description" content="2027.1.17(일) · 63빌딩 백리향">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --bg:#FAF8F5;
+    --card:#FFFFFF;
+    --line:#EAE5DD;
+    --line-strong:#DBD3C7;
+    --ink:#22261F;
+    --ink-soft:#4C5249;
+    --muted:#8C877D;
+    --sage:#5F7F66;
+    --sage-soft:#ECF3EC;
+    --sage-ink:#3D5843;
+    --rose:#A8636E;
+    --rose-soft:#FAEFF0;
+    --rose-ink:#8B4A55;
+    --terra:#B4663F;
+    --terra-soft:#F9EDE4;
+    --terra-ink:#8C4726;
+    --navy:#2E3E5C;
+    --navy-soft:#ECF0F7;
+    --amber:#9F7629;
+    --amber-soft:#F8F1E0;
+    --gray-soft:#F2EFE9;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(34,38,31,.04), 0 10px 28px -20px rgba(34,38,31,.45);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    letter-spacing:-0.01em;
+    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      radial-gradient(900px 420px at 12% -8%, rgba(168,99,110,.10), transparent 70%),
+      radial-gradient(700px 380px at 96% 4%, rgba(95,127,102,.08), transparent 70%);
+    pointer-events:none;z-index:0;
+  }
+  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 20px 64px}
+  a{color:inherit}
+
+  /* ---------- 상단 바 ---------- */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 2px 18px;
+    font-size:11.5px;letter-spacing:.14em;color:var(--muted);
+  }
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600}
+  .brand .mark{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--rose);box-shadow:0 0 0 4px rgba(168,99,110,.14);
+  }
+  .today{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+
+  /* ---------- 헤더 ---------- */
+  header.hero{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:26px;
+    padding:24px 24px 20px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;right:-60px;top:-70px;
+    width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, rgba(168,99,110,.16), rgba(168,99,110,0) 68%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:.18em;
+    color:var(--rose);text-transform:uppercase;
+  }
+  .hero-row{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  h1{
+    margin:0;font-size:clamp(22px,6.2vw,29px);line-height:1.3;
+    font-weight:800;letter-spacing:-0.035em;
+  }
+  .sub{
+    margin:8px 0 0;color:var(--ink-soft);font-size:14px;font-weight:500;
+    letter-spacing:-0.005em;
+  }
+  .sub .dotsep{color:var(--line-strong);margin:0 6px}
+  .dday{
+    flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    min-width:84px;padding:11px 12px;border-radius:16px;
+    background:var(--rose);color:#fff;
+    font-weight:800;font-size:18px;letter-spacing:-0.02em;line-height:1.1;
+    box-shadow:0 8px 20px -12px rgba(139,74,85,.9);
+  }
+  .dday .dd{display:block;white-space:nowrap}
+  .dday small{display:block;margin-top:5px;font-size:9.5px;font-weight:600;letter-spacing:.12em;opacity:.85}
+  .dday.soon{background:var(--terra);box-shadow:0 8px 20px -12px rgba(140,71,38,.9)}
+  .dday.today{background:var(--sage-ink);box-shadow:0 8px 20px -12px rgba(61,88,67,.9)}
+
+  .nextup{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;row-gap:4px;
+    margin-top:18px;padding-top:15px;border-top:1px dashed var(--line);
+    font-size:13px;color:var(--ink-soft);
+  }
+  .nextup .lbl{font-size:10.5px;font-weight:700;letter-spacing:.13em;color:var(--muted)}
+  .nextup b{font-weight:650;color:var(--ink)}
+  .nextup .tick{
+    margin-left:auto;flex:none;font-size:11.5px;font-weight:700;color:var(--rose-ink);
+    background:var(--rose-soft);padding:3px 9px;border-radius:999px;
+  }
+
+  /* ---------- 확정 방침 ---------- */
+  .rules{margin-top:16px;padding-top:15px;border-top:1px dashed var(--line)}
+  .rules .rh{
+    display:flex;align-items:center;gap:6px;margin:0 0 9px;
+    font-size:10.5px;font-weight:800;letter-spacing:.09em;color:var(--muted);
+  }
+  .rules ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+  .rules li{
+    display:flex;gap:8px;align-items:flex-start;
+    font-size:13px;line-height:1.5;color:var(--ink-soft);letter-spacing:-0.005em;
+  }
+  .rules li .dot{
+    flex:none;width:5px;height:5px;margin-top:8px;border-radius:50%;
+    background:var(--rose);opacity:.75;
+  }
+  .rules li b{font-weight:700;color:var(--ink)}
+
+  /* ---------- 탭 ---------- */
+  .tabs{
+    display:flex;gap:8px;margin:20px -20px 0;padding:2px 20px 4px;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex:none;appearance:none;cursor:pointer;
+    border:1px solid var(--line-strong);background:rgba(255,255,255,.72);
+    color:var(--ink-soft);
+    padding:9px 15px;border-radius:999px;
+    font-family:inherit;font-size:13px;font-weight:600;letter-spacing:-0.01em;
+    transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+  }
+  .tab:hover{border-color:var(--ink-soft)}
+  .tab:active{transform:scale(.97)}
+  .tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  /* ---------- 섹션 ---------- */
+  section.block{margin-top:30px;scroll-margin-top:16px}
+  .sec-head{display:flex;align-items:flex-start;gap:12px;margin:0 2px 13px}
+  .sec-no{
+    flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    width:30px;height:30px;margin-top:2px;border-radius:10px;
+    background:var(--card);border:1px solid var(--line-strong);
+    font-size:12px;font-weight:800;color:var(--ink-soft);
+  }
+  .sec-tx h2{margin:0;font-size:17.5px;font-weight:800;letter-spacing:-0.03em;line-height:1.35}
+  .sec-tx p{margin:4px 0 0;font-size:12.4px;line-height:1.5;color:var(--muted);letter-spacing:-0.005em}
+  .sec-tx p b{font-weight:700;color:var(--ink-soft)}
+
+  /* ---------- 카드 ---------- */
+  .cards{display:flex;flex-direction:column;gap:12px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 17px 15px;box-shadow:0 1px 2px rgba(34,38,31,.035);
+    transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease;
+  }
+  .card:hover{box-shadow:var(--shadow);border-color:var(--line-strong)}
+  .card.pick{border-color:#E7C9CD;background:linear-gradient(180deg,#FFFBFB 0%,#FFFFFF 60%)}
+  .card.soft{border-style:dashed;background:rgba(255,255,255,.7)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;row-gap:7px}
+  .when{
+    font-size:11.5px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);
+    display:flex;align-items:center;gap:7px;
+  }
+  .when .tag{
+    flex:none;padding:2px 7px;border-radius:6px;background:#F7F3ED;
+    font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);
+  }
+  .card h3{margin:8px 0 0;font-size:16.5px;font-weight:750;letter-spacing:-0.025em;line-height:1.4}
+  .vendor{
+    display:flex;gap:8px;align-items:baseline;margin-top:7px;
+    font-size:12.6px;letter-spacing:-0.005em;
+  }
+  .vendor .k{flex:none;width:26px;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted)}
+  .vendor .v{flex:1;min-width:0;font-weight:650;color:var(--ink-soft);line-height:1.7}
+  .vendor .v a{text-decoration:none;border-bottom:1px solid var(--line-strong)}
+  .vendor .v a:hover{border-color:var(--rose)}
+  .vendor .v .tel{color:var(--rose-ink);font-weight:750;white-space:nowrap}
+  .vendor .v .site{color:var(--navy);font-weight:600}
+  .vendor .v .none{font-weight:500;color:var(--muted)}
+  .desc{
+    margin:9px 0 0;font-size:12.6px;line-height:1.55;font-weight:500;
+    color:var(--ink-soft);letter-spacing:-0.005em;
+  }
+  .desc b{font-weight:700;color:var(--ink)}
+
+  /* 비용 3줄 (총액 · 예약금 · 잔금) */
+  .cost{margin-top:11px;border:1px solid var(--line);border-radius:13px;background:#FDFCF9;overflow:hidden}
+  .sect-h{
+    display:flex;align-items:center;gap:6px;
+    padding:7px 12px 6px;background:#F8F5EF;border-bottom:1px solid var(--line);
+    font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--muted);
+  }
+  .sect-h .pay{margin-left:auto;padding:2.5px 8px;border-radius:999px;font-size:10px;font-weight:800;white-space:nowrap}
+  .crow{display:flex;align-items:baseline;gap:10px;padding:7px 12px;font-size:12.8px;flex-wrap:wrap}
+  .crow + .crow{border-top:1px solid #F3EFE7}
+  .crow .ck{flex:none;width:46px;font-size:10.5px;font-weight:750;color:var(--muted)}
+  .crow .cv{flex:1;min-width:0;font-weight:650;letter-spacing:-0.01em;color:var(--ink-soft)}
+  .crow .cv .cvn{display:block;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0;line-height:1.4}
+  .crow.total .cv{font-weight:800;color:var(--terra-ink)}
+  .crow .cv.na{font-weight:500;color:var(--muted)}
+
+  /* 확인할 사항 */
+  .callout{
+    margin-top:11px;border:1px solid #EBD9B8;border-radius:13px;
+    background:linear-gradient(180deg,#FDF7EA,#FBF2DF);
+    padding:9px 12px 10px;
+  }
+  .co-h{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.06em;color:#8A641F}
+  .co-h .co-ico{
+    flex:none;display:inline-flex;align-items:center;justify-content:center;
+    width:13px;height:13px;border-radius:4px;background:#EBD9B8;color:#6E4E14;
+    font-size:9px;font-weight:900;line-height:1;
+  }
+  .co-h .co-n{margin-left:auto;padding:1px 6px;border-radius:999px;background:rgba(139,100,31,.10);font-size:10px;font-weight:800}
+  .callout ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .callout li{display:flex;gap:7px;align-items:flex-start;font-size:12.4px;line-height:1.5;font-weight:550;color:#6E5220}
+  .callout li .cb{
+    flex:none;width:11px;height:11px;margin-top:3.5px;border-radius:3px;
+    background:#fff;border:1.5px solid #D6BE8C;
+  }
+  .callout li b{font-weight:750;color:#5E4310}
+
+  /* 배지 */
+  .badge{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:4px 9px;border-radius:999px;
+    font-size:11px;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;
+  }
+  .badge.status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+ .st-confirm{background:var(--sage-soft);color:var(--sage-ink)}
+  .st-pick{background:var(--rose-soft);color:var(--rose-ink);box-shadow:inset 0 0 0 1px rgba(139,74,85,.14)}
+  .st-check{background:var(--amber-soft);color:var(--amber)}
+  .st-undecided{background:var(--gray-soft);color:#77726A}
+  .badge.money{background:#FBF6EE;border:1px solid var(--line);color:#7F6136;font-weight:700}
+  .pay-tag{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:2.5px 8px;border-radius:999px;
+    font-size:10px;font-weight:800;letter-spacing:-0.005em;line-height:1.5;white-space:nowrap;
+    background:#EFEDE6;color:#6E695F;box-shadow:inset 0 0 0 1px rgba(34,38,31,.09);
+  }
+  .pay-tag::before{content:"";flex:none;width:4.5px;height:4.5px;border-radius:50%;background:currentColor;opacity:.75}
+  .pay-tag.pay-full{background:#3D5843;color:#fff;box-shadow:none}
+  .pay-tag.pay-full::before{background:#D3E4D6;opacity:1}
+
+  /* ---------- 후보 비교 표 ---------- */
+  .vs{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;
+  }
+  .vs-head{padding:14px 17px 12px;border-bottom:1px solid var(--line)}
+  .vs-head h3{margin:0;font-size:14px;font-weight:800;letter-spacing:-0.02em}
+  .vs-head p{margin:4px 0 0;font-size:11.8px;line-height:1.5;color:var(--muted)}
+  .vs-row{
+    display:grid;grid-template-columns:86px 1fr 1fr;gap:10px;
+    padding:10px 17px;font-size:12.4px;align-items:baseline;
+  }
+  .vs-row + .vs-row{border-top:1px solid #F5F2EC}
+  .vs-row .vk{font-size:10px;font-weight:800;letter-spacing:.03em;color:var(--muted)}
+  .vs-row .vv{font-weight:600;color:var(--ink-soft);line-height:1.45}
+  .vs-row .vh{font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--ink);padding-bottom:2px}
+  .vs-note{
+    padding:11px 17px 13px;border-top:1px dashed var(--line);background:#FEFDFB;
+    font-size:11.8px;line-height:1.55;color:var(--ink-soft);
+  }
+  .vs-note b{font-weight:750;color:var(--ink)}
+  .vs-note .pick-tag{
+    display:inline-block;margin-right:5px;padding:1px 7px;border-radius:999px;
+    background:var(--rose-soft);color:var(--rose-ink);font-size:10px;font-weight:800;
+  }
+
+  /* ---------- 미니 업체 목록 ---------- */
+  .mini{
+    background:var(--card);border:1px solid var(--line);border-radius:15px;
+    padding:12px 14px;box-shadow:0 1px 2px rgba(34,38,31,.035);
+    display:flex;flex-direction:column;gap:5px;
+  }
+  .mini-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .mini h4{margin:0;font-size:13.2px;font-weight:750;letter-spacing:-0.02em}
+  .mini p{margin:0;font-size:11.9px;line-height:1.5;color:var(--muted)}
+  .mini p a{text-decoration:none;border-bottom:1px solid var(--line-strong);font-weight:650;color:var(--ink-soft)}
+  .mini p .tel{color:var(--rose-ink);font-weight:750;white-space:nowrap}
+  .mini-grid{display:grid;grid-template-columns:1fr;gap:9px}
+
+  /* ---------- 예산 표 ---------- */
+  .money{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+  }
+  .money-head{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+    padding:17px 18px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+  }
+  .money-head h3{margin:0;font-size:14.5px;font-weight:750;letter-spacing:-0.02em}
+  .money-sub{margin:5px 0 0;font-size:11.5px;line-height:1.5;font-weight:500;color:var(--muted);max-width:46ch}
+  .money-total{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin-left:auto;text-align:right}
+  .money-total .mt-k{font-size:10px;font-weight:750;letter-spacing:.05em;color:var(--muted)}
+  .money-total .mt-v{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--terra-ink);line-height:1.2}
+  .money-total .mt-v small{font-size:11.5px;font-weight:700;margin-left:1px}
+  .mhead,.mrow{display:grid;grid-template-columns:minmax(0,1.42fr) .86fr 1fr .9fr .9fr;gap:8px}
+  .mhead{
+    padding:8px 16px 7px;background:#FAF7F2;border-bottom:1px solid var(--line);
+    font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--muted);
+  }
+  .mrow{align-items:baseline;padding:9.5px 16px;font-size:12.4px}
+  .mrow + .mrow{border-top:1px solid #F5F2EC}
+  .mname{min-width:0;font-weight:700;color:var(--ink);letter-spacing:-0.015em;line-height:1.4}
+  .mname .msub{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:0;line-height:1.4}
+  .mcell{min-width:0;display:flex;flex-direction:column;gap:1px}
+  .mcell .mlbl{display:none}
+  .mval{font-size:12.4px;font-weight:650;color:var(--ink-soft);letter-spacing:-0.01em;line-height:1.45;overflow-wrap:anywhere}
+  .mval.big{font-weight:800;color:var(--terra-ink)}
+  .mval.na{font-weight:500;color:var(--muted)}
+  .mstate{justify-self:start}
+  .mstate .badge{font-size:10px;padding:3px 8px}
+  .mfoot{
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    padding:11px 16px 13px;border-top:1px dashed var(--line);background:#FEFDFB;
+  }
+  .mfoot .fk{font-size:11px;font-weight:750;letter-spacing:.03em;color:var(--muted)}
+  .mfoot .fv{font-size:13px;font-weight:800;color:var(--ink)}
+  .mfoot .fnote{flex:1 1 100%;font-size:10.5px;line-height:1.5;color:var(--muted)}
+
+  /* ---------- 타임라인 체크리스트 ---------- */
+  .tlv{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .tlv-sum{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:13px 17px;border-bottom:1px solid var(--line);background:#FEFDFB;
+    font-size:11.5px;font-weight:600;color:var(--muted);
+  }
+  .tlv-sum .bar{flex:1 1 90px;height:5px;border-radius:99px;background:#EFEBE3;overflow:hidden}
+  .tlv-sum .bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--rose);transition:width .3s ease}
+  .tlv-sum b{font-weight:800;color:var(--rose-ink);font-size:12.5px}
+  .tlv-sum .reset{
+    appearance:none;border:0;background:none;padding:2px;cursor:pointer;
+    font-family:inherit;font-size:10.5px;font-weight:700;color:var(--muted);text-decoration:underline;
+  }
+  .phase{padding:14px 17px 4px}
+  .phase + .phase{border-top:1px solid #F5F2EC}
+  .phase-h{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .phase-h .ph-d{
+    flex:none;padding:2px 8px;border-radius:999px;background:#F7F3ED;
+    font-size:10px;font-weight:800;letter-spacing:.03em;color:var(--ink-soft);
+  }
+  .phase-h h4{margin:0;font-size:12.8px;font-weight:800;letter-spacing:-0.02em}
+  .phase-h .ph-c{margin-left:auto;font-size:10.5px;font-weight:750;color:var(--muted)}
+  .ck-row{
+    display:flex;gap:10px;align-items:flex-start;width:100%;
+    padding:8px 0;border:0;background:none;cursor:pointer;text-align:left;
+    font-family:inherit;
+  }
+  .ck-row + .ck-row{border-top:1px solid #F8F5EF}
+  .box{
+    flex:none;width:17px;height:17px;margin-top:1px;border-radius:5px;
+    background:#fff;border:1.5px solid var(--line-strong);
+    position:relative;transition:background .15s ease,border-color .15s ease;
+  }
+  .box.done{background:var(--sage);border-color:var(--sage)}
+  .box.done::after{
+    content:"";position:absolute;left:4.5px;top:1px;width:5px;height:9px;
+    border:2px solid #fff;border-top:0;border-left:0;transform:rotate(40deg);
+  }
+  .ck-tx{flex:1;min-width:0;font-size:12.9px;line-height:1.5;font-weight:600;color:var(--ink);letter-spacing:-0.01em}
+  .ck-row.done .ck-tx{color:#9A958B;text-decoration:line-through;text-decoration-color:rgba(154,149,139,.6)}
+  .ck-tx .ckm{display:block;margin-top:2px;font-size:10.8px;font-weight:500;color:var(--muted);line-height:1.4;letter-spacing:0}
+  .ck-row.done .ck-tx .ckm{text-decoration:none}
+
+  footer{
+    margin-top:36px;padding:18px 4px 0;border-top:1px solid var(--line);
+    font-size:11px;line-height:1.6;color:var(--muted);text-align:center;letter-spacing:.01em;
+  }
+  footer b{font-weight:700;color:var(--ink-soft)}
+
+  @media (max-width:430px){
+    .wrap{padding:0 16px 56px}
+    header.hero{padding:20px 18px 17px;border-radius:22px}
+    .card{padding:14px 14px 13px;border-radius:16px}
+    .rules li{font-size:12.6px}
+    .vs-row{grid-template-columns:72px 1fr 1fr;padding:9px 14px;font-size:11.9px}
+    .money-head{padding:15px 15px 12px}
+    .mhead{display:none}
+    .mrow{grid-template-columns:1fr 1fr;gap:6px 10px;padding:11px 15px;position:relative}
+    .mrow .mname{grid-column:1 / -1}
+    .mcell .mlbl{display:block;font-size:9.5px;font-weight:800;letter-spacing:.03em;color:var(--muted)}
+    .mcell[data-c="state"]{grid-column:1 / -1}
+    .mfoot{padding:10px 15px 12px}
+    .phase{padding:13px 14px 3px}
+    .tlv-sum{padding:11px 14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="brand"><span class="mark"></span>DOLJANCHI PLAN</span>
+    <span class="today" id="todayLabel"></span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">2027 · Winter</p>
+    <div class="hero-row">
+      <h1>홀리 첫 돌잔치 준비</h1>
+      <div class="dday" id="dday" aria-live="polite"><span class="dd" id="ddayNum">D-…</span><small>DAYS</small></div>
+    </div>
+    <p class="sub">2027.1.17(일)<span class="dotsep">·</span>63빌딩 백리향<span class="dotsep">·</span>시간대 미정</p>
+    <div class="nextup">
+      <span class="lbl">NEXT</span>
+      <span id="nextUp">백리향에 1/17 <b>시간대·보증인원</b> 확인하기</span>
+      <span class="tick" id="nextTick">1순위</span>
+    </div>
+
+    <div class="rules">
+      <p class="rh"><span aria-hidden="true">📌</span>확정 방침</p>
+      <ul>
+        <li><span class="dot" aria-hidden="true"></span><span><b>본식 착장은 드레스만</b> — 한복은 스튜디오 촬영에서 따로</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><b>가성비 우선 · 모던하고 깔끔하게</b> — 주름 커튼·가렌드·과한 풍선은 제외</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><b>백리향 조건</b> — 외부 돌상 반입 불가(제휴 5곳 중 선택), 돌잡이 사회는 담당 직원이 진행</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="구역 이동">
+    <button class="tab" type="button" data-filter="all" aria-pressed="true">전체</button>
+    <button class="tab" type="button" data-filter="dolsang" aria-pressed="false">돌상·스냅</button>
+    <button class="tab" type="button" data-filter="prep" aria-pressed="false">의상·준비</button>
+    <button class="tab" type="button" data-jump="budget" aria-pressed="false">예산표</button>
+    <button class="tab" type="button" data-jump="timeline" aria-pressed="false">타임라인</button>
+  </nav>
+
+  <!-- ================= 1. 돌상 ================= -->
+  <section class="block" id="dolsang" aria-label="돌상">
+    <div class="sec-head">
+      <span class="sec-no">1</span>
+      <div class="sec-tx">
+        <h2>돌상 — 제휴 5곳 중 원파티 2종 집중 비교</h2>
+        <p>외부 반입 불가 · <b>원파티 화이트 / 윤슬</b>이 지금 1순위, 베베궁은 2순위 참고</p>
+      </div>
+    </div>
+
+    <div class="vs">
+      <div class="vs-head">
+        <h3>원파티 화이트 vs 윤슬</h3>
+        <p>같은 465,000원 · 후기 혜택도 동일 · 다른 건 분위기뿐</p>
+      </div>
+      <div class="vs-row">
+        <span class="vh"> </span><span class="vh">화이트</span><span class="vh">윤슬</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">분위기</span>
+        <span class="vv">깔끔한 현수막 배경 · 무채색</span>
+        <span class="vv">딥그린 테이블보 + 오렌지·옐로우 꽃</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">현수막</span>
+        <span class="vv">기본 현수막 배경</span>
+        <span class="vv">1.8m 현수막</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">떡</span>
+        <span class="vv">백설기 · 수수팥떡 2종</span>
+        <span class="vv">백설기 · 수수팥떡 2종</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">포장</span>
+        <span class="vv">포장 포함</span>
+        <span class="vv">포장 포함</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">옵션</span>
+        <span class="vv">이름 현수막 · 병풍</span>
+        <span class="vv">이름 현수막 · 병풍 (둘 다 유료)</span>
+      </div>
+      <div class="vs-row">
+        <span class="vk">총액</span>
+        <span class="vv">465,000원 → 체감 365,000원</span>
+        <span class="vv">465,000원 → 체감 365,000원</span>
+      </div>
+      <div class="vs-note">
+        <span class="pick-tag">결정 기준</span>
+        <b>깔끔함이면 화이트, 꽃 색감이 좋으면 윤슬.</b> 본식이 드레스라 흰 배경에 아기가 잘 살고, 촬영 사진이 무난한 건 화이트. 윤슬은 딥그린·오렌지가 사진에 확실히 남는다.
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card pick" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">돌상</span>원파티</span>
+          <span class="badge status st-pick">후보 비교</span>
+        </div>
+        <h3>화이트 상차림</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
+        </div>
+        <p class="desc">깔끔한 현수막 배경에 무채색 구성. 주름 커튼·가렌드가 없어 <b>모던한 무드</b>에 가장 가깝다.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv">465,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 365,000원</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>시간대</b> 확정 후 예약 가능 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 제휴 <b>실제 견적</b>이 465,000원인지 (가격표는 모멘트리 기준)</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 <b>금액과 납부 시점</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>후기 상품권 10만 원 <b>적용 조건</b> (예약 경로·후기 게시처)</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card pick" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">돌상</span>원파티</span>
+          <span class="badge status st-pick">후보 비교</span>
+        </div>
+        <h3>윤슬 상차림</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v">원파티 · <a class="tel" href="tel:01042867980">010-4286-7980</a> · <a class="site" href="https://1party.co.kr" target="_blank" rel="noopener">1party.co.kr</a></span>
+        </div>
+        <p class="desc">딥그린 테이블보에 오렌지·옐로우 꽃, 1.8m 현수막. 떡 2종·포장·돌잡이 용품까지 포함.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv">465,000원<span class="cvn">모멘트리 파트너 가격표 기준 · 부가세 포함 · 서울 출장비 무료 · 후기 시 신세계 모바일 상품권 10만 원 → 체감 365,000원</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">4</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>1/17 <b>시간대</b> 확정 후 예약 가능 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>이름 현수막·병풍 <b>유료 옵션 가격</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>떡 2종·포장·돌잡이 용품 <b>포함 범위</b> 재확인</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 금액과 후기 상품권 적용 조건</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">돌상</span>베베궁</span>
+          <span class="badge status st-check">확인 필요</span>
+        </div>
+        <h3>전통상 (플로리아 · 그린나래)</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v">베베궁 · <a class="tel" href="tel:01073602131">010-7360-2131</a> · <a class="site" href="https://bebegoong.co.kr" target="_blank" rel="noopener">bebegoong.co.kr</a></span>
+        </div>
+        <p class="desc">전통상이 주력. <b>2순위 참고</b> — 원파티보다 전통적인 느낌을 원할 때만.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">금액 확인</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv">50만 원대<span class="cvn">플로리아·그린나래 기준 · 후기 시 5만 원 캐시백</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>플로리아·그린나래 <b>정확한 견적</b>과 1/17 가능 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>후기 5만 원 캐시백 조건</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="mini-grid" style="margin-top:10px">
+      <div class="mini" data-cat="dolsang">
+        <div class="mini-top"><h4>가든제이</h4><span class="badge status st-undecided">참고</span></div>
+        <p><a class="tel" href="tel:01067007647">010-6700-7647</a> · <a href="https://thegardenj.com" target="_blank" rel="noopener">thegardenj.com</a><br>사이트 접속이 불안정하고 백리향 현대 돌상 자료가 적음</p>
+      </div>
+      <div class="mini" data-cat="dolsang">
+        <div class="mini-top"><h4>로맨틱 플라워 파티</h4><span class="badge status st-undecided">참고</span></div>
+        <p><a class="tel" href="tel:01068864620">010-6886-4620</a> · <a href="https://romanticdol.com" target="_blank" rel="noopener">romanticdol.com</a><br>50만 원대~ · 자개·전통 위주 (현대식은 풍선·큰 꽃 장식)</p>
+      </div>
+      <div class="mini" data-cat="dolsang">
+        <div class="mini-top"><h4>스트릿가든</h4><span class="badge status st-undecided">참고</span></div>
+        <p><a class="tel" href="tel:07082896601">070-8289-6601</a> · <a href="https://stgarden.co.kr" target="_blank" rel="noopener">stgarden.co.kr</a><br>66~77만 원대 · 전통 위주라 이번 기준과는 거리가 있음</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. 스냅 · 스튜디오 ================= -->
+  <section class="block" id="snap" aria-label="스냅과 스튜디오">
+    <div class="sec-head">
+      <span class="sec-no">2</span>
+      <div class="sec-tx">
+        <h2>본식 스냅 · 스튜디오 촬영</h2>
+        <p>본식 스냅은 백리향 제휴 3곳 중 선택 · 한복 촬영은 스튜디오에서 따로</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">본식</span>스냅</span>
+          <span class="badge status st-check">확인 필요</span>
+        </div>
+        <h3>TEAM ALL ABOUT63</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><a class="tel" href="tel:01033533422">010-3353-3422</a> · <a class="site" href="https://allabout63.com" target="_blank" rel="noopener">allabout63.com</a></span>
+        </div>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>2027.1.17 <b>예약 가능 여부</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>원본·보정본 수량 · <b>앨범 구성</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>제휴가</b>와 일반가 차이</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">본식</span>스냅</span>
+          <span class="badge status st-check">확인 필요</span>
+        </div>
+        <h3>63포토그래피</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><a class="tel" href="tel:01059065871">010-5906-5871</a> · <a class="site" href="https://63photography.co.kr" target="_blank" rel="noopener">63photography.co.kr</a></span>
+        </div>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>2027.1.17 <b>예약 가능 여부</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>원본·보정본 수량 · <b>앨범 구성</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>제휴가</b>와 일반가 차이</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">본식</span>스냅</span>
+          <span class="badge status st-check">확인 필요</span>
+        </div>
+        <h3>아워스토리63</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><a class="tel" href="tel:01091545148">010-9154-5148</a> · <a class="site" href="https://ssongsnap.kr" target="_blank" rel="noopener">ssongsnap.kr</a></span>
+        </div>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>2027.1.17 <b>예약 가능 여부</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>원본·보정본 수량 · <b>앨범 구성</b></span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>백리향 <b>제휴가</b>와 일반가 차이</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card soft" data-cat="dolsang">
+        <div class="card-top">
+          <span class="when"><span class="tag">스튜디오</span>한복 촬영</span>
+          <span class="badge status st-undecided">미정</span>
+        </div>
+        <h3>스튜디오 돌촬영 (한복)</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><span class="none">업체 미선정</span></span>
+        </div>
+        <p class="desc">본식은 드레스로 정했으니 <b>한복은 여기서</b>. 아기·가족 한복 대여까지 한 번에 묶는 게 편하다.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>스튜디오 선정 — <b>1월 초 촬영</b> 가능한 곳</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>아기·가족 <b>한복 대여 포함</b> 여부</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>원본·보정본 · 앨범 구성</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 3. 의상 · 준비 ================= -->
+  <section class="block" id="prep" aria-label="의상과 준비물">
+    <div class="sec-head">
+      <span class="sec-no">3</span>
+      <div class="sec-tx">
+        <h2>의상 · 헤어메이크업 · 답례품 · 백리향</h2>
+        <p>장소·날짜만 확정 · 나머지는 12월 중순부터 순서대로 정하면 됨</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card" data-cat="prep">
+        <div class="card-top">
+          <span class="when"><span class="tag">장소</span>백리향</span>
+          <span class="badge status st-confirm">확정 (장소·날짜)</span>
+        </div>
+        <h3>63빌딩 백리향 · 2027.1.17(일)</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v">63빌딩 백리향 · <a class="tel" href="tel:027895741">02-789-5741</a></span>
+        </div>
+        <p class="desc">시간대·룸·보증인원이 정해져야 돌상·스냅·식대가 전부 확정된다. <b>가장 먼저 풀어야 하는 열쇠.</b></p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정<span class="cvn">식대 · 보증인원 확정 후 산정</span></span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">5</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span><b>1/17 시간대</b> — 점심·저녁 중 어디로 할지</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>룸 배정 · <b>보증인원</b> 기준</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>식대</b> 1인당 금액과 초과 인원 요금</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>예약금·잔금 납부 시점</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>제휴 돌상·스냅 <b>확정 전달</b> 마감일</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-cat="prep">
+        <div class="card-top">
+          <span class="when"><span class="tag">의상</span>본식</span>
+          <span class="badge status st-undecided">미정</span>
+        </div>
+        <h3>본식 드레스 (아기 · 엄마 · 아빠)</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><span class="none">미선정</span></span>
+        </div>
+        <p class="desc">한복은 스튜디오에서. 본식은 <b>아기 드레스 + 엄마 드레스 + 아빠 정장</b> 세 벌.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span>아기 드레스 — <b>대여 vs 구매</b>, 12개월 사이즈</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>엄마 드레스 — <b>모던·깔끔</b> 기준으로 대여처 비교</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>아빠 정장은 보유 여부 확인 후 필요 시 대여</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-cat="prep">
+        <div class="card-top">
+          <span class="when"><span class="tag">의상</span>헤어·메이크업</span>
+          <span class="badge status st-undecided">미정</span>
+        </div>
+        <h3>엄마 헤어·메이크업</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><span class="none">미선정</span></span>
+        </div>
+        <p class="desc">아기를 안고 이동해야 하니 <b>출장</b>이 편한지, <b>샵</b>이 나은지부터 정하기.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">2</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span><b>출장 vs 샵</b> 결정 (백리향 출장 가능 여부 포함)</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span>1/17 오전 <b>시간대 예약</b> 가능 여부</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card soft" data-cat="prep">
+        <div class="card-top">
+          <span class="when"><span class="tag">준비</span>답례품·초대</span>
+          <span class="badge status st-undecided">미정</span>
+        </div>
+        <h3>답례품 · 모바일 초대장 · 성장동영상</h3>
+        <div class="vendor">
+          <span class="k">업체</span>
+          <span class="v"><span class="none">미선정</span></span>
+        </div>
+        <p class="desc">1월 초에 한 번에 주문·발송하면 된다. 인원이 확정돼야 수량이 나온다.</p>
+        <div class="cost">
+          <div class="sect-h"><span aria-hidden="true">₩</span>비용<span class="pay-tag">미정</span></div>
+          <div class="crow total"><span class="ck">총액</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">예약금</span><span class="cv na">미정</span></div>
+          <div class="crow"><span class="ck">잔금</span><span class="cv na">미정</span></div>
+        </div>
+        <div class="callout">
+          <div class="co-h"><span class="co-ico" aria-hidden="true">!</span>확인할 사항<span class="co-n">3</span></div>
+          <ul>
+            <li><span class="cb" aria-hidden="true"></span><span><b>답례품 품목·수량</b> — 인원 확정 후 주문</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>모바일 초대장</b> 제작·발송 시점</span></li>
+            <li><span class="cb" aria-hidden="true"></span><span><b>성장동영상 · 포토테이블</b> 할지 여부</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 4. 예산 ================= -->
+  <section class="block" id="budget" aria-label="예산 한눈에 보기">
+    <div class="sec-head">
+      <span class="sec-no">4</span>
+      <div class="sec-tx">
+        <h2>예산 한눈에 보기</h2>
+        <p>모든 항목 같은 형식 · 금액이 정해지지 않은 곳은 <b>미정</b>으로 통일</p>
+      </div>
+    </div>
+
+    <div class="money">
+      <div class="money-head">
+        <div>
+          <h3>항목 · 상태 · 금액</h3>
+          <p class="money-sub">7개 항목 · 파악된 금액은 돌상 한 건뿐 · 나머지는 업체 문의 후 채우기</p>
+        </div>
+        <div class="money-total">
+          <span class="mt-k">파악된 금액 합계</span>
+          <span class="mt-v" id="moneySum">465,000<small>원</small></span>
+        </div>
+      </div>
+      <div class="mhead" aria-hidden="true">
+        <span>항목</span><span>상태</span><span>총액</span><span>예약금</span><span>잔금</span>
+      </div>
+      <div class="mtable" id="moneyRows"></div>
+      <div class="mfoot">
+        <span class="fk">합계 기준</span>
+        <span class="fv" id="moneyFoot">465,000원</span>
+        <span class="fnote">금액이 <b>미정</b>인 항목은 합계에서 빠져 있어요. 견적을 받는 대로 이 표에 채우면 됩니다.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. 타임라인 ================= -->
+  <section class="block" id="timeline" aria-label="시기별 체크리스트">
+    <div class="sec-head">
+      <span class="sec-no">5</span>
+      <div class="sec-tx">
+        <h2>시기별 체크리스트</h2>
+        <p>체크는 이 기기에 저장돼 새로고침해도 남아요</p>
+      </div>
+    </div>
+    <div class="tlv">
+      <div class="tlv-sum">
+        <span>진행</span>
+        <b id="tlvCount">0/13</b>
+        <span class="bar" aria-hidden="true"><i id="tlvBar"></i></span>
+        <button class="reset" type="button" id="tlvReset">전체 해제</button>
+      </div>
+      <div id="tlvBody"></div>
+    </div>
+  </section>
+
+  <footer>
+    라니의 돌잔치 준비 메모 · 홀리 1st Birthday<br>
+    63빌딩 백리향 · 2027.1.17(일) · 수정은 홀리에게 말해 주세요
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var TARGET = "2027-01-17";
+
+  /* ---------- 날짜 ---------- */
+  function pad(n){ return (n < 10 ? "0" : "") + n; }
+  function kstParts(d){
+    var f = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Seoul", year:"numeric", month:"2-digit", day:"2-digit"});
+    var p = f.formatToParts(d), o = {};
+    p.forEach(function(x){ if (x.type !== "literal") o[x.type] = x.value; });
+    return {y:+o.year, m:+o.month, d:+o.day};
+  }
+  var now = new Date();
+  var tp = kstParts(now);
+  var todayUTC = Date.UTC(tp.y, tp.m - 1, tp.d);
+  var t = TARGET.split("-");
+  var targetUTC = Date.UTC(+t[0], +t[1] - 1, +t[2]);
+  var diff = Math.round((targetUTC - todayUTC) / 86400000);
+
+  var WD = ["일","월","화","수","목","금","토"];
+  var wd = new Date(targetUTC).getUTCDay();
+
+  var lbl = document.getElementById("todayLabel");
+  if (lbl) lbl.textContent = tp.y + "." + tp.m + "." + tp.d + " (" + WD[new Date(todayUTC).getUTCDay()] + ")";
+
+  var dd = document.getElementById("dday"), ddNum = document.getElementById("ddayNum");
+  if (diff > 0) {
+    ddNum.textContent = "D-" + diff;
+    if (diff <= 30) dd.classList.add("soon");
+  } else if (diff === 0) {
+    ddNum.textContent = "D-DAY";
+    dd.classList.add("today");
+  } else {
+    ddNum.textContent = "D+" + Math.abs(diff);
+  }
+
+  /* ---------- 구역 이동 / 필터 ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  function setPressed(el){
+    tabs.forEach(function(b){ b.setAttribute("aria-pressed", b === el ? "true" : "false"); });
+  }
+  tabs.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if (btn.hasAttribute("data-jump")) {
+        var sec = document.getElementById(btn.getAttribute("data-jump"));
+        if (sec) sec.scrollIntoView({behavior:"smooth", block:"start"});
+        setPressed(btn);
+        return;
+      }
+      setPressed(btn);
+      var f = btn.getAttribute("data-filter");
+      document.querySelectorAll("[data-cat]").forEach(function(el){
+        var show = (f === "all") || (el.getAttribute("data-cat") === f);
+        el.style.display = show ? "" : "none";
+      });
+      document.querySelectorAll("section.block").forEach(function(sec){
+        var has = sec.querySelectorAll("[data-cat]").length;
+        if (!has) return;
+        var shown = Array.prototype.slice.call(sec.querySelectorAll("[data-cat]")).some(function(el){
+          return el.style.display !== "none";
+        });
+        sec.style.display = shown ? "" : "none";
+      });
+    });
+  });
+
+  /* ---------- 예산 표 ---------- */
+  var ROWS = [
+    {name:"백리향 장소·식대", sub:"63빌딩 백리향", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"시간대·보증인원 확정 후 산정"},
+    {name:"돌상", sub:"원파티 화이트 또는 윤슬", state:{t:"후보 비교", c:"st-pick"}, total:"465,000원", dep:null, bal:null, memo:"모멘트리 가격표 · 후기 시 체감 365,000원"},
+    {name:"본식 스냅", sub:"백리향 제휴 3곳 중 1", state:{t:"확인 필요", c:"st-check"}, total:null, dep:null, bal:null, memo:"견적 문의 전"},
+    {name:"스튜디오 돌촬영", sub:"한복 촬영 · 업체 미선정", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"1월 초 촬영 가능한 곳"},
+    {name:"본식 의상", sub:"아기·엄마 드레스 + 아빠 정장", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"대여 vs 구매 미정"},
+    {name:"헤어·메이크업", sub:"엄마 · 출장 vs 샵", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"방식부터 결정"},
+    {name:"답례품·초대", sub:"답례품 · 모바일 초대장", state:{t:"미정", c:"st-undecided"}, total:null, dep:null, bal:null, memo:"인원 확정 후 수량"}
+  ];
+  function cell(v, big){
+    if (v === null || v === undefined || v === "") return '<span class="mval na">미정</span>';
+    return '<span class="mval' + (big ? " big" : "") + '">' + v + '</span>';
+  }
+  var rowsHost = document.getElementById("moneyRows");
+  if (rowsHost) {
+    rowsHost.innerHTML = ROWS.map(function(r){
+      return '<div class="mrow">' +
+        '<span class="mname">' + r.name + '<span class="msub">' + r.sub + '</span></span>' +
+        '<span class="mcell mstate" data-c="state"><span class="badge status ' + r.state.c + '">' + r.state.t + '</span></span>' +
+        '<span class="mcell" data-c="total"><span class="mlbl">총액</span>' + cell(r.total, true) + '</span>' +
+        '<span class="mcell" data-c="dep"><span class="mlbl">예약금</span>' + cell(r.dep) + '</span>' +
+        '<span class="mcell" data-c="bal"><span class="mlbl">잔금</span>' + cell(r.bal) + '</span>' +
+      '</div>';
+    }).join("");
+  }
+
+  /* ---------- 타임라인 체크리스트 ---------- */
+  var PHASES = [
+    {d:"D-50~40", title:"지금 ~ 12월 초", items:[
+      {id:"p1", text:"백리향에 1/17 시간대 · 보증인원 · 룸 확인", memo:"돌상·스냅·식대가 여기서부터 풀린다"},
+      {id:"p2", text:"원파티 화이트 vs 윤슬 결정 → 예약", memo:"예약금·잔금·후기 혜택 조건까지 함께 확인"},
+      {id:"p3", text:"제휴 스냅 3곳 문의 · 비교 후 예약", memo:"원본·보정본·앨범 구성과 제휴가 비교"},
+      {id:"p4", text:"스튜디오 한복 촬영 예약", memo:"아기·가족 한복 대여 포함 여부 확인"}
+    ]},
+    {d:"D-30", title:"12월 중순 · 이사 직후", items:[
+      {id:"p5", text:"본식 드레스 3인 결정 · 대여 예약", memo:"아기 드레스는 12개월 사이즈로"},
+      {id:"p6", text:"헤어·메이크업 방식 결정 · 예약", memo:"출장 vs 샵 · 1/17 오전 시간대"},
+      {id:"p7", text:"초대 인원 확정해 백리향에 전달", memo:"보증인원 기준이 바뀌면 식대도 바뀐다"}
+    ]},
+    {d:"D-14~7", title:"1월 초", items:[
+      {id:"p8",  text:"답례품 품목·수량 주문", memo:"인원 확정 후 주문해야 남지 않는다"},
+      {id:"p9",  text:"모바일 초대장 제작 · 발송", memo:"장소·시간·주차 안내까지 한 장에"},
+      {id:"p10", text:"백리향 최종 보증인원 · 식수 확정", memo:"마감일 확인해서 넘기지 않기"},
+      {id:"p11", text:"성장동영상 · 포토테이블 여부 결정", memo:"할 거면 업체 리드타임 확인"}
+    ]},
+    {d:"D-1~D-DAY", title:"1/16 ~ 1/17", items:[
+      {id:"p12", text:"의상·한복·소품 최종 점검", memo:"드레스 3벌 · 돌잡이 소품 · 여벌 옷"},
+      {id:"p13", text:"아기 컨디션 · 수유·낮잠 계획 · 당일 챙길 것", memo:"기저귀·분유·물티슈·손수건·체온계"}
+    ]}
+  ];
+  var KEY = "doljanchi-timeline-v1";
+  function read(){
+    try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; }
+    catch(e){ return {}; }
+  }
+  function write(st){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e){} }
+
+  var all = [];
+  PHASES.forEach(function(p){ p.items.forEach(function(it){ all.push(it); }); });
+
+  var body = document.getElementById("tlvBody");
+  var cntEl = document.getElementById("tlvCount");
+  var barEl = document.getElementById("tlvBar");
+
+  function paint(){
+    var st = read();
+    var done = all.filter(function(it){ return !!st[it.id]; }).length;
+    if (cntEl) cntEl.textContent = done + "/" + all.length;
+    if (barEl) barEl.style.width = (all.length ? Math.round(done / all.length * 100) : 0) + "%";
+    PHASES.forEach(function(p, pi){
+      var c = document.querySelector('[data-phc="' + pi + '"]');
+      if (c) c.textContent = p.items.filter(function(it){ return !!st[it.id]; }).length + "/" + p.items.length;
+    });
+  }
+
+  if (body) {
+    var st0 = read();
+    body.innerHTML = PHASES.map(function(p, pi){
+      return '<div class="phase">' +
+        '<div class="phase-h"><span class="ph-d">' + p.d + '</span><h4>' + p.title + '</h4>' +
+          '<span class="ph-c" data-phc="' + pi + '">' + p.items.filter(function(it){ return !!st0[it.id]; }).length + "/" + p.items.length + '</span></div>' +
+        p.items.map(function(it){
+          var on = !!st0[it.id];
+          return '<button type="button" class="ck-row' + (on ? " done" : "") + '" data-ck="' + it.id + '" role="checkbox" aria-checked="' + (on ? "true" : "false") + '">' +
+              '<span class="box' + (on ? " done" : "") + '" aria-hidden="true"></span>' +
+              '<span class="ck-tx">' + it.text + (it.memo ? '<span class="ckm">' + it.memo + '</span>' : '') + '</span>' +
+            '</button>';
+        }).join("") +
+      '</div>';
+    }).join("");
+
+    body.addEventListener("click", function(ev){
+      var btn = ev.target.closest ? ev.target.closest("[data-ck]") : null;
+      if (!btn) return;
+      var id = btn.getAttribute("data-ck");
+      var st = read();
+      var now = !st[id];
+      st[id] = now;
+      write(st);
+      btn.classList.toggle("done", now);
+      btn.setAttribute("aria-checked", now ? "true" : "false");
+      var box = btn.querySelector(".box");
+      if (box) box.classList.toggle("done", now);
+      paint();
+    });
+    paint();
+  }
+
+  var reset = document.getElementById("tlvReset");
+  if (reset) {
+    reset.addEventListener("click", function(){
+      if (!window.confirm("체크를 모두 해제할까요?")) return;
+      write({});
+      document.querySelectorAll("[data-ck]").forEach(function(btn){
+        btn.classList.remove("done");
+        btn.setAttribute("aria-checked", "false");
+        var box = btn.querySelector(".box");
+        if (box) box.classList.remove("done");
+      });
+      paint();
+    });
+  }
+})();
+</script>
+</body>
+</html>
